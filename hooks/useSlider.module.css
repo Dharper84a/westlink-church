@@ -1,0 +1,25 @@
+.slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* overflow: hidden; */
+}
+.sliderTrack {
+    position: relative;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    list-style: none;
+    transition: transform 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+.slide {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    /* background: #ccc; */
+}
