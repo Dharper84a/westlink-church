@@ -15,6 +15,7 @@ import FeaturedPerson from './FeaturedPerson';
 import Slider from './Slider';
 import RichText from './RichText';
 import Ministers from './Ministers';
+import ContactForm from './ContactForm';
 
 const PageSections = ({sections}) => {
     
@@ -41,6 +42,8 @@ const PageSections = ({sections}) => {
                 return <RichText {...section} key={key} />
             case 'pageSectionMinisters':
                 return <Ministers {...section.fields} key={key} />
+            case 'pageSectionContactForm':
+                return <ContactForm {...section.fields} key={key} />
             default: return <div key={key}>SECTION NOT FOUND</div>
         }
     }

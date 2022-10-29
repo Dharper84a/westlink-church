@@ -88,6 +88,53 @@ export const GlobalStyle = createGlobalStyle`
     article {
         max-width: 800px;
     }
+
+    /** Form */
+    label[aria-hidden] {
+        position: absolute;
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0,0,0,0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+    }
+    input, textarea, select {
+        width: 100%;
+        margin: 8px 0;
+        padding: 8px 8px;
+        font-family: ${({theme}) => theme.fonts.bodyFont};
+        color: ${({theme}) => theme.colors.onyx};
+        font-size: ${({theme}) => theme.helpers.fontClamp(18,20)};
+        border: solid 2px ${({theme}) => theme.colors.deepGreen};
+        border-radius: 4px;
+        &::placeholder {
+            color: ${({theme}) => theme.colors.darkGray};
+        }
+    }
+    form {
+        button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            cursor: pointer;
+            color: ${({theme}) => theme.colors.matteBlack};
+            font-weight: 600;
+            background: ${({theme}) => theme.colors.pastelGreen};
+            font-size: ${({theme}) => theme.helpers.fontClamp(20,22)};
+            border: solid 3px ${({theme}) => theme.colors.deepGreen};
+            border-radius: 4px;
+            transition: background 0.2s;
+            &:hover {
+                background: ${({theme}) => theme.colors.darkPastelGreen};
+                transition: background 0.2s;
+            }
+        }
+    }
+
 `
 
 export const fxOverlayBGMountEvent = keyframes`
