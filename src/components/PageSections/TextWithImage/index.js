@@ -16,7 +16,7 @@ const TextWithImage = (props) => {
     const animationClass = imageOnLeft ? 'slide-in-left' : 'slide-in-right';
     // console.log(imageOnLeft);
     return(
-        <ComponentBox imageOnLeft={imageOnLeft} bgColor={imageOnLeft ? 'dark' : 'deepGreen'}>
+        <ComponentBox imageOnLeft={imageOnLeft} bgColor={imageOnLeft ? 'magicBlue' : 'offWhite'} textColor={imageOnLeft ? 'offWhite' : 'matteBlack'}>
             <figure ref={ref}>
                 {image &&
                 <Image

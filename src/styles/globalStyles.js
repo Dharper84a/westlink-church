@@ -137,6 +137,14 @@ export const GlobalStyle = createGlobalStyle`
 
 `
 
+export const fxPulse = keyframes`
+0%, 100% {
+  border-color: ${({theme}) => theme.colors.matteBlack};
+}
+50% {
+  border-color: ${({theme}) => theme.colors.matteBlack};
+}
+`
 export const fxOverlayBGMountEvent = keyframes`
 0% {
   opacity: 0;

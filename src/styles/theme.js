@@ -22,6 +22,9 @@ const COLOR_REF = {
     blue: "#0096FF",
     bluePurple: "#5D3FD3",
     blueSteel: '#4682B4',
+    magicBlue: '#0077c0',
+    lightMagicBlue: '#0097F3',
+    uraniumBlue: '#AFDBF5',
     // accents
     pink: "#DA70D6",
     rubyRed: "#E0115F",

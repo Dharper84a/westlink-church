@@ -2,7 +2,8 @@ import styled, { css, keyframes } from 'styled-components';
 import {
     fxHideMenuButtonBox,
     fxShowMenuButtonBox,
-    fxFlickerIn
+    fxFlickerIn,
+    fxPulse
 } from '../../../styles/globalStyles';
 
 export const SiteIdentity = styled.div`
@@ -13,7 +14,7 @@ export const SiteIdentity = styled.div`
         align-items: center;
         gap: 32px;
         a {
-            color: ${({ theme }) => theme.colors.text.dark};
+            color: ${({ theme }) => theme.colors.text.light};
             font-size: ${({ theme }) => theme.helpers.fontClamp(28, 32)};
             &:hover {
                 color: ${({ theme }) => theme.colors.text.dark};
@@ -50,19 +51,65 @@ export const MenuNavigationBox = styled.nav`
     display: none;
     @media ${({theme}) => theme.device.tablets} {
         display: block;
-        ul {
+        menu {
             display: flex;
             margin: 0;
             padding: 0;
             list-style: none;
             li {
                 position: relative;
-                ul {
+                a {
+                    display: inline-block;
+                    padding: 8px 24px 8px 16px;
+                    color: ${({theme}) => theme.colors.text.light};
+                    font-weight: 500;
+                }
+                menu {
                     position: absolute;
                     display: none;
-                    width: 100%;
-                    height: 100px;
-                    background: white;
+                    flex-direction: column;
+                    width: max-content;
+                    height: 0px;
+                    opacity: 0;
+                    border-bottom-left-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                    box-shadow: 4px 4px 16px rgba(11,11,11,0.25);
+                    transition: all 0.3s;
+                    a {
+                        display: block;
+                        width: 100%;
+                        border-left: 8px solid transparent;
+                        opacity: 0;
+                        background: ${({theme}) => theme.colors.matteBlack};
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                    li {
+                        &:last-of-type {
+                            a {
+                                border-bottom-left-radius: 4px;
+                                border-bottom-right-radius: 4px;
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    menu {
+                        display: block;
+                        height: fit-content;
+                        opacity: 1;
+                        transition: all 0.3s;
+                        a {
+                            opacity: 1;
+                            
+                            &:hover {
+                                color: ${({theme}) => theme.colors.matteBlack};
+                                background: ${({theme}) => theme.colors.uraniumBlue};
+                                border-left: 8px solid ${({theme}) => theme.colors.offWhite};
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -99,7 +146,7 @@ export const ComponentBox = styled.header`
         justify-content: space-between;
         align-items: center;
         height: 80px;
-        background-color: rgba(144,186,144, 0.75); //rgba(193,225,193,0.75);
+        background-color: ${({theme}) => theme.colors.magicBlue}; //rgba(144,186,144, 0.75); //rgba(193,225,193,0.75);
         backdrop-filter: blur(6px);
         box-shadow: 0 8px 24px rgba(40,40,43,0.2);
         ${SiteIdentity} {
@@ -110,3 +157,22 @@ export const ComponentBox = styled.header`
         }
     }
 `;
+
+export const LiveNotice = styled.button`
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    color: ${({theme}) => theme.colors.matteBlack};
+    background: ${({theme}) => theme.colors.uraniumBlue};
+    border: none;
+    border-left: 16px solid ${({theme}) => theme.colors.tomato};
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+        background: ${({theme}) => theme.colors.offWhite};
+        box-shadow: 4px 4px 12px rgba(11,11,11, 0.25);
+        transition: all 0.2s;
+    }
+`
+// rubyRed

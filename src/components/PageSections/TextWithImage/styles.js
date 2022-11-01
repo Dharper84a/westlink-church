@@ -25,7 +25,7 @@ export const ComponentBox = styled.div`
     grid-template-columns: 1fr;
     padding-top: 32px;
     padding-bottom: 32px;
-    background-color: ${({theme, bgColor}) => theme.colors.background[bgColor]};
+    background-color: ${({theme, bgColor}) => theme.colors[bgColor]};
     figure {
         position: relative;
         height: 33vh;
@@ -33,15 +33,18 @@ export const ComponentBox = styled.div`
     }
     aside {
         width: 100%;
-        max-width: 650px;
-        h2,h3 , p {
-            color: ${({theme}) => theme.colors.text.light};
+        max-width: ${({imageOnLeft}) => imageOnLeft ? '650px' : '800px'};
+        h2, h3, p {
+            color: ${({theme, textColor}) => theme.colors[textColor]};
         }
         h2 {
             margin: 24px 0 16px 0;
         }
         h3 {
             margin: 24px 0 8px 0;
+        }
+        a {
+            color: ${({theme, imageOnLeft}) => imageOnLeft ? theme.colors.matteBlack : theme.colors.magicBlue};
         }
     }
     @media ${({theme}) => theme.device.largePhones} {

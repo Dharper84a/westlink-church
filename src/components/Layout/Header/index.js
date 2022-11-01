@@ -8,12 +8,14 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import HeaderMenu from "../../Menus/Header";
 import { Overlay } from "..";
 
-import { ComponentBox, SiteIdentity, MenuButtonBox, MenuNavigationBox } from "./styles";
+import { ComponentBox, SiteIdentity, MenuButtonBox, MenuNavigationBox, LiveNotice } from "./styles";
 
 const Header = (props) => {
     const { ref, inView, entry } = useInView({
         triggerOnce: true,
     });
+
+    const [isLive, setIsLive] = React.useState(true);
 
     const [menuState, setMenuState] = React.useState('closed');
 
@@ -52,7 +54,7 @@ const Header = (props) => {
         <ComponentBox transitionState={menuState}>
             <SiteIdentity>
                 <Image 
-                    src="/images/Icon-Logo-256x256.png"
+                    src="/images/Icon-Logo-White-256x256.png"
                     alt=""
                     width={48}
                     height={48}
@@ -69,15 +71,21 @@ const Header = (props) => {
                     </a>
                 </Link>
             </SiteIdentity>
+            {isLive &&
+            <LiveNotice>
+                Watch Live Stream
+            </LiveNotice>
+            }
+            
             <MenuNavigationBox>
-                <ul>
+                <menu>
                     <li>
                         <Link href="/ways-we-serve">
                             <a title="Read about the many different ways Westlink and it's members serve the community">
                                 Ways We Serve
                             </a>
                         </Link>
-                        <ul>
+                        <menu>
                             <li>
                                 <Link href="/community-center">
                                     <a title="Read more about Westlink's Community Center and how it's offered for use">
@@ -99,7 +107,7 @@ const Header = (props) => {
                                     </a>
                                 </Link>
                             </li>
-                        </ul>
+                        </menu>
                     </li>
                     <li>
                         <Link href="/who-we-are">
@@ -122,7 +130,7 @@ const Header = (props) => {
                             </a>
                         </Link>
                     </li>
-                </ul>
+                </menu>
             </MenuNavigationBox>
             <MenuButtonBox>
                 <button onClick={toggleMenu} aria-label="open menu drawer">

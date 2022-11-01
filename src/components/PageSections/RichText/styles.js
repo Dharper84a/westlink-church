@@ -13,6 +13,9 @@ export const ComponentBox = styled.div`
        margin-left: 16px;
        padding-left: 28px;
     }
+    h2 {
+        margin-top: 0;
+    }
     @media ${({theme}) => theme.device.tablets}{
         ${props => props.reducedWidth === true && css`
         & * {
