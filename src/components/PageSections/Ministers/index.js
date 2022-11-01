@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image';
-import deliveryClient from '../../../lib/datasource/contentful/delivery';
+import deliveryClient from '../../../../lib/datasource/contentful/delivery';
 
 import RichTextRenderer from '../../Common/RichTextRenderer';
 import { Component, LeadMinister, AssistantMinisters } from './styles';

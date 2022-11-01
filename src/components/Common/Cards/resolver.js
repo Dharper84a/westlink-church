@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import deliveryClient from "../../../lib/datasource/contentful/delivery";
+import deliveryClient from "../../../../lib/datasource/contentful/delivery";
 
 import CardStandard from "./Standard";
 const CardsResolver = (props) => {

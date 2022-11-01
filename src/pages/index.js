@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import deliveryClient from '../lib/datasource/contentful/delivery';
+import deliveryClient from '../../lib/datasource/contentful/delivery';
 import { NextSeo } from 'next-seo';
 
 import Layout from '../components/Layout';

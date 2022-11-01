@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import RichTextRenderer from '../../RichTextRenderer';
-import deliveryClient from '../../../../lib/datasource/contentful/delivery';
+import deliveryClient from '../../../../../lib/datasource/contentful/delivery';
 
 import useImage from '../../../../hooks/useImage';
 import { CardComponent } from './styles';

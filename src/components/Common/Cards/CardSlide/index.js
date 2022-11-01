@@ -3,7 +3,7 @@ import Image from 'next/image';
 import RichTextRenderer from '../../RichTextRenderer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import deliveryClient from '../../../../lib/datasource/contentful/delivery';
+import deliveryClient from '../../../../../lib/datasource/contentful/delivery';
 
 import useImage from '../../../../hooks/useImage';
 import { CardComponent } from './styles';

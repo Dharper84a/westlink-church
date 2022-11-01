@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 
 /** SEO */
 import { DefaultSeo } from 'next-seo';
-import SEO from '../next-seo.config.js';
+import SEO from '../../next-seo.config.js';
 
 import {theme} from '../styles/theme';
 import {GlobalStyle} from '../styles/globalStyles';
