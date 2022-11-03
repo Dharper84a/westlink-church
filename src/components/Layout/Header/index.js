@@ -80,6 +80,36 @@ const Header = (props) => {
             <MenuNavigationBox>
                 <menu>
                     <li>
+                        <Link href="/who-we-are">
+                            <a title="Learn about Westlink's beliefs, it's ministers and members.">
+                                Who We Are
+                            </a>
+                        </Link>
+                        <menu>
+                            <li>
+                                <Link href="/who-we-are/#ministers">
+                                    <a title="Read about Westlink's ministers">
+                                        Ministers
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/who-we-are/#shepherds">
+                                    <a title="Read about Westlink's shepherds">
+                                        Shepherds
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/history">
+                                    <a title="">
+                                        History
+                                    </a>
+                                </Link>
+                            </li>
+                        </menu>
+                    </li>
+                    <li>
                         <Link href="/ways-we-serve">
                             <a title="Read about the many different ways Westlink and it's members serve the community">
                                 Ways We Serve
@@ -107,26 +137,50 @@ const Header = (props) => {
                                     </a>
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/the-lords-diner">
+                                    <a title="Learn how Westlink supports The Lord's Diner">
+                                        The Lord's Diner
+                                    </a>
+                                </Link>
+                            </li>
                         </menu>
                     </li>
-                    <li>
-                        <Link href="/who-we-are">
-                            <a title="Learn about Westlink's beliefs, it's ministers and members.">
-                                Who We Are
-                            </a>
-                        </Link>
-                    </li>
+                    
                     <li>
                         <Link href="/resources">
                             <a title="">
                                 Resources
                             </a>
                         </Link>
+                        <menu>
+                            <li>
+                                <Link href="/sermons">
+                                    <a title="">
+                                        Sermons
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/podcasts">
+                                    <a title="">
+                                        Podcasts
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/schedule-and-events">
+                                    <a title="Find out what Westlink has coming up and how you can be a part of it.">
+                                        Schedule and Events
+                                    </a>
+                                </Link>
+                            </li>
+                        </menu>
                     </li>
                     <li>
-                        <Link href="/events">
-                            <a title="Find out what Westlink has coming up and how you can be a part of it.">
-                                Events
+                        <Link href="/contact">
+                            <a title="">
+                                Contact
                             </a>
                         </Link>
                     </li>

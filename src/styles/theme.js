@@ -15,6 +15,7 @@ const COLOR_REF = {
     // greens
     pastelGreen: "#C1E1C1",
     lightPastelGreen: '#D9EED9',
+    veryLightPastelGreen: '#EDF7ED',
     darkPastelGreen: '#90ba90',
     deepGreen: '#70AC70',
     brightGreen: '#23d5ab',

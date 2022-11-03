@@ -30,12 +30,12 @@ export const BackgroundImage = styled.figure`
         height: 100%;
         mix-blend-mode: multiply;
         background: rgb(54,69,79);
-        background: linear-gradient(180deg, rgba(54,69,79,0) 0%, rgba(53,57,53,0.9) 100%);
+        background: linear-gradient(180deg, rgba(30,30,30,0) 0%, rgba(30,30,30,0.95) 100%);
     }
     h1 {
         position: absolute;
         z-index: ${({theme}) => theme.layers.overlayContent};
-        top: 85%;
+        top: 65%;
         left: 7%;
         transform: translateY(-50%);
         color: ${({theme}) => theme.colors.text.light};

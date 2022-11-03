@@ -163,14 +163,14 @@ export const LiveNotice = styled.button`
     align-items: center;
     padding: 8px 16px;
     color: ${({theme}) => theme.colors.matteBlack};
-    background: ${({theme}) => theme.colors.uraniumBlue};
+    background: ${({theme}) => theme.colors.white};
     border: none;
     border-left: 16px solid ${({theme}) => theme.colors.tomato};
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
-        background: ${({theme}) => theme.colors.offWhite};
+        background: ${({theme}) => theme.colors.uraniumBlue};
         box-shadow: 4px 4px 12px rgba(11,11,11, 0.25);
         transition: all 0.2s;
     }

@@ -12,6 +12,11 @@ const fxGradient = keyframes`
     }
 `
 const variations = {
+    shifting_blues: css`
+        background: linear-gradient(-45deg, #0077c0, #0097F3);
+        background-size: 1000% 1000%;
+        animation: ${fxGradient} 10s ease infinite;
+    `,
     shifting_greens: css`
         background: linear-gradient(-45deg, #70AC70, #90ba90, #C1E1C1);
         background-size: 400% 400%;

@@ -28,8 +28,13 @@ export const ComponentBox = styled.div`
     background-color: ${({theme, bgColor}) => theme.colors[bgColor]};
     figure {
         position: relative;
+        z-index: 15;
         height: 33vh;
         max-width: 1024px;
+        border-radius: 4px;
+        span, img {
+            border-radius: 4px;
+        }
     }
     aside {
         width: 100%;

@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 export const Component = styled.div`
     ${({theme}) => theme.layout.content};
-    padding-top: 30px;
+    position: relative;
+    padding-bottom: 60px;
+    background: ${({theme}) => theme.colors.veryLightPastelGreen};
     h3 {
         margin: 16px 0;
     }
@@ -25,6 +27,16 @@ export const Component = styled.div`
             border-radius: 4px;
         }
     }
+    &:before {
+        content: ' ';
+        position: absolute;
+        z-index: 10;
+        top: -160px;
+        left: 0;
+        width: 100%;
+        height: 160px;
+        background: ${({theme}) => theme.colors.veryLightPastelGreen};
+    }
 `
 export const LeadMinister = styled.div`
     display: flex;
@@ -33,7 +45,6 @@ export const LeadMinister = styled.div`
     figure {
         height: fit-content;
         max-height: 360px;
-        box-shadow: 8px 8px 16px rgba(11,11,11,0.3);
     }
     aside {
         
