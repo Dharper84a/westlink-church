@@ -81,21 +81,21 @@ const Header = (props) => {
                 <menu>
                     <li>
                         <Link href="/who-we-are">
-                            <a title="Learn about Westlink's beliefs, it's ministers and members.">
+                            <a title={`Learn about Westlink&apos;s beliefs, it's ministers and members.`}>
                                 Who We Are
                             </a>
                         </Link>
                         <menu>
                             <li>
                                 <Link href="/who-we-are/#ministers">
-                                    <a title="Read about Westlink's ministers">
+                                    <a title={`Read about Westlink&apos;s ministers`}>
                                         Ministers
                                     </a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/who-we-are/#shepherds">
-                                    <a title="Read about Westlink's shepherds">
+                                    <a title={`Read about Westlink&apos;s shepherds`}>
                                         Shepherds
                                     </a>
                                 </Link>
@@ -111,14 +111,14 @@ const Header = (props) => {
                     </li>
                     <li>
                         <Link href="/ways-we-serve">
-                            <a title="Read about the many different ways Westlink and it's members serve the community">
+                            <a title={`Read about the many different ways Westlink and it&apos;s members serve the community`}>
                                 Ways We Serve
                             </a>
                         </Link>
                         <menu>
                             <li>
                                 <Link href="/community-center">
-                                    <a title="Read more about Westlink's Community Center and how it's offered for use">
+                                    <a title="Read more about Westlink&apos;s Community Center and how it's offered for use">
                                         Community Center
                                     </a>
                                 </Link>
@@ -139,8 +139,8 @@ const Header = (props) => {
                             </li>
                             <li>
                                 <Link href="/the-lords-diner">
-                                    <a title="Learn how Westlink supports The Lord's Diner">
-                                        The Lord's Diner
+                                    <a title="Learn how Westlink supports The Lord&amps;s Diner">
+                                        The Lord&apos;s Diner
                                     </a>
                                 </Link>
                             </li>
