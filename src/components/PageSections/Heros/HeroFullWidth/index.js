@@ -6,9 +6,13 @@ import { HeroFullWidthContainer, BackgroundImage } from './styles';
 const HeroFullWidth = (props) => {
     const overlayText = props.fields.overlayText || false;
     const image = props.fields.image.fields;
+    console.log(props)
+    
+    const includeOverlayGradient = typeof props.fields?.includeOverlayGradient === 'boolean' ? props.fields.includeOverlayGradient : true;
+    console.log(includeOverlayGradient)
     return(
         <HeroFullWidthContainer>
-            <BackgroundImage>
+            <BackgroundImage includeOverlayGradient={includeOverlayGradient}>
                 <Image
                     src={`https:${image.file.url}`}
                     width={image.file.details.image.width}

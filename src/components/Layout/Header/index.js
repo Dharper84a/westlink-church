@@ -137,13 +137,13 @@ const Header = (props) => {
                                     </a>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/the-lords-diner">
                                     <a title="Learn how Westlink supports The Lord&amps;s Diner">
                                         The Lord&apos;s Diner
                                     </a>
                                 </Link>
-                            </li>
+                            </li> */}
                         </menu>
                     </li>
                     

@@ -1,69 +1,86 @@
-import React from 'react';
+import * as React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import RichTextRenderer from '../../RichTextRenderer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import deliveryClient from '../../../../../lib/datasource/contentful/delivery';
 
-import useImage from '../../../../hooks/useImage';
 import { CardComponent } from './styles';
 
 const CardSlide = (props) => {
-    const image = useImage();
-    const [state, setState] = React.useState('loading');
-    const [cardData, setCardData] = React.useState(null);
-
-    React.useEffect(() => {
-        if (cardData === null) return () => {};
-        if (cardData === false) {
-            setState('error');
-            return () => {};
-        }
-
-        if (image.isReady) setState('ready');
-
-        // console.log(cardData);
-        return () => {};
-    }, [cardData, image]);
+    const [data, setData] = React.useState(false);
 
     React.useEffect(() => {
         let ignore = false;
+        let s = Date.now()
+       
         const awaitCardData = async () => {
-            const data = await deliveryClient.entryById(props.sys.id);
-            if (!ignore) {
-                setCardData(data?.fields || false);
-                image.setImage(data?.fields?.image);
-                console.log(data.fields);
+            const schema = {
+                heading: null,
+                description: null,
+                image: null,
+                link: null
             }
-        };
+            const entryData = await deliveryClient.entryById(props.sys.id);
+            if(!ignore) {
+                if(entryData?.fields) {
+                    schema.heading = entryData.fields?.heading || null;
+                    schema.description = entryData.fields?.briefDescription || null;
+                    schema.image = entryData.fields?.image?.fields || null;
+
+                    if(entryData.fields?.link) {
+                        schema.link = {
+                            title: entryData.fields.link.fields?.linkTitle,
+                            openInNewTab: entryData.fields.link.fields?.openInNewTab === 'Yes' ? true : false,
+                            href: entryData.fields.link.fields?.externalWebpage || null,
+                        }
+                        if(entryData.fields.link?.fields?.internalPage) {
+                            const linkData = await deliveryClient.entryById(entryData.fields.link.fields.internalPage.sys.id);
+                            schema.link.href = `/${linkData.fields.slug}`;
+                            console.log(linkData)
+                        }
+                  
+                        
+                        
+
+                    }
+                    
+                    let d = Date.now() - s;
+                    console.log(`${d}ms`)
+                    setData(schema)
+                   
+                }
+            }
+        }
 
         awaitCardData();
-
         return () => {
             ignore = true;
-        };
-    }, [props.sys.id]);
+        }
+    }, [props])
+    
     return (
-        <CardComponent componentState={state}>
+        <CardComponent  hasImage={data.image ? true : false}>
             <div>
                 <figure>
-                    {image.isReady ? (
+                    {data.image && 
                         <Image
-                            src={image.image.src}
-                            alt={image.image.alt || ''}
+                            src={`https:${data.image.file.url}`}
+                            alt={data.image.description || ''}
                             layout="fill"
                             objectFit="cover"
                         />
-                    ) : (
-                        <Image src="/images/Icon-Logo-256x256.png" alt="" width={48} height={48} />
-                    )}
+                    }
                 </figure>
-                <h3>{cardData?.heading}</h3>
-                <RichTextRenderer richText={cardData?.briefDescription} />
+                <h3>{data?.heading}</h3>
+                <RichTextRenderer richText={data?.description} />
             </div>
+            {data.link &&
             <footer>
-                <button>More Info</button>
+                <Link href={data.link.href}>
+                    <a title={data.link.title}>{data.link.title}</a>
+                </Link>
             </footer>
+            }
         </CardComponent>
     );
 };

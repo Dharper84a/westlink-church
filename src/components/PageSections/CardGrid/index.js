@@ -7,6 +7,8 @@ import { CardGridContainer, Inner, Grid } from './styles';
 const CardGrid = (props) => {
     const layout = props.layout === 'Two Per Row' ? 'layout--50' : 'layout--33';
     const text = JSON.parse(props.textStringified);
+    const innerLink = props?.innerPageId || false;
+
     return(
         <CardGridContainer>
             <Inner>

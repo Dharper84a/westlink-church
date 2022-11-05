@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, {css,keyframes} from "styled-components";
 
 const fxSimpleFadeIn = keyframes`
     0% {
@@ -31,6 +31,9 @@ export const BackgroundImage = styled.figure`
         mix-blend-mode: multiply;
         background: rgb(54,69,79);
         background: linear-gradient(180deg, rgba(30,30,30,0) 0%, rgba(30,30,30,0.95) 100%);
+        ${props => props.includeOverlayGradient === false && css`
+        background: transparent;
+        `}
     }
     h1 {
         position: absolute;

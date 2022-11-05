@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, {keyframes,css} from 'styled-components';
 
 const fxLoading = keyframes`
     0%, 100% {
@@ -23,6 +23,10 @@ export const CardComponent = styled.div`
         width: 100%;
         aspect-ratio: 1.5;
         border-radius: 4px;
+        ${props => props.hasImage === false && css`
+        background: gray;
+        opacity: 0.25;
+        `}
         span {
             border-radius: 4px;
         }

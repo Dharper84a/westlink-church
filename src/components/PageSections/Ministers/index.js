@@ -45,7 +45,7 @@ const Ministers = (props) => {
 
     return(
         <Component>
-            <h2>Ministers</h2>
+            <h2 id="ministers">Ministers</h2>
             {leadMinister && 
                 <LeadMinister>
                     <figure>

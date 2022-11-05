@@ -5,6 +5,8 @@ import {
     faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
+import RichTextRenderer from "../../Common/RichTextRenderer";
+
 // Helpers
 import useSlider from "../../../hooks/useSlider";
 
@@ -20,7 +22,8 @@ const classFormatter = (cardType) => {
 };
 const Slider = (props) => {
     const slider = useSlider();
-    // console.log("FSS", props);
+    console.log("FSS", props);
+    const richText = props?.description;
     React.useEffect(() => {
         if (slider.isReady === false) {
             if (props.fields?.slides) {
@@ -52,8 +55,9 @@ const Slider = (props) => {
         <ComponentBox>
                 <header>
                     {props.fields?.heading && <h2>{props.fields?.heading}</h2>}
-                    <p>Join us at one or more (or all) of our events. Come as you are we welcome everyone.</p>
-                    {/* {props.fields?.description && <p>{props.fields?.description}</p>} */}
+                    {richText &&
+                    <RichTextRenderer richText={richText} />
+                    }
                     {slider.isReady && 
                     <nav
                         className={classFormatter(props.fields.slideType)}
