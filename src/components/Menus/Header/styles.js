@@ -40,22 +40,14 @@ export const MenuContainer = styled.div`
     header {
         padding: 1rem;
         background: ${({theme}) => theme.colors.magicBlue};
-        span {
+        a {
             color: ${({theme}) => theme.colors.offWhite};
             font-size: ${({theme}) => theme.helpers.fontClamp(26, 32)};
             font-weight: 300;
+            &:hover {
+                text-decoration: none;
+            }
         }
-    }
-    nav {
-        /* display: grid;
-        justify-content: center;
-        gap: 24px;
-        padding-top: 32px;
-        text-align: center;
-        a {
-            color: ${({theme}) => theme.colors.text.link};
-            font-size: ${({theme}) => theme.helpers.fontClamp(22, 26)};
-        } */
     }
     menu {
         display: grid;

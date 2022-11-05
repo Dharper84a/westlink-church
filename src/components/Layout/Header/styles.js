@@ -15,16 +15,11 @@ export const SiteIdentity = styled.div`
         gap: 32px;
         a {
             color: ${({ theme }) => theme.colors.text.light};
-            font-size: 22px;
+            font-size: ${({theme}) => theme.helpers.fontClampBox(22, 40, 1024, 3840)};
             &:hover {
                 color: ${({ theme }) => theme.colors.text.dark};
                 text-decoration: none;
             }
-        }
-    }
-    @media ${({theme}) => theme.device.smallMonitor} {
-        a {
-            font-size: 32px;
         }
     }
 `;

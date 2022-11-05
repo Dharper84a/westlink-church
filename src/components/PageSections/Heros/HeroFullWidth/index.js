@@ -24,7 +24,7 @@ const HeroFullWidth = (props) => {
                     let entryWidth = entry.contentBoxSize[0].inlineSize;
                     if(!isNaN || entryWidth !== 0) {
                         let desiredHeight = parseInt((entryWidth / 4).toFixed(0));
-                        setHeroHeight(`${desiredHeight}px`);
+                        // setHeroHeight(`${desiredHeight}px`);
                     }
                   
                 }
@@ -43,7 +43,7 @@ const HeroFullWidth = (props) => {
                     width={image.file.details.image.width}
                     height={image.file.details.image.height}
                     alt={image.description || ''}
-                    objectFit="contain"
+                    objectFit="cover"
                     objectPosition="top"
                     sizes="100vw"
                     priority

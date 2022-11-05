@@ -34,7 +34,9 @@ const HeaderMenu = (props) => {
     return(
         <MenuContainer>
             <header>
-                <span>Westlink Church of Christ</span>       
+                <Link href="/">
+                    <a>Westlink Church of Christ</a>       
+                </Link>
             </header>
             
             <nav>
