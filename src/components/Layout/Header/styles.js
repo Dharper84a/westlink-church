@@ -15,11 +15,16 @@ export const SiteIdentity = styled.div`
         gap: 32px;
         a {
             color: ${({ theme }) => theme.colors.text.light};
-            font-size: ${({ theme }) => theme.helpers.fontClamp(28, 32)};
+            font-size: 22px;
             &:hover {
                 color: ${({ theme }) => theme.colors.text.dark};
                 text-decoration: none;
             }
+        }
+    }
+    @media ${({theme}) => theme.device.smallMonitor} {
+        a {
+            font-size: 32px;
         }
     }
 `;
@@ -34,13 +39,16 @@ export const MenuButtonBox = styled.div`
     padding-top: 0.5rem;
     border-top-left-radius: 70%;
     border-top-right-radius: 70%;
-    background-color: ${({ theme }) => theme.colors.pastelGreen};
+    /* background-color: ${({ theme }) => theme.colors.pastelGreen}; */
+    background-color: ${({ theme }) => theme.colors.magicBlue};
+    cursor: pointer;
     button {
         height: fit-content;
         color: ${({ theme }) => theme.colors.text.dark};
         font-size: 32px;
         background-color: transparent;
         border: none;
+        cursor: pointer;
     }
     @media ${({ theme }) => theme.device.tablets} {
         display: none;
@@ -62,6 +70,7 @@ export const MenuNavigationBox = styled.nav`
                     display: inline-block;
                     padding: 8px 24px 8px 16px;
                     color: ${({theme}) => theme.colors.text.light};
+                    font-size: 16px;
                     font-weight: 500;
                 }
                 menu {
@@ -119,6 +128,16 @@ export const MenuNavigationBox = styled.nav`
             font-weight: 300;
         }
     }
+    @media ${({theme}) => theme.device.smallMonitor} {
+        menu {
+            li {
+                a {
+                    font-size: 18px;
+                }
+            }
+            
+        }
+    }
 `
 export const ComponentBox = styled.header`
     position: fixed;
@@ -128,7 +147,8 @@ export const ComponentBox = styled.header`
     justify-content: center;
     width: 100%;
     height: 8px;
-    background-color: ${({ theme }) => theme.colors.pastelGreen};
+    /* background-color: ${({ theme }) => theme.colors.pastelGreen}; */
+    background-color: ${({ theme }) => theme.colors.magicBlue};
     ${(props) =>
         props.transitionState === 'open' &&
         css`

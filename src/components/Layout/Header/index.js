@@ -15,7 +15,7 @@ const Header = (props) => {
         triggerOnce: true,
     });
 
-    const [isLive, setIsLive] = React.useState(true);
+    const [isLive, setIsLive] = React.useState(false);
 
     const [menuState, setMenuState] = React.useState('closed');
 

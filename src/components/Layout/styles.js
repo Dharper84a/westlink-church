@@ -53,8 +53,7 @@ const cssDrawer = css`
     bottom: 0;
     width: 100%;
     height: 75%;
-    padding: 1rem 2rem;
-    background-color: ${({ theme }) => theme.colors.background.green};
+    background-color: ${({ theme }) => theme.colors.matteBlack};
     animation: ${fxOpenDrawer} 0.85s linear 0.2s both;
     ${(props) =>
         props.transitionState === "closing" &&
@@ -70,10 +69,7 @@ const cssDrawer = css`
         height: 8px;
         background-color: ${({ theme }) => theme.colors.tomato};
     }
-    @media ${({ theme }) => theme.devices.iphones} {
-        width: 100%;
-        padding: 1rem 0.5rem;
-    }
+  
 `;
 
 export const OverlayForeground = styled.div`

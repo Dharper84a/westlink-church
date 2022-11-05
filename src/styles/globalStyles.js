@@ -29,6 +29,11 @@ export const GlobalStyle = createGlobalStyle`
         animation: ${fxSimpleFadeIn} 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     }
 
+    menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
     h1, h2, h3, h4, h5, h6 {
         margin: 0 0 0.5rem 0;
         color: ${({theme}) => theme.colors.text.dark};

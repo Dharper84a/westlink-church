@@ -129,6 +129,15 @@ const fontClamp = (min, max) => {
     return output;
 };
 
+const fontClampBox = (fontMin, fontMax, boxMin, boxMax) => {
+    const slope = (fontMax - fontMin) / (boxMax - boxMin);
+    const yIntersection = -boxMin * slope + fontMin;
+
+    const output = `clamp(${fontMin}px, ${yIntersection.toFixed(2)}px + ${(slope * 100).toFixed(2)}vw, ${fontMax}px)`;
+    
+    return output;
+};
+
 const lineClamp = (lines) => {
     return {
         display: '-webkit-box',
@@ -147,6 +156,7 @@ export const theme = {
     device: MEDIA_DEVICES,
     helpers: {
         fontClamp: fontClamp,
-        lineClamp: lineClamp
+        lineClamp: lineClamp,
+        fontClampBox: fontClampBox
     }
 };
