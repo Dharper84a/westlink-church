@@ -10,7 +10,7 @@ export default {
         siteName: 'Westlink Church of Christ',
         images: [
             {
-                url: 'https://images.ctfassets.net/pgcwy1w4oyl3/56602r4XsQ8lN6KJUCAaBK/4e73eba5710e0b5fb741e7ea9e033097/Default-Social-Image.jpg',
+                url: 'https://images.ctfassets.net/pgcwy1w4oyl3/6w10kA19G5dumccgWrsXn3/bd26bbee19e61ebafd592a8d4a1ae31c/westlink-church-front-social.jpg',
                 width: 800,
                 height: 600,
                 alt: 'Westlink Church of Christ'
