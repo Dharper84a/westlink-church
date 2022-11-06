@@ -8,14 +8,13 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import HeaderMenu from "../../Menus/Header";
 import { Overlay } from "..";
 
-import { ComponentBox, SiteIdentity, MenuButtonBox, MenuNavigationBox, LiveNotice } from "./styles";
+import { ComponentBox, SiteIdentity, MenuButtonBox, MenuNavigationBox } from "./styles";
 
 const Header = (props) => {
     const { ref, inView, entry } = useInView({
         triggerOnce: true,
     });
 
-    const [isLive, setIsLive] = React.useState(false);
 
     const [menuState, setMenuState] = React.useState('closed');
 
@@ -71,11 +70,7 @@ const Header = (props) => {
                     </a>
                 </Link>
             </SiteIdentity>
-            {isLive &&
-            <LiveNotice>
-                Watch Live Stream
-            </LiveNotice>
-            }
+          
             
             <MenuNavigationBox>
                 <menu>
@@ -148,16 +143,16 @@ const Header = (props) => {
                     </li>
                     
                     <li>
-                        <Link href="/resources">
+                        <Link href="/schedule">
                             <a title="">
-                                Resources
+                                Media & Resources
                             </a>
                         </Link>
                         <menu>
                             <li>
-                                <Link href="/sermons">
+                                <Link href="/schedule">
                                     <a title="">
-                                        Sermons
+                                        Schedule
                                     </a>
                                 </Link>
                             </li>
@@ -168,13 +163,20 @@ const Header = (props) => {
                                     </a>
                                 </Link>
                             </li>
-                            <li>
-                                <Link href="/schedule-and-events">
-                                    <a title="Find out what Westlink has coming up and how you can be a part of it.">
-                                        Schedule and Events
+                            {/* <li>
+                                <Link href="/materials">
+                                    <a title="">
+                                        Other Materials
                                     </a>
                                 </Link>
-                            </li>
+                            </li> */}
+                            {/* <li>
+                                <Link href="/events">
+                                    <a title="Find out what Westlink has coming up and how you can be a part of it.">
+                                        Events
+                                    </a>
+                                </Link>
+                            </li> */}
                         </menu>
                     </li>
                     <li>

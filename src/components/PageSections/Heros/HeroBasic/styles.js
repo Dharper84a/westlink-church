@@ -12,6 +12,36 @@ const fxGradient = keyframes`
     }
 `
 const variations = {
+    solid_blue_with_white_crosses: css`
+        background: ${({theme}) => theme.colors.magicBlue};
+        background-image: url('/images/three-crosses.png');
+        background-repeat: no-repeat;
+        background-position: 94% 100%;
+        background-size: 175px 167px;
+        h1 {
+            color: ${({theme}) => theme.colors.white};
+        }
+    `,
+    solid_green_with_white_crosses: css`
+        background: ${({theme}) => theme.colors.deepGreen};
+        background-image: url('/images/three-crosses.png');
+        background-repeat: no-repeat;
+        background-position: 94% 100%;
+        background-size: 175px 167px;
+        h1 {
+            color: ${({theme}) => theme.colors.white};
+        }
+    `,
+    solid_black_with_white_crosses: css`
+        background: ${({theme}) => theme.colors.matteBlack};
+        background-image: url('/images/three-crosses.png');
+        background-repeat: no-repeat;
+        background-position: 94% 100%;
+        background-size: 175px 167px;
+        h1 {
+            color: ${({theme}) => theme.colors.white};
+        }
+    `,
     shifting_blues: css`
         background: linear-gradient(-45deg, #0077c0, #0097F3);
         background-size: 1000% 1000%;

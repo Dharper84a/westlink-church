@@ -17,7 +17,7 @@ export const Website = styled.div`
     }
     @media ${({theme}) => theme.device.tablets} {
         main {
-            margin-top: 80px;
+            /* margin-top: 80px; */
         }
     }
 `;

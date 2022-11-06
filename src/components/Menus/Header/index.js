@@ -121,16 +121,16 @@ const HeaderMenu = (props) => {
                         </button>
                         <menu onClick={closeSubMenuHandler}>
                             <li>
-                                <Link href="/media-and-resources">
+                                <Link href="/schedule">
                                     <a>
                                         Media & Resources
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/live-stream">
+                                <Link href="/schedule">
                                     <a>
-                                        Live Stream
+                                        Schedule
                                     </a>
                                 </Link>
                             </li>
@@ -141,13 +141,13 @@ const HeaderMenu = (props) => {
                                     </a>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/other-material">
                                     <a>
                                         Other Material
                                     </a>
                                 </Link>
-                            </li>
+                            </li> */}
                         </menu>
                     </li>
                     <li>

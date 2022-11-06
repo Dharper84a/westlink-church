@@ -16,6 +16,7 @@ import Slider from './Slider';
 import RichText from './RichText';
 import Ministers from './Ministers';
 import ContactForm from './ContactForm';
+import YouTubeEmbed from './YouTubeEmbed';
 
 const PageSections = ({sections}) => {
     
@@ -44,7 +45,9 @@ const PageSections = ({sections}) => {
                 return <Ministers {...section.fields} key={key} />
             case 'pageSectionContactForm':
                 return <ContactForm {...section.fields} key={key} />
-            default: return <div key={key}>SECTION NOT FOUND</div>
+            case 'youTubeEmbed':
+                return <YouTubeEmbed {...section.fields} key={key} />
+            default: return <div key={key}>SECTION NOT FOUND {section.sys.contentType.sys.id}</div>
         }
     }
 

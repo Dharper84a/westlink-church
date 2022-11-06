@@ -14,7 +14,8 @@ export const FooterContainer = styled.footer`
     bottom: 0;
     left: 0;
     width: 100%;
-    background: ${({theme}) => theme.colors.background.dark};
+    background: ${({theme}) => theme.colors.matteBlack};
+    border-top: 15px solid ${({theme}) => theme.colors.magicBlue};
 `
 
 export const Inner = styled.div`

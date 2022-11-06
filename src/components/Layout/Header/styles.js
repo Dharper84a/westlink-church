@@ -15,9 +15,9 @@ export const SiteIdentity = styled.div`
         gap: 32px;
         a {
             color: ${({ theme }) => theme.colors.text.light};
-            font-size: ${({theme}) => theme.helpers.fontClampBox(22, 40, 1024, 3840)};
+            font-size: ${({theme}) => theme.helpers.fontClampBox(20, 40, 1024, 3840)};
             &:hover {
-                color: ${({ theme }) => theme.colors.text.dark};
+                color: ${({ theme }) => theme.colors.text.light};
                 text-decoration: none;
             }
         }
@@ -64,15 +64,17 @@ export const MenuNavigationBox = styled.nav`
                 a {
                     display: inline-block;
                     padding: 8px 24px 8px 16px;
-                    color: ${({theme}) => theme.colors.text.light};
-                    font-size: 16px;
+                    color: ${({theme}) => theme.colors.white};
+                    font-size: ${({theme}) => theme.helpers.fontClampBox(14, 18, 1024, 1920)};
                     font-weight: 500;
+
                 }
                 menu {
                     position: absolute;
                     display: none;
                     flex-direction: column;
                     width: max-content;
+                    min-width: 100%;
                     height: 0px;
                     opacity: 0;
                     border-bottom-left-radius: 4px;
@@ -82,6 +84,7 @@ export const MenuNavigationBox = styled.nav`
                     a {
                         display: block;
                         width: 100%;
+                        color: ${({theme}) => theme.colors.offWhite};
                         border-left: 8px solid transparent;
                         opacity: 0;
                         background: ${({theme}) => theme.colors.matteBlack};
@@ -98,7 +101,7 @@ export const MenuNavigationBox = styled.nav`
                         }
                     }
                 }
-                &:hover {
+                &:hover {  
                     menu {
                         display: block;
                         height: fit-content;
@@ -144,6 +147,7 @@ export const ComponentBox = styled.header`
     height: 8px;
     /* background-color: ${({ theme }) => theme.colors.pastelGreen}; */
     background-color: ${({ theme }) => theme.colors.magicBlue};
+    
     ${(props) =>
         props.transitionState === 'open' &&
         css`
@@ -156,38 +160,27 @@ export const ComponentBox = styled.header`
         `}
     @media ${({ theme }) => theme.device.tablets} {
         ${({ theme }) => theme.layout.content};
+        position: absolute;
         top: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 80px;
-        background-color: ${({theme}) => theme.colors.magicBlue}; //rgba(144,186,144, 0.75); //rgba(193,225,193,0.75);
-        backdrop-filter: blur(6px);
-        box-shadow: 0 8px 24px rgba(40,40,43,0.2);
+        background-color: transparent;
         ${SiteIdentity} {
             padding-right: 16px;
         }
         ${MenuButtonBox} {
             /* grid-area: B; */
         }
+        
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+        }
     }
 `;
-
-export const LiveNotice = styled.button`
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    color: ${({theme}) => theme.colors.matteBlack};
-    background: ${({theme}) => theme.colors.white};
-    border: none;
-    border-left: 16px solid ${({theme}) => theme.colors.tomato};
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-    &:hover {
-        background: ${({theme}) => theme.colors.uraniumBlue};
-        box-shadow: 4px 4px 12px rgba(11,11,11, 0.25);
-        transition: all 0.2s;
-    }
-`
-// rubyRed

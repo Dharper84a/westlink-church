@@ -4,7 +4,7 @@ export const ComponentBox = styled.div`
     ${({theme}) => theme.layout.content};
     ${props => props.reducedWidth === true && css`
     & * {
-        width: 85%;
+        width: 100%;
     }
     `}
     padding-top: 32px;

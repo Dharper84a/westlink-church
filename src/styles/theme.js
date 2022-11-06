@@ -2,6 +2,7 @@ const COLOR_REF = {
     // whites
     white: "#FFFFFF",
     offWhite: "#FAF9F6",
+    darkWhite: "#E1E1E1",
     // blacks
     black: "#000000",
     matteBlack: "#28282B",

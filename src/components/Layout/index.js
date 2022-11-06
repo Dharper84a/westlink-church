@@ -3,13 +3,47 @@ import * as React from 'react';
 import Header from './Header';
 import Footer from './Footer'
 
+import LiveBanner from '../Common/LiveBanner';
+
 import { Website, OverlayContainer, OverlayBackground, OverlayForeground } from './styles';
 import { createPortal } from 'react-dom';
 
 const Layout = (props) => {
+    
+    const [isLive, setIsLive] = React.useState(false);
 
+    const isLiveChecker = () => {
+        const d = new Date();
+        if(d.getDay() === 0) {
+            if(d.getHours() >= 10 && d.getHours() < 12) {
+                // should be live-ish
+                setIsLive(true);
+            } else {
+                setIsLive(false);
+            }
+            
+        } else {
+            setIsLive(false);
+        }
+
+        
+    }
+    React.useEffect(() => {
+        let ignore = false;
+        setInterval(() => {
+            if(!ignore) {
+                isLiveChecker()
+            }
+        }, 60000)
+        return () => {
+            ignore = true;
+        }
+    }, [])
     return(
         <Website>
+            {isLive &&
+            <LiveBanner />
+            }
             <Header />
                 <main>
                     {props.children}
