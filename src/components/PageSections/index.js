@@ -17,6 +17,9 @@ import RichText from './RichText';
 import Ministers from './Ministers';
 import ContactForm from './ContactForm';
 import YouTubeEmbed from './YouTubeEmbed';
+import LiveStream from './LiveStream';
+import PreviousSermon from './PreviousSermon';
+import MaterialDownload from './MaterialDownload';
 
 const PageSections = ({sections}) => {
     
@@ -47,6 +50,12 @@ const PageSections = ({sections}) => {
                 return <ContactForm {...section.fields} key={key} />
             case 'youTubeEmbed':
                 return <YouTubeEmbed {...section.fields} key={key} />
+            case 'pageSectionLiveStream':
+                return <LiveStream {...section.fields} key={key} />
+            case 'pageSectionPreviousSermon':
+                return <PreviousSermon {...section.fields} key={key} />
+            case 'pageSectionMaterialDownload':
+                return <MaterialDownload {...section.fields} key={key} />
             default: return <div key={key}>SECTION NOT FOUND {section.sys.contentType.sys.id}</div>
         }
     }

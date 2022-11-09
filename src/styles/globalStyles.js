@@ -45,8 +45,8 @@ export const GlobalStyle = createGlobalStyle`
         font-size: ${({theme}) => theme.helpers.fontClamp(42, 56)};
     }
     h2 {
-        margin-top: 2rem;
-        font-size: ${({theme}) => theme.helpers.fontClamp(34, 42)};
+        /* margin-top: 2rem; */
+        font-size: ${({theme}) => theme.helpers.fontClamp(26, 36)};
     }
     h3 {
         font-size: ${({theme}) => theme.helpers.fontClamp(24, 30)};
@@ -132,10 +132,10 @@ export const GlobalStyle = createGlobalStyle`
             font-size: ${({theme}) => theme.helpers.fontClamp(20,22)};
             border: solid 3px ${({theme}) => theme.colors.deepGreen};
             border-radius: 4px;
-            transition: background 0.2s;
+            transition: background-color 0.2s;
             &:hover {
-                background: ${({theme}) => theme.colors.darkPastelGreen};
-                transition: background 0.2s;
+                background-color: ${({theme}) => theme.colors.darkPastelGreen};
+                transition: background-color 0.2s;
             }
         }
     }

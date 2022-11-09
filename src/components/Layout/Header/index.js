@@ -150,9 +150,16 @@ const Header = (props) => {
                         </Link>
                         <menu>
                             <li>
+                                <Link href="/sermons">
+                                    <a title="View our most recent sermons and materials. Also, if live our live stream.">
+                                        Sermons
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/schedule">
                                     <a title="">
-                                        Schedule
+                                        Schedule & Events
                                     </a>
                                 </Link>
                             </li>
