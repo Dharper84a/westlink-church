@@ -45,6 +45,10 @@ const COLOR_APP = {
         gray: COLOR_REF.mediumGray,
         green: COLOR_REF.pastelGreen,
         deepGreen: COLOR_REF.deepGreen,
+    },
+    gradients: {
+        blues: 'linear-gradient(45deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
+        bluesFlipped: 'linear-gradient(315deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
     }
 };
 const COLORS = { ...COLOR_REF, ...COLOR_APP };

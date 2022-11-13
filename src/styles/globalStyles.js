@@ -7,6 +7,12 @@ const fxSimpleFadeIn = keyframes`
         opacity: 1;
     }
 `
+
+const fxButtonBackground = keyframes`
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+`
 export const GlobalStyle = createGlobalStyle`
 
     * {
@@ -114,7 +120,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${({theme}) => theme.fonts.bodyFont};
         color: ${({theme}) => theme.colors.onyx};
         font-size: ${({theme}) => theme.helpers.fontClamp(18,20)};
-        border: solid 2px ${({theme}) => theme.colors.deepGreen};
+        border: solid 2px ${({theme}) => theme.colors.magicBlue};
         border-radius: 4px;
         &::placeholder {
             color: ${({theme}) => theme.colors.darkGray};
@@ -126,16 +132,18 @@ export const GlobalStyle = createGlobalStyle`
             margin: 8px 0;
             padding: 12px;
             cursor: pointer;
-            color: ${({theme}) => theme.colors.matteBlack};
-            font-weight: 600;
-            background: ${({theme}) => theme.colors.pastelGreen};
+            color: ${({theme}) => theme.colors.offWhite};
+            font-weight: 400;
+            background: ${({theme}) => theme.colors.lightMagicBlue};
+            background: ${({theme}) => theme.colors.gradients.blues};
             font-size: ${({theme}) => theme.helpers.fontClamp(20,22)};
-            border: solid 3px ${({theme}) => theme.colors.deepGreen};
+            border: none;// solid 3px ${({theme}) => theme.colors.lightMagicBlue};
             border-radius: 4px;
-            transition: background-color 0.2s;
+            box-shadow: rgba(17, 17, 26, 0) 0px 4px 16px, rgba(17, 17, 26, 0) 0px 8px 32px;
+            transition: all 0.2s;
             &:hover {
-                background-color: ${({theme}) => theme.colors.darkPastelGreen};
-                transition: background-color 0.2s;
+                box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+                transition: all 0.2s;
             }
         }
     }

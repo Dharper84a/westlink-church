@@ -15,7 +15,7 @@ export const Component = styled.section`
     }
     form {
         label, input, textarea, button {
-            display: none;
+            /* display: none; */
         }
         .coming-soon {
             font-size: 16px;

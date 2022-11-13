@@ -1,5 +1,7 @@
 import * as React from 'react';
 import RichTextRenderer from '../../Common/RichTextRenderer';
+
+import CommonContactForm from '../../Common/ContactForm';
 import { Component } from './styles';
 
 const ContactForm = (props) => {
@@ -57,7 +59,8 @@ const ContactForm = (props) => {
                 <h2>{heading}</h2>
                 <RichTextRenderer richText={richText} />
             </aside>
-            <form>
+            <CommonContactForm />
+            {/* <form>
                 <p className="coming-soon">Message form coming soon!</p>
                 <label id="nameLabel" aria-hidden="true">Name</label>
                 <input
@@ -85,7 +88,7 @@ const ContactForm = (props) => {
                     Send
                 </button>
                 <div className={`feedback state-${submitState}`}>{feedback}</div>
-            </form>
+            </form> */}
         </Component>
     );
 };
