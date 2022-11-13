@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
-import { FormComponent, FormInput } from './styles';
+import { FormComponent, FormInput, FormError } from './styles';
 
 const CommonContactForm = (props) => {
     const [formState, setFormState] = React.useState('WAIT');
@@ -20,7 +20,7 @@ const CommonContactForm = (props) => {
 
         const validateEmail = (email) => {
             return email.match(
-                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
               );
         }
 
@@ -36,7 +36,6 @@ const CommonContactForm = (props) => {
         }
     }
 
-    
     React.useEffect(() => {
         if(formState === 'WAIT') return; // do not process if 
         if(formState === 'SENDING') return;
@@ -89,6 +88,18 @@ const CommonContactForm = (props) => {
             ignore = true;
         }
     }, [formState, email, name, message])
+
+    React.useEffect(() => {
+        if(!error) return;
+        let ignore = false;
+
+        setTimeout(() => {
+            if(!ignore) setError('');
+        }, 3000)
+
+        return () => { ignore = true; }
+
+    }, [error])
     return(
         <FormComponent formState={formState}>
                 <FormInput >
@@ -111,6 +122,11 @@ const CommonContactForm = (props) => {
                        <span>Send</span> 
                     )}
                 </button>
+                {error &&
+                <FormError>
+                    <FontAwesomeIcon icon={faExclamationCircle} />{error}
+                </FormError>
+                }
         </FormComponent>
     )
 }

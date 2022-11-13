@@ -91,3 +91,16 @@ export const FormComponent = styled.form`
 `
 
 export const FormInput = styled.div``
+
+export const FormError = styled.p`
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    color: ${({theme}) => theme.colors.offWhite};
+    font-size: ${({theme}) => theme.helpers.fontClampBox(18, 15, 325, 500)};
+    background-color: ${({theme}) => theme.colors.tomato};
+    border-radius: 4px;
+    svg {
+        padding-right: 0.5rem;
+    }
+`
