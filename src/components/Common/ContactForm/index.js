@@ -59,9 +59,7 @@ const CommonContactForm = (props) => {
                     headers: {
                         'Content-Length': payload.length.toString(),
                         'Content-Type': 'application/json',
-                        'Contact-API-Key': process.env.NEXT_PUBLIC_CONTACT_API_KEY,
-                        'Accept': '*',
-                        // 'Access-Control-Allow-Origin': 'http://localhost',
+                        'contact-api-key': process.env.NEXT_PUBLIC_CONTACT_API_KEY,
                     },
                     body: payload,
                 })
