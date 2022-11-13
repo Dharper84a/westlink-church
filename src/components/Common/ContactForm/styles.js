@@ -75,10 +75,10 @@ const okState = css`
 const errorState = css`
     ${overlay};
     &:before {
-        content: 'Well that did not work...';
+        content: "Well that didn't work...";
         text-align: center;
         color: ${({theme}) => theme.colors.offWhite};
-        font-size: ${({theme}) => theme.helpers.fontClampBox(26, 40, 325, 500)};
+        font-size: ${({theme}) => theme.helpers.fontClampBox(24, 28, 325, 500)};
         background: rgba(255,99,71,0.95); //rgba(255,99,71,0.95);
     }
 `

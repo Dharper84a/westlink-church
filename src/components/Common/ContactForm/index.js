@@ -47,19 +47,23 @@ const CommonContactForm = (props) => {
                 if(!process.env.NEXT_PUBLIC_CONTACT_API_KEY) throw "Missing contact form API KEY";
                 if(!process.env.NEXT_PUBLIC_CONTACT_API_URL) throw "Missing contact form API URL";
     
-                const payload = {
+                const payload = JSON.stringify({
                     email: email,
                     name: name,
                     message: message,
                     account: 'WCOC'
-                }
+                });
     
                 const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_API_URL, {
                     method: 'POST',
                     headers: {
-                        'Contact-API-Key': process.env.NEXT_PUBLIC_CONTACT_API_KEY
+                        'Content-Length': payload.length.toString(),
+                        'Content-Type': 'application/json',
+                        'Contact-API-Key': process.env.NEXT_PUBLIC_CONTACT_API_KEY,
+                        'Accept': '*',
+                        // 'Access-Control-Allow-Origin': 'http://localhost',
                     },
-                    body: JSON.stringify(payload),
+                    body: payload,
                 })
     
                 console.log(response);
@@ -68,7 +72,7 @@ const CommonContactForm = (props) => {
                 setFormState('OK');
             }catch(e){
                 console.log('ERROR - Send', e);
-                setError(e);
+                setError(JSON.stringify(e));
                 setFormState('ERROR');
             }
         }
