@@ -5,14 +5,19 @@ import deliveryClient from '../../lib/datasource/contentful/delivery';
 
 import Layout from '../components/Layout';
 import PageSections from '../components/PageSections';
+import PageLayout from '../components/PageLayout';
+import PageHero from '../components/PageHero';
 
 const PagesPage = (props) => {
     const router = useRouter();
     if(router.isFallback) {
         return <div>Loading...</div>
     }
-    console.log('router', router);
-    console.log('PagesPage', props);
+    // console.log('router', router);
+    // console.log('PagesPage', props);
+
+    const pageLayout = props.fields?.pageLayout || false;
+    const pageHero = props.fields?.pageHero || false;
 
     const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
     const pageUrl = hostname !== null ? hostname + router.asPath : null;
@@ -40,11 +45,16 @@ const PagesPage = (props) => {
     } else {
         delete seoProps.openGraph.images;
     }
+
+    
     return (
         <>
         <NextSeo {...seoProps}/>
         <Layout>
-            {props?.fields?.pageSections && 
+            {pageHero && <PageHero {...pageHero} />}
+            {pageLayout && <PageLayout {...pageLayout} />}
+            
+            {props?.fields?.pageSections && !pageLayout &&
             <PageSections sections={props.fields?.pageSections} />
             }
         </Layout>

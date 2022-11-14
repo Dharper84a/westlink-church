@@ -17,9 +17,7 @@ const PreviousSermon = (props) => {
             </header>
             }
             <VideoGrid>
-                <h3>Previous Sermon</h3>
-                <div>
-                    
+                <div>        
                     <YouTubePlayer videoId={props?.previousVideoId} />
                 </div>
                 {streamListLink &&

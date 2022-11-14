@@ -35,7 +35,7 @@ const COLOR_REF = {
 
 const COLOR_APP = {
     text: {
-        dark: COLOR_REF.matteBlack,
+        dark: COLOR_REF.charcoal,
         light: COLOR_REF.offWhite,
         link: COLOR_REF.blueSteel
     },
@@ -49,6 +49,7 @@ const COLOR_APP = {
     gradients: {
         blues: 'linear-gradient(45deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
         bluesFlipped: 'linear-gradient(315deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
+        bluesUpDown: 'linear-gradient(180deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
     }
 };
 const COLORS = { ...COLOR_REF, ...COLOR_APP };

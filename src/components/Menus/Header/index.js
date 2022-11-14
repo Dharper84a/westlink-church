@@ -121,9 +121,9 @@ const HeaderMenu = (props) => {
                         </button>
                         <menu onClick={closeSubMenuHandler}>
                             <li>
-                                <Link href="/schedule">
+                                <Link href="/sermons">
                                     <a>
-                                        Media & Resources
+                                        Sermons
                                     </a>
                                 </Link>
                             </li>
