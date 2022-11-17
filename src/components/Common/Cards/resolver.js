@@ -13,7 +13,7 @@ const CardsResolver = (props) => {
             deliveryClient.entryById(item.sys.id).then((res) => {
                 switch (res.sys.contentType.sys.id) {
                     case 'cardStandard':
-                        console.log(res);
+                        // console.log(res);
                         _cards.push({
                             key: res.sys.contentType.sys.id,
                             comp: <CardStandard heading={res.fields.heading} text={res.fields?.briefDescription} image={res.fields?.image?.fields} key={res.sys.contentType.sys.id}/>

@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 
 const HeroBase = css`
     position: relative;
@@ -58,3 +58,122 @@ export const ColorHero = styled.div`
     ${ColorBase};
     ${props => ColorStyle[props.backgroundStyle]};
 `
+
+export const CarouselHero = styled.div`
+    ${HeroBase};
+    height: 50vh;
+    max-height: 100%;
+    background: gray;
+    @media ${({theme}) => theme.device.ipads} {
+        height: 60vh;
+        h1 {
+            top: 50%;
+        }
+    }
+`
+
+export const TrackPath = styled.div`
+    background: red;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+`
+
+export const Track = styled.div`
+    background: green;
+    position: relative;
+    transform: translateX(0px);
+    display: inline-flex;
+    width: calc(${props => props.screenWidth * props.slideCount}px);
+    height: 100%;
+    &.transitions {
+        transition: transform 0.5s ease-in;
+    }
+    
+`
+
+export const TrackItem = styled.div`
+    background: blue;
+    width: 100%;
+    height: 100%;
+    figure {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+`
+
+/** LARGE HERO */
+
+const fxOnLoaded = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+export const LargeImageHero = styled.div`
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    height: 65vh;
+    max-height: 800px;
+    ${props => props.imageLoaded && css`
+    animation: ${fxOnLoaded} 0.15s ease both;
+    `}
+    section {
+        position: relative;
+        z-index: ${({theme}) => theme.layers.content};
+        width: 100%;
+        padding: ${({theme}) => theme.layout.pagePadding.css};
+        padding-bottom: 4rem;
+        h1, p {
+            max-width: 768px;
+            color: ${({theme}) => theme.colors.text.light};
+        }
+        
+    }
+    figure {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 65vh;
+        max-height: 800px;
+        background: ${({theme}) => theme.colors.magicBlue};
+        &::after {
+            content: ' ';
+            position: absolute;
+            z-index: ${({theme}) => theme.layers.base + 1};
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: multiply;
+            background: ${({theme}) => theme.colors.gradients.largeHeroContentOverlayMobile};
+        }
+    }
+    @media ${({theme}) => theme.device.tablets} {
+        section {
+            padding-bottom: 2rem;
+        }
+        figure {
+            &::before {
+                content: ' ';
+                position: absolute;
+                z-index: ${({theme}) => theme.layers.base + 1};
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                mix-blend-mode: multiply;
+                background: ${({theme}) => theme.colors.gradients.darkOverlayUD};
+            }
+            &::after {
+                background: ${({theme}) => theme.colors.gradients.largeHeroContentOverlayTablet};
+            }
+        }
+    }
+`
+/** END - LARGE HERO */

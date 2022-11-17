@@ -130,7 +130,7 @@ const HeaderMenu = (props) => {
                             <li>
                                 <Link href="/schedule">
                                     <a>
-                                        Schedule
+                                        Schedule and Events
                                     </a>
                                 </Link>
                             </li>
@@ -159,7 +159,7 @@ const HeaderMenu = (props) => {
                     </li>
                 </menu>
             </nav>
-            <MenuCloseBox>
+            <MenuCloseBox onClick={props.onCloseOverlay}>
                 <button onClick={props.onCloseOverlay} aria-label="close menu drawer">
                     <FontAwesomeIcon icon={faTimes} />
                 </button>

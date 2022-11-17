@@ -18,7 +18,8 @@ const CardSlide = (props) => {
                 heading: null,
                 description: null,
                 image: null,
-                link: null
+                link: null,
+                pageType: 'page',
             }
             const entryData = await deliveryClient.entryById(props.sys.id);
             if(!ignore) {
@@ -35,17 +36,23 @@ const CardSlide = (props) => {
                         }
                         if(entryData.fields.link?.fields?.internalPage) {
                             const linkData = await deliveryClient.entryById(entryData.fields.link.fields.internalPage.sys.id);
-                            schema.link.href = `/${linkData.fields.slug}`;
-                            console.log(linkData)
+
+                            schema.pageType = linkData.sys.contentType.sys.id;
+                            if(linkData.sys.contentType.sys.id !== 'page') {
+                                schema.link.href = `/${linkData.sys.contentType.sys.id}/${linkData.fields.slug}`;
+                            } else {
+                                schema.link.href = `/${linkData.fields.slug}`;
+                            }
+
                         }
-                  
+                        
                         
                         
 
                     }
                     
                     let d = Date.now() - s;
-                    console.log(`${d}ms`)
+                    // console.log(`${d}ms`)
                     setData(schema)
                    
                 }
@@ -58,6 +65,7 @@ const CardSlide = (props) => {
         }
     }, [props])
     
+
     return (
         <CardComponent  hasImage={data.image ? true : false}>
             <div>

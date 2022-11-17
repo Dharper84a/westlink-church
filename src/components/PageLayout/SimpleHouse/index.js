@@ -7,7 +7,7 @@ import { LayoutSimpleHouse } from './styles';
 import CommonList from '../../Common/List';
 
 const SimpleHouse = (props) => {
-    console.log('SimpleHouse', props);
+    // console.log('SimpleHouse', props);
     const images = props.images || false;
     const lists = Array.isArray(props.lists) ? props.lists : false;
     return(

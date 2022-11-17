@@ -4,13 +4,17 @@ import { NextSeo } from 'next-seo';
 
 import Layout from '../components/Layout';
 import PageSections from '../components/PageSections';
+import PageHero from '../components/PageHero';
 
 export default function Home(props) {  
-    console.log('Page', props);
+    // console.log('Page', props);
     const router = useRouter();
     const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
     const pageUrl = hostname !== null ? hostname + router.asPath : null;
     const seoTitle = "Welcome to Westlink";
+
+    const pageHero = props.fields?.pageHero || false;
+
     return (
         <>
         <NextSeo
@@ -24,6 +28,7 @@ export default function Home(props) {
             }}
         />
         <Layout>
+            {pageHero && <PageHero {...pageHero} />}
             <PageSections sections={props.fields?.pageSections} />
         </Layout>
         </>

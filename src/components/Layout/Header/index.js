@@ -195,7 +195,7 @@ const Header = (props) => {
                     </li>
                 </menu>
             </MenuNavigationBox>
-            <MenuButtonBox>
+            <MenuButtonBox onClick={toggleMenu}>
                 <button onClick={toggleMenu} aria-label="open menu drawer">
                     <FontAwesomeIcon icon={faBars} />
                 </button>

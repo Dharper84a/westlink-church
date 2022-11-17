@@ -20,6 +20,15 @@ export const EventComponent = styled.section`
                 font-weight: 600;
             }
         }
+        ul {
+            margin-left: 2.5rem;
+            li {
+                padding: 0.15rem 0;
+            }
+            p {
+                margin: 0;
+            }
+        }
     }
     aside {
         padding: 30px 0;

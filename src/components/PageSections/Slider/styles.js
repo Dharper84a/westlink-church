@@ -53,11 +53,11 @@ const cardNav = css`
     gap: 32px;
     button {
         padding: 1rem 1.5rem;
-        color: ${({theme}) => theme.colors.matteBlack};
+        color: ${({theme}) => theme.colors.text.light};
         font-size: 24px;
-        border: 3px solid ${({theme}) => theme.colors.pastelGreen};
+        border: 3px solid ${({theme}) => theme.colors.magicBlue};
         border-radius: 8px;
-        background: ${({theme}) => theme.colors.pastelGreen};
+        background: ${({theme}) => theme.colors.gradients.blues};
         transition: all 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000);
         &:disabled {
             color: ${({theme}) => theme.colors.darkGray};
@@ -78,12 +78,19 @@ const cardNav = css`
         button {
             cursor: pointer;
             &:hover {
-                background: ${({theme}) => theme.colors.lightPastelGreen};
+                /* background: ${({theme}) => theme.colors.lightPastelGreen}; */
                 transform: scale(1.025) translateZ(50px);
                 box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.15);
             }
             &:disabled {
                 cursor: default;
+                &:hover {
+                    color: ${({theme}) => theme.colors.darkGray};
+                    background: ${({theme}) => theme.colors.mediumGray};
+                    border-color: ${({theme}) => theme.colors.gray};
+                    transform: none;
+                    box-shadow: none;
+                }
             }
         }
     }

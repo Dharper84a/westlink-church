@@ -22,7 +22,7 @@ const classFormatter = (cardType) => {
 };
 const Slider = (props) => {
     const slider = useSlider();
-    console.log("FSS", props);
+    // console.log("FSS", props);
     const richText = props?.description;
     React.useEffect(() => {
         if (slider.isReady === false) {

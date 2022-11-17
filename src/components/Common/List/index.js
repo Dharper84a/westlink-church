@@ -10,7 +10,7 @@ const CommonList = (props) => {
 
         const getList = async (list) => {
             const response = await deliveryClient.entryById(list.sys.id);
-            console.log(response);
+            // console.log(response);
             if(response?.fields) {
                 setListItems(response.fields);
             }

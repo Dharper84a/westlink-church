@@ -31,6 +31,7 @@ const COLOR_REF = {
     pink: "#DA70D6",
     rubyRed: "#E0115F",
     tomato: "#FF6347",
+    purple: '#9400D3',
 };
 
 const COLOR_APP = {
@@ -50,6 +51,11 @@ const COLOR_APP = {
         blues: 'linear-gradient(45deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
         bluesFlipped: 'linear-gradient(315deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
         bluesUpDown: 'linear-gradient(180deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
+        darkOverlayUD: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0, 0) 30%)',
+        darkOverlayDU: 'linear-gradient(360deg, rgba(11,11,11,1) 0%, rgba(11,11,11, 0) 60%)',
+        blueOverlayUD: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 30%)',
+        largeHeroContentOverlayMobile: 'linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0, 0) 100%)',
+        largeHeroContentOverlayTablet: 'linear-gradient(360deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0, 0) 50%)',
     }
 };
 const COLORS = { ...COLOR_REF, ...COLOR_APP };

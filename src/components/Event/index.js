@@ -12,7 +12,7 @@ const parseSeoDescription = (field) => {
         field.content.forEach((content) => {
             if (Array.isArray(content.content)) {
                 content.content.forEach((contentNode) => {
-                    result = contentNode.value.trim();
+                    result = contentNode.value?.trim();
                 });
             }
         });

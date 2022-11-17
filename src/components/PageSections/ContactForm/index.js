@@ -5,7 +5,7 @@ import CommonContactForm from '../../Common/ContactForm';
 import { Component } from './styles';
 
 const ContactForm = (props) => {
-    console.log(props);
+    // console.log(props);
     const [inputName, setInputName] = React.useState('');
     const [inputEmail, setInputEmail] = React.useState('');
     const [inputMessage, setInputMessage] = React.useState('');
@@ -43,7 +43,7 @@ const ContactForm = (props) => {
                 body: JSON.stringify(formPayload)
             })
 
-            console.log('RES', response);
+            // console.log('RES', response);
 
         }catch(e) {
             console.log(e);

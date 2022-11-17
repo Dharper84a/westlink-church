@@ -35,11 +35,12 @@ export const MenuButtonBox = styled.div`
     border-top-left-radius: 70%;
     border-top-right-radius: 70%;
     /* background-color: ${({ theme }) => theme.colors.pastelGreen}; */
-    background-color: ${({ theme }) => theme.colors.magicBlue};
+    background-color: ${({ theme }) => theme.colors.matteBlack};
+    /* background: ${({ theme }) => theme.colors.gradients.blues}; */
     cursor: pointer;
     button {
         height: fit-content;
-        color: ${({ theme }) => theme.colors.text.dark};
+        color: ${({ theme }) => theme.colors.uraniumBlue};
         font-size: 32px;
         background-color: transparent;
         border: none;
@@ -146,8 +147,8 @@ export const ComponentBox = styled.header`
     width: 100%;
     height: 8px;
     /* background-color: ${({ theme }) => theme.colors.pastelGreen}; */
-    background-color: ${({ theme }) => theme.colors.magicBlue};
-    
+    /* background-color: ${({ theme }) => theme.colors.magicBlue}; */
+    background-color: ${({ theme }) => theme.colors.matteBlack};
     ${(props) =>
         props.transitionState === 'open' &&
         css`

@@ -9,7 +9,7 @@ const Ministers = (props) => {
     const [leadMinister, setLeadMinister] = React.useState();
     const [assistantMinisters, setAssistantMinisters] = React.useState();
 
-    console.log('Ministers', props)
+    // console.log('Ministers', props)
 
     React.useEffect(() => {
         let ignore = false;
@@ -27,7 +27,7 @@ const Ministers = (props) => {
             } else {
                 const data = await deliveryClient.entryById(field.sys.id);
                 if(!ignore) {
-                    console.log(data.fields)
+                    // console.log(data.fields)
                     state(data.fields);
                 }
             }

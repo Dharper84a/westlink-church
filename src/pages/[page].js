@@ -65,7 +65,7 @@ const PagesPage = (props) => {
 export default PagesPage;
 
 export async function getStaticPaths() {
-    console.log('pages/[page].js')
+    // console.log('pages/[page].js')
     const paths = [];
     const endpoints = await deliveryClient.endpoints('page');
 

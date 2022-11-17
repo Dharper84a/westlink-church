@@ -5,14 +5,15 @@ import { NextSeo } from 'next-seo';
 import Layout from '../../components/Layout';
 import PageSections from '../../components/PageSections';
 import Event from '../../components/Event';
+import { StaticHero } from '../../components/PageHero';
 
 const PagesEvent = (props) => {
     const router = useRouter();
     if(router.isFallback) {
         return <div>Loading...</div>
     }
-    console.log('router', router);
-    console.log('PagesEvent', props);
+    // console.log('router', router);
+    // console.log('PagesEvent', props);
 
     const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
     const pageUrl = hostname !== null ? hostname + router.asPath : null;
@@ -28,6 +29,7 @@ const PagesEvent = (props) => {
             }}
         />
         <Layout>
+            <StaticHero heading="Event" color="blue_crosses" />
             <Event {...props} />
         </Layout>
         </>
@@ -37,7 +39,7 @@ const PagesEvent = (props) => {
 export default PagesEvent;
 
 export async function getStaticPaths() {
-    console.log('event/[event].js')
+    // console.log('event/[event].js')
     const paths = [];
     const endpoints = await deliveryClient.endpoints('event');
 

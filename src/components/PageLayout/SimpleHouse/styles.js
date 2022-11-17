@@ -5,6 +5,7 @@ export const LayoutSimpleHouse = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px 30px;
+    padding-top: 30px;
     padding-bottom: 30px;
     figure {
         display: block;
@@ -22,6 +23,7 @@ export const LayoutSimpleHouse = styled.div`
     @media ${({theme}) => theme.device.ipads} {
         grid-template-columns: 1fr 1fr;
         gap: 60px 60px;
+        padding-top: 60px;
         padding-bottom: 60px;
         section {
             order: 0;

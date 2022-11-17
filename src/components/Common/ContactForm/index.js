@@ -6,9 +6,9 @@ import { FormComponent, FormInput, FormError } from './styles';
 
 const CommonContactForm = (props) => {
     const [formState, setFormState] = React.useState('WAIT');
-    const [email, setEmail] = React.useState('dharper84a@gmail.com');
-    const [name, setName] = React.useState('Donald Harper');
-    const [message, setMessage] = React.useState(`HELLO ${Math.random()}`);
+    const [email, setEmail] = React.useState('');
+    const [name, setName] = React.useState('');
+    const [message, setMessage] = React.useState('');
 
 
     const [error, setError] = React.useState('');
@@ -16,7 +16,7 @@ const CommonContactForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log('Submiting');
+        // console.log('Submiting');
 
         const validateEmail = (email) => {
             return email.match(
@@ -64,7 +64,7 @@ const CommonContactForm = (props) => {
                     body: payload,
                 })
     
-                console.log(response);
+                // console.log(response);
                 if(response.status !== 200) throw "Something went wrong and we could not recieve your message!"
 
                 setFormState('OK');
@@ -106,7 +106,7 @@ const CommonContactForm = (props) => {
         <FormComponent formState={formState}>
                 <FormInput >
                     <label htmlFor="inputEmailField" id="inputEmailLabel" aria-hidden>Email</label>
-                    <input type="email" value={email} placeholder="youremail@address.com" id="inputEmailField" aria-describedby="inputEmailLabel" onChange={(e) => { setEmail(e.target.value)}}/>
+                    <input type="email" value={email} placeholder="Email Address" id="inputEmailField" aria-describedby="inputEmailLabel" onChange={(e) => { setEmail(e.target.value)}}/>
                 </FormInput>
                 <FormInput >
                     <label htmlFor="inputNameField" id="inputNameLabel" aria-hidden>Name</label>

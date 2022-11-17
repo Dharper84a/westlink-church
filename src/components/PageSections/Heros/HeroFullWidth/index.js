@@ -10,10 +10,10 @@ const HeroFullWidth = (props) => {
 
     const overlayText = props.fields.overlayText || false;
     const image = props.fields.image.fields;
-    console.log(props)
+    // console.log(props)
     
     const includeOverlayGradient = typeof props.fields?.includeOverlayGradient === 'boolean' ? props.fields.includeOverlayGradient : true;
-    console.log(includeOverlayGradient)
+    // console.log(includeOverlayGradient)
 
     React.useEffect(() => {
         if(typeof resizeObserver === 'undefined') return;
