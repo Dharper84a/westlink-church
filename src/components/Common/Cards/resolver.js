@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import deliveryClient from "../../../../lib/datasource/contentful/delivery";
+import CardStaff from "./Staff";
 
 import CardStandard from "./Standard";
 const CardsResolver = (props) => {
@@ -11,13 +12,18 @@ const CardsResolver = (props) => {
 
         props.cards.forEach((item, key) => {
             deliveryClient.entryById(item.sys.id).then((res) => {
+                const cardId = `${res.sys.id}__${res.sys.contentType.sys.id}_${key}`;
+                // console.log('cardID', cardId)
                 switch (res.sys.contentType.sys.id) {
                     case 'cardStandard':
                         // console.log(res);
                         _cards.push({
-                            key: res.sys.contentType.sys.id,
+                            key: cardId,
                             comp: <CardStandard heading={res.fields.heading} text={res.fields?.briefDescription} image={res.fields?.image?.fields} key={res.sys.contentType.sys.id}/>
                         })
+                        break;
+                    case 'cardStaff':
+                        console.log('Staff Card')
                         break;
                     case "cardBasic":
                         // _cards.push({
@@ -26,10 +32,12 @@ const CardsResolver = (props) => {
                         // })
                         break;
                     case 'cardLeadership':
-                        // _cards.push({
-                        //     key: key,
-                        //     comp: <LeadershipCard {...res.fields} key={key} />
-                        // })
+                        /** AKA - Card Staff */
+                        console.log('cardLeadership', res)
+                        _cards.push({
+                            key: key,
+                            comp: <CardStaff {...res.fields} key={key} />
+                        })
                         break;
                     default: null;
                 }

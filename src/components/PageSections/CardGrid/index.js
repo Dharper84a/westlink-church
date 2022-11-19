@@ -5,8 +5,9 @@ import CardsResolver from '../../Common/Cards/resolver';
 
 import { CardGridContainer, Inner, Grid } from './styles';
 const CardGrid = (props) => {
+    console.log('CardGrid', props)
     const layout = props.layout === 'Two Per Row' ? 'layout--50' : 'layout--33';
-    const text = JSON.parse(props.textStringified);
+    const text = props.textStringified ? JSON.parse(props.textStringified) : null;
     const innerLink = props?.innerPageId || false;
 
     return(
@@ -14,7 +15,7 @@ const CardGrid = (props) => {
             <Inner>
                 <header>
                     <h2>{props.heading}</h2>
-                    <RichTextRenderer richText={text} />
+                    {text && <RichTextRenderer richText={text} /> }
                 </header>
                 <Grid className={layout}>
                     <CardsResolver cards={props.cards} />

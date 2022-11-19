@@ -4,6 +4,7 @@ import deliveryClient from '../../../../lib/datasource/contentful/delivery';
 
 import RichTextRenderer from '../../Common/RichTextRenderer';
 import { Component, LeadMinister, AssistantMinisters } from './styles';
+import TagPill, { TagPillList } from '../../Common/TagPill';
 
 const Ministers = (props) => {
     const [leadMinister, setLeadMinister] = React.useState();
@@ -45,7 +46,7 @@ const Ministers = (props) => {
 
     return(
         <Component>
-            <h2 id="ministers">Ministers</h2>
+            <h2 id="ministers">Lead Minister</h2>
             {leadMinister && 
                 <LeadMinister>
                     <figure>
@@ -58,11 +59,9 @@ const Ministers = (props) => {
                     </figure>
                     <aside>
                         <h3>{leadMinister.displayName}</h3>
-                        <div>
-                        {leadMinister.groups.map((group, key) => {
-                            return <span key={`${leadMinister.lastName}-group-${key}`}>{group}</span>
-                        })}
-                        </div>
+                        <TagPillList items={leadMinister.groups} style="light" />
+                     
+                       
                         <RichTextRenderer richText={leadMinister.shortBio} />
                     </aside>
                 </LeadMinister>
@@ -78,18 +77,14 @@ const Ministers = (props) => {
                                 <figure>
                                     <Image
                                         src={`https:${item.profilePicture.fields.file.url}`}
-                                        width={360}
-                                        height={270}
+                                        width={480}
+                                        height={360}
                                         alt={item.profilePicture.description}
                                     />
                                 </figure>
                                 <aside>
                                     <h4>{item.displayName}</h4>
-                                    <div>
-                                        {item.groups.map((group, key) => {
-                                            return <span key={`${item.lastName}-group-${key}`}>{group}</span>
-                                        })}
-                                    </div>
+                                    <TagPillList items={item.groups} style="light" />
                                 </aside>
                             </div>
                         )

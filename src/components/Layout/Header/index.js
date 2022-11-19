@@ -82,19 +82,26 @@ const Header = (props) => {
                         </Link>
                         <menu>
                             <li>
-                                <Link href="/who-we-are/#ministers">
-                                    <a title={`Read about Westlink&apos;s ministers`}>
+                                <Link href="/who-we-are">
+                                    <a title={`Learn more about Westlink&apos;s ministers`}>
                                         Ministers
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/who-we-are/#shepherds">
-                                    <a title={`Read about Westlink&apos;s shepherds`}>
-                                        Shepherds
+                                <Link href="/church-structure">
+                                    <a title={`Learn more about Westlink&apos;s shepherds and supporting members`}>
+                                        Church Structure
                                     </a>
                                 </Link>
                             </li>
+                            {/* <li>
+                                <Link href="/who-we-are">
+                                    <a title={`Learn more about Westlink&apos;s shepherds and supporting members`}>
+                                        Shepherds & Supporting Staff
+                                    </a>
+                                </Link>
+                            </li> */}
                             <li>
                                 <Link href="/history">
                                     <a title="">
@@ -145,7 +152,7 @@ const Header = (props) => {
                     <li>
                         <Link href="/schedule">
                             <a title="">
-                                Media & Resources
+                                Media & Schedule
                             </a>
                         </Link>
                         <menu>

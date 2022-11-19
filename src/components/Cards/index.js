@@ -4,6 +4,7 @@ import deliveryClient from "../../lib/datasource/contentful/delivery";
 import BasicCard from "./Basic";
 import LeadershipCard from "./Leadership";
 const Cards = (props) => {
+    console.log('COMPONENTS/CARDS/INDEX')
     const [items, setItems] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     // console.log("Cards", props);

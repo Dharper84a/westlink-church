@@ -114,7 +114,7 @@ const HeaderMenu = (props) => {
                     <li className={openItem === "item__resources" ? "open" : "not-open"}>
                         <button onClick={menuItemToggleHandler} id="item__resources">
                             {openItem !== "item__resources" ? (
-                                <>Media & Resources <FontAwesomeIcon icon={faChevronRight} /></>
+                                <>Media & Schedule <FontAwesomeIcon icon={faChevronRight} /></>
                             ):(
                                 <>Close <FontAwesomeIcon icon={faTimes} /></>
                             )}

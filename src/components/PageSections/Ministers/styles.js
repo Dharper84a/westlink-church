@@ -3,51 +3,44 @@ import styled from 'styled-components'
 export const Component = styled.div`
     ${({theme}) => theme.layout.content};
     position: relative;
-    padding-bottom: 60px;
-    background: ${({theme}) => theme.colors.veryLightPastelGreen};
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background: ${({theme}) => theme.colors.magicBlue};
+    h2, h3, h4, p {
+        color: ${({theme}) => theme.colors.text.light};
+    }
     h3 {
         margin: 16px 0;
     }
     figure {
         width: fit-content;
         border-radius: 4px;
+        border: 0.5rem solid ${({theme}) => theme.colors.light};
+        box-shadow: ${({theme}) => theme.shadows.image};
         span, img {
             border-radius: 4px;
         }
     }
-    aside {
-        div {
-            display: flex;
-        }
-        span {
-            font-size: 16px;
-            margin-right: 8px;
-            padding: 2px 6px;
-            background-color: ${({theme}) => theme.colors.pastelGreen};
-            border-radius: 4px;
-        }
+    @media ${({theme}) => theme.device.largePhones} {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
     }
-    &:before {
-        content: ' ';
-        position: absolute;
-        z-index: 10;
-        top: -160px;
-        left: 0;
-        width: 100%;
-        height: 160px;
-        background: ${({theme}) => theme.colors.veryLightPastelGreen};
+    @media ${({theme}) => theme.device.smallMonitor} {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
 `
 export const LeadMinister = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 30px 0 60px 0;
+    margin: 2rem 0 4rem 0;
     figure {
         height: fit-content;
         max-height: 360px;
+        border: 0.5rem solid ${({theme}) => theme.colors.light};
+        box-shadow: ${({theme}) => theme.shadows.image};
     }
     aside {
-        
         max-width: 650px;
         margin-top: 30px;
         h3 {
@@ -78,7 +71,10 @@ export const AssistantMinisters = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     gap: 60px;
-    margin: 30px 0 0 0;
+    margin: 2rem 0 0 0;
+    figure {
+        max-width: 360px;
+    }
     aside {
         margin: 15px 0;
     }

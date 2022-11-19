@@ -20,6 +20,7 @@ import YouTubeEmbed from './YouTubeEmbed';
 import LiveStream from './LiveStream';
 import PreviousSermon from './PreviousSermon';
 import MaterialDownload from './MaterialDownload';
+import PersonList from './PersonList';
 
 const PageSections = ({sections}) => {
     
@@ -56,6 +57,8 @@ const PageSections = ({sections}) => {
                 return <PreviousSermon {...section.fields} key={key} />
             case 'pageSectionMaterialDownload':
                 return <MaterialDownload {...section.fields} key={key} />
+            case 'pageSectionPersonList':
+                return <PersonList {...section.fields} key={key} />
             default: return <div key={key}>SECTION NOT FOUND {section.sys.contentType.sys.id}</div>
         }
     }

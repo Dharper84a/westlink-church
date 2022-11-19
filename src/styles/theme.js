@@ -1,4 +1,7 @@
 const COLOR_REF = {
+    dark: "#232526",
+    light: "#FAF9F6",
+    
     // whites
     white: "#FFFFFF",
     offWhite: "#FAF9F6",
@@ -41,8 +44,8 @@ const COLOR_APP = {
         link: COLOR_REF.blueSteel
     },
     background: {
-        dark: COLOR_REF.offBlack,
-        light: COLOR_REF.offWhite,
+        dark: COLOR_REF.dark,
+        light: COLOR_REF.light,
         gray: COLOR_REF.mediumGray,
         green: COLOR_REF.pastelGreen,
         deepGreen: COLOR_REF.deepGreen,
@@ -159,8 +162,12 @@ const lineClamp = (lines) => {
     }
 }
 
+const SHADOWS = {
+    image: '0.5rem 0.5rem 1rem rgba(35, 37, 38, 0.2)',
+}
 export const theme = {
     colors: COLORS,
+    shadows: SHADOWS,
     fonts: TYPOGRAPHY,
     layout: LAYOUT,
     layers: LAYERS,
