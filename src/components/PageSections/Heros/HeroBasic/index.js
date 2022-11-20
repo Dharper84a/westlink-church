@@ -8,7 +8,7 @@ const HeroBasic = (props) => {
     
     React.useEffect(() => {
         const string = props.fields.variation.toLowerCase().replace(/ /g,'_');
-        // console.log(string);
+   
         setVariation(string);
     }, [props])
     

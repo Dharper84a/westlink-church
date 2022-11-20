@@ -1,7 +1,7 @@
 const COLOR_REF = {
     dark: "#232526",
     light: "#FAF9F6",
-    
+    darker: '#0F2027',
     // whites
     white: "#FFFFFF",
     offWhite: "#FAF9F6",
@@ -50,10 +50,14 @@ const COLOR_APP = {
         green: COLOR_REF.pastelGreen,
         deepGreen: COLOR_REF.deepGreen,
     },
+
     gradients: {
         blues: 'linear-gradient(45deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
         bluesFlipped: 'linear-gradient(315deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
         bluesUpDown: 'linear-gradient(180deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
+        greensUpDown: 'linear-gradient(to bottom, #76b852, #8dc26f)',
+        darksUpDown: 'linear-gradient(to top, #2C5364, #203A43, #0F2027)',
+        graysUpDown: 'linear-gradient(to bottom, #bdc3c7, #2c3e50)',
         darkOverlayUD: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0, 0) 30%)',
         darkOverlayDU: 'linear-gradient(360deg, rgba(11,11,11,1) 0%, rgba(11,11,11, 0) 60%)',
         blueOverlayUD: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 30%)',

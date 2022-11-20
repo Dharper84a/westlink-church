@@ -66,7 +66,8 @@ const reducer = (state, action) => {
                         includeUnderHeroExcerpt: false,
                         slides: action.fields?.slides || [],
                         slideSpeed: action.fields?.slideSpeed || 1,
-                        isLoaded: true
+                        isLoaded: true,
+                        isReady: false,
                     };
                 case 'heroStandard':
                     return {
@@ -81,7 +82,8 @@ const reducer = (state, action) => {
                             .replace(/ /g, '_'),
                         includeOverlayGradient: action.fields.includeOverlayGradient,
                         variant: action.fields?.image ? 'image' : 'color',
-                        isLoaded: true
+                        isLoaded: true,
+                        isReady: false,
                     };
                 case 'heroLarge':
                     return {
@@ -93,7 +95,8 @@ const reducer = (state, action) => {
                         image: action.fields?.image || null,
                         buttonLink: action.fields?.buttonLink || null,
                         buttonStyle: action.fields?.buttonStyle || null,
-                        isLoaded: true
+                        isLoaded: true,
+                        isReady: false,
                     };
                 default:
                     return state;
@@ -102,11 +105,11 @@ const reducer = (state, action) => {
     }
 };
 const PageHero = (props) => {
-    // console.log('PageHero', props);
+    console.log('PageHero', props);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
-        // console.log('Setup State')
+        console.log('Setup State')
         dispatch({ type: 'LOAD', fields: { ...props.fields }, system: { ...props.sys } });
     }, [props]);
 

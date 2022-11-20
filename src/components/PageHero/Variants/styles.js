@@ -48,15 +48,21 @@ const ColorBase = css`
 
 const ColorStyle = {
     blue_crosses: css` background: ${({theme}) => theme.colors.gradients.bluesUpDown}; `,
-    green_crosses: css` background: ${({theme}) => theme.colors.gradients.bluesUpDown}; `,
-    dark_crosses: css` background: ${({theme}) => theme.colors.gradients.bluesUpDown}; `,
-    gray_crosses: css` background: ${({theme}) => theme.colors.gradients.bluesUpDown}; `,
+    green_crosses: css` background: ${({theme}) => theme.colors.gradients.greensUpDown}; `,
+    dark_crosses: css` background: ${({theme}) => theme.colors.gradients.darksUpDown}; `,
+    gray_crosses: css` background: ${({theme}) => theme.colors.gradients.graysUpDown}; `,
 }
 
 export const ColorHero = styled.div`
     ${HeroBase};
     ${ColorBase};
     ${props => ColorStyle[props.backgroundStyle]};
+`
+
+export const MobileTitle = styled.div`
+    ${({theme}) => theme.layout.content};
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 `
 
 export const CarouselHero = styled.div`

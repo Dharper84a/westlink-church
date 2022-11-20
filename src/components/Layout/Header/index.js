@@ -82,16 +82,16 @@ const Header = (props) => {
                         </Link>
                         <menu>
                             <li>
-                                <Link href="/who-we-are">
-                                    <a title={`Learn more about Westlink&apos;s ministers`}>
-                                        Ministers
+                                <Link href="/church-leadership">
+                                    <a title={`Lean more about Westlinks church ministers, shepherds and leadership team.`}>
+                                        Church Leadership
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/church-structure">
-                                    <a title={`Learn more about Westlink&apos;s shepherds and supporting members`}>
-                                        Church Structure
+                                <Link href="/ministry-leaders">
+                                    <a title={`Learn more about Westlinks minstry leaders and what they do.`}>
+                                        Ministry Leaders
                                     </a>
                                 </Link>
                             </li>

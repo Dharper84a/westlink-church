@@ -56,13 +56,13 @@ const HeaderMenu = (props) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/who-we-are#ministers">
-                                    <a>Ministers</a>
+                                <Link href="/church-leadership">
+                                    <a>Church Leadership</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/who-we-are#shepherds">
-                                    <a>Shepherds</a>
+                                <Link href="/ministry-leaders">
+                                    <a>Ministry Leaders</a>
                                 </Link>
                             </li>
                             <li>
