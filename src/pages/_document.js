@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -40,6 +41,7 @@ export default class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;700&display=swap"
                         rel="stylesheet"
                     />
+           
                 </Head>
                 <body>
                     <div id="modal"></div>

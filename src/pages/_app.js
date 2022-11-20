@@ -14,13 +14,15 @@ import {GlobalStyle} from '../styles/globalStyles';
 import '../styles/animations.css';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <ThemeProvider theme={theme}>
-        <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
-        <GlobalStyle />
-    </ThemeProvider>
-  );
+
+    return (
+        <ThemeProvider theme={theme}>
+            <DefaultSeo {...SEO} />
+            
+            <Component {...pageProps} />
+            <GlobalStyle />
+        </ThemeProvider>
+    );
 }
 
 export default MyApp

@@ -1,5 +1,4 @@
 User-agent: *
-Allow: /*
+Allow: /
 
-User-agent: *
-Disallow: /api/*
+Sitemap: https://westlink.church/sitemap.xml
