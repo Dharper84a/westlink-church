@@ -19,6 +19,26 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/ministers_staff',
+        destination: '/who-we-are',
+        permanent: true,
+      },
+      {
+        source: '/assembly_times',
+        destination: '/schedule',
+        permanent: true,
+      },
+      {
+        source: '/giving',
+        destination: '/donate',
+        permanent: true,
+      },
+      {
+        source: '/who_we_are',
+        destination: '/who-we-are',
+        permanent: true,
+      },
+      {
         source: '/resources',
         destination: '/schedule',
         permanent: false,

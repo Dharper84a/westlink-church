@@ -105,11 +105,11 @@ const reducer = (state, action) => {
     }
 };
 const PageHero = (props) => {
-    console.log('PageHero', props);
+    // console.log('PageHero', props);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
-        console.log('Setup State')
+        // console.log('Setup State')
         dispatch({ type: 'LOAD', fields: { ...props.fields }, system: { ...props.sys } });
     }, [props]);
 

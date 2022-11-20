@@ -23,7 +23,7 @@ const CardsResolver = (props) => {
                         })
                         break;
                     case 'cardStaff':
-                        console.log('Staff Card')
+                        // console.log('Staff Card')
                         break;
                     case "cardBasic":
                         // _cards.push({
@@ -33,7 +33,7 @@ const CardsResolver = (props) => {
                         break;
                     case 'cardLeadership':
                         /** AKA - Card Staff */
-                        console.log('cardLeadership', res)
+                        // console.log('cardLeadership', res)
                         _cards.push({
                             key: key,
                             comp: <CardStaff {...res.fields} key={key} />
