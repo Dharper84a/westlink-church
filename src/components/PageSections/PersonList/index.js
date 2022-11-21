@@ -9,7 +9,6 @@ import {ComponentBox, List} from './styles';
 import MediumCard from './Medium';
 
 const PersonList = (props) => {
-    console.log('PersonList', props);
     const [people, setPeople] = React.useState(false);
     const cardStyle = props.cardStyle.toLowerCase().replace(/ /g,'_');
 

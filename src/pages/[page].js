@@ -19,16 +19,13 @@ const PagesPage = (props) => {
     const pageLayout = props.fields?.pageLayout || false;
     const pageHero = props.fields?.pageHero || false;
 
-    const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
-    const pageUrl = hostname !== null ? hostname + router.asPath : null;
-
     const hasSocialImage = props.fields.pageSocialImage ? true : false;
     const seoProps = {
         title: props.fields.metaTitle,
         description: props.fields?.metaDescription,
-        canonical: pageUrl,
+        canonical: `https://westlink.church${router.asPath}`,
         openGraph: {
-            url: pageUrl,
+            url: `https://westlink.church${router.asPath}`,
             title: props.fields.metaTitle,
             description: props.fields?.metaDescription,
             images: [],
@@ -37,7 +34,7 @@ const PagesPage = (props) => {
 
     if(hasSocialImage) {
         seoProps.openGraph.images.push({
-            url: props.fields.pageSocialImage.fields.file.url,
+            url: 'https:' + props.fields.pageSocialImage.fields.file.url,
             width: props.fields.pageSocialImage.fields.file.details.image.width,
             height: props.fields.pageSocialImage.fields.file.details.image.height,
             alt: props.fields.pageSocialImage.fields.description,

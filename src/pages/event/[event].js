@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import deliveryClient from '../../../lib/datasource/contentful/delivery';
-import { NextSeo } from 'next-seo';
+import { NextSeo, EventJsonLd } from 'next-seo';
+import { eventJsonLd } from '../../../lib/event-json-ld';
 import Layout from '../../components/Layout';
 import PageSections from '../../components/PageSections';
 import Event from '../../components/Event';
@@ -12,21 +13,33 @@ const PagesEvent = (props) => {
     if(router.isFallback) {
         return <div>Loading...</div>
     }
-    // console.log('router', router);
-    // console.log('PagesEvent', props);
-
-    const hostname = typeof window !== 'undefined' ? window.location.hostname : null;
-    const pageUrl = hostname !== null ? hostname + router.asPath : null;
 
     return (
         <>
         <NextSeo
             title={props.fields.eventName}
-            canonical={pageUrl}
+            canonical={`https://westlink.church${router.asPath}`}
             openGraph={{
-                url: pageUrl,
+                url: `https://westlink.church${router.asPath}`,
                 title: props.fields.metaTitle,
             }}
+        />
+        <EventJsonLd
+            name={props.fields.eventName}
+            startDate={props.fields.eventDate}
+            endDate={props.fields.endDate}
+            location={{
+                name: "Westlink Church of Christ",
+                address: {
+                    streetAddress: "10025 W. Central Ave.",
+                    addressLocality: "Wichita",
+                    addressRegion: "KS",
+                    postalCode: "67212",
+                    addressCountry: "US",
+                }
+            }}
+            url={`https://westlink.church${router.asPath}`}
+            images={[props.fields?.mainImage?.fields?.file?.url || null]}
         />
         <Layout>
             <StaticHero heading="Event" color="blue_crosses" />

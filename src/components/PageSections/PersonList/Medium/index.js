@@ -4,7 +4,6 @@ import Image from 'next/image';
 import TagPill from '../../../Common/TagPill';
 import { IDCard } from './styles';
 const MediumCard = (props) => {
-    console.log('card', props);
     const image = props?.profilePicture?.fields || false;
 
     return (
