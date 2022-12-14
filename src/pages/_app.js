@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components';
 /** SEO */
 import { DefaultSeo, NextSeo } from 'next-seo';
 import SEO from '../../next-seo.config.js';
+import setJsonLd, {WebpageJsonLd} from '../../lib/json-ld.js';
 import { churchJsonLd } from '../../lib/church-json-ld.js';
 
 import {theme} from '../styles/theme';
@@ -19,10 +20,18 @@ import '../styles/animations.css';
 
 function MyApp({ Component, pageProps }) {
     // console.log(pageProps)
-  
+    
+
     return (
         <ThemeProvider theme={theme}>
             <DefaultSeo {...SEO} />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                    ...WebpageJsonLd,
+                    name: pageProps?.fields?.metaTitle
+                })}}
+            />
             
             <Component {...pageProps} />
             <GlobalStyle />
