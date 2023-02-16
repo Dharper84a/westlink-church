@@ -8,12 +8,16 @@ import PageSections from '../../components/PageSections';
 import Event from '../../components/Event';
 import { StaticHero } from '../../components/PageHero';
 
+
 const PagesEvent = (props) => {
     const router = useRouter();
     if(router.isFallback) {
         return <div>Loading...</div>
     }
 
+    if(router.isPreview) {
+        console.log('IS IN PREVIEW MODE')
+    }
     return (
         <>
         <NextSeo
@@ -54,7 +58,7 @@ export default PagesEvent;
 export async function getStaticPaths() {
     // console.log('event/[event].js')
     const paths = [];
-    const endpoints = await deliveryClient.endpoints('event');
+    const endpoints = await deliveryClient.endpoints('event', false);
 
     endpoints.forEach((endpoint) => {
         paths.push({
@@ -69,9 +73,9 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({params, preview}) {
     try{
-        const pageData = await deliveryClient.getPage(params.event, 'event');
+        const pageData = await deliveryClient.getPage(params.event, 'event', preview || false);
 
         if(pageData) {
             return {
