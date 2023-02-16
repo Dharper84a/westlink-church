@@ -26,7 +26,7 @@ const Event = (props) => {
 
     const title = props.fields.eventName;
     const richText = props.fields.eventInfo;
-    const image = props.fields.mainImage.fields;
+    const image = props.fields?.mainImage?.fields ? props.fields?.mainImage?.fields : false;
     const seoDescription = parseSeoDescription(richText);
     const seoProps = {
         description: seoDescription
@@ -91,8 +91,9 @@ const Event = (props) => {
                 )}
             </header>
             <aside>
+                {image && (
                 <figure>
-                    {image && (
+                    
                         <Image
                             src={`https:${image.file.url}`}
                             layout="fill"
@@ -103,8 +104,8 @@ const Event = (props) => {
                             sizes="(max-width: 768px) 80vw,
                         40vw"
                         />
-                    )}
                 </figure>
+                 )}
             </aside>
         </EventComponent>
     );
