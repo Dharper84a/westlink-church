@@ -10,7 +10,7 @@ const Ministers = (props) => {
     const [leadMinister, setLeadMinister] = React.useState();
     const [assistantMinisters, setAssistantMinisters] = React.useState();
 
-    // console.log('Ministers', props)
+    console.log('Ministers', props)
 
     React.useEffect(() => {
         let ignore = false;
@@ -46,7 +46,7 @@ const Ministers = (props) => {
 
     return(
         <Component>
-            <h2 id="ministers">Lead Minister</h2>
+            {props.heading && <h2>{props.heading}</h2>}
             {leadMinister && 
                 <LeadMinister>
                     <figure>
