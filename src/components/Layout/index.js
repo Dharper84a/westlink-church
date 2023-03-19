@@ -17,7 +17,7 @@ const Layout = (props) => {
         if(d.getDay() === 0) {
             if(d.getHours() >= 10 && d.getHours() < 12) {
                 // should be live-ish
-                setIsLive(true);
+                setIsLive(false); // disabled 03/19/2023
             } else {
                 setIsLive(false);
             }

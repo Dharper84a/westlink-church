@@ -7,8 +7,14 @@ export const EventComponent = styled.section`
     padding-top: 20px;
     padding-bottom: 60px;
     header {
+        h3 {
+            margin: 1.5rem 0 0.5rem 0;
+            & + p {
+                margin-top: 0;
+            }
+        }
         p {
-            margin-top: 32px;
+            margin-top: 1.5rem;
         }
         div {
             p {
