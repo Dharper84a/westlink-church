@@ -100,6 +100,32 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 800px;
     }
 
+    table {
+      width: 100%;
+      margin: 0;
+      border-spacing: 0;
+      th, td {
+        border: 1px solid #d0d0d0;
+        p {
+          margin: 0 !important;
+          padding: 0.75rem 1rem;
+        }
+      }
+
+      th {
+        text-align: left;
+        background-color: #e4e4e4;
+        &:first-of-type {
+          border-radius: 0.5rem 0 0 0;
+        }
+        &:last-of-type {
+          border-radius: 0 0.5rem 0 0;
+        }
+      }
+     
+      
+    }
+
     /** Form */
     label[aria-hidden] {
         position: absolute;
