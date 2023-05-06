@@ -171,9 +171,9 @@ const Header = (props) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/podcasts">
+                                <Link href="/daily-devotionals">
                                     <a title="">
-                                        Podcasts
+                                        Daily Devotionals
                                     </a>
                                 </Link>
                             </li>

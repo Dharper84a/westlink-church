@@ -135,9 +135,9 @@ const HeaderMenu = (props) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/podcasts">
+                                <Link href="/daily-devotionals">
                                     <a>
-                                        Podcasts
+                                        Daily Devotionals
                                     </a>
                                 </Link>
                             </li>
