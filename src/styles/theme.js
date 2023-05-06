@@ -30,6 +30,7 @@ const COLOR_REF = {
     magicBlue: '#0077c0',
     lightMagicBlue: '#0097F3',
     uraniumBlue: '#AFDBF5',
+    nightBlue: '#005FAE',
     // accents
     pink: "#DA70D6",
     rubyRed: "#E0115F",
@@ -127,6 +128,7 @@ const MEDIA_DEVICES = {
     smallMonitor: `(min-width: ${MEDIA_SIZE_REF.smallComputer})`,
     mediumMonitor: `(min-width: ${MEDIA_SIZE_REF.mediumComputer})`,
     largeMonitor: `(min-width: ${MEDIA_SIZE_REF.largeComputer})`,
+    up768: `(min-width: 768px)`,
 }
 
 const TYPOGRAPHY = {
@@ -177,6 +179,9 @@ export const theme = {
     layers: LAYERS,
     devices: MEDIA_DEVICES,
     device: MEDIA_DEVICES,
+    paddings: {
+        screenEdge: '6%',
+    },
     helpers: {
         fontClamp: fontClamp,
         lineClamp: lineClamp,
