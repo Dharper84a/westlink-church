@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-import { CalendarComponent } from './styles';
+import { CalendarComponent, Inner, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
 
 const CalendarSection = (props) => {
     console.log(props)
@@ -18,7 +18,7 @@ const CalendarSection = (props) => {
 
     const currentDate = new Date();
 
-    console.log(pastDate, currentDate.getMonth(), futureDate)
+    // console.log(pastDate, currentDate.getMonth(), futureDate)
 
 
     const getFirstOfMonthDay = (date) => {
@@ -39,7 +39,8 @@ const CalendarSection = (props) => {
             const month = {
                 date: date,
                 startDay: getFirstOfMonthDay(date),
-                numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate()
+                numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
+                current: false,
             }
             months.unshift(month)
         }
@@ -54,7 +55,8 @@ const CalendarSection = (props) => {
         const month = {
             date: date,
             startDay: getFirstOfMonthDay(date),
-            numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate()
+            numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
+            current: true,
         }
         months.push(month)
 
@@ -69,7 +71,8 @@ const CalendarSection = (props) => {
             const month = {
                 date: date,
                 startDay: getFirstOfMonthDay(date),
-                numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate()
+                numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
+                current: false,
             }
             months.push(month)
         }
@@ -82,15 +85,95 @@ const CalendarSection = (props) => {
     }
 
     const currentStartDay = getFirstOfMonthDay(currentDate);
-    console.log(currentStartDay)
+    // console.log(currentStartDay)
 
     const calendarMonths = getCalendarMonths();
 
-    console.log(calendarMonths)
+    // console.log(calendarMonths)
     return (
         <CalendarComponent>
-            CalendarSection
+            <Inner>
+                {props.heading}<h2>{props.heading}</h2>
+                {calendarMonths &&
+                calendarMonths.map((month, key) => {
+                    return <Month {...month} key={key} />
+                })
+                }
+            </Inner>
         </CalendarComponent>
+    )
+}
+
+const Month = (props) => {
+  
+
+    const getWeeks = () => {
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const weeks = [];
+        var dayNumber = 1;
+        for(var i = 0; i <= 5; i++) {
+            // weeks
+            const week = [];
+           
+            for(var k = 0; k <= 6; k++) {
+                // days of week
+                const day = {
+                    status: false,
+                    number: 0,
+                    weekday: false,
+                    dayName: '',
+                    events: [],
+                    holidays: [],
+                }
+                if(i === 0 && k < props.startDay || dayNumber > props.numberOfDays) {
+                    // before the first day of the month or after last of the month
+                    week.push(day)
+
+                } else {
+                    day.status = 'open';
+                    day.number = dayNumber++;
+                    day.weekday = k === 0 || k === 6 ? false : true;
+                    day.dayName = dayNames[k];
+
+                    week.push(day);
+                }
+            }
+            weeks.push(week);
+        }
+
+        return weeks;
+    }
+
+    const weeksOfTheMonth = getWeeks();
+    console.log(props, weeksOfTheMonth)
+    return (
+        <MonthBox>
+            <div>
+
+            </div>
+            {weeksOfTheMonth &&
+                weeksOfTheMonth.map((week, weekKey) => {
+                    return <Week week={week} key={weekKey} />
+                })
+            }
+        </MonthBox>
+    )
+}
+
+const Week = (props) => {
+    console.log('Week', props)
+    return (
+        <WeekBox>
+        {props.week.map((day, key) => {
+            return (
+                <DayBox dayStatus={day.status} key={key}>
+                    {day.status &&
+                    <DayNumber>{day.number}</DayNumber>
+                    }
+                </DayBox>
+            )
+        })}
+        </WeekBox>
     )
 }
 
