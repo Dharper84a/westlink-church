@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-import { CalendarComponent, Inner, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
+import { CalendarComponent, Inner, CalendarSlider, CalendarTrack, MonthContainer, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
 
 const CalendarSection = (props) => {
     console.log(props)
@@ -41,6 +41,7 @@ const CalendarSection = (props) => {
                 startDay: getFirstOfMonthDay(date),
                 numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
                 current: false,
+                active: false,
             }
             months.unshift(month)
         }
@@ -57,6 +58,7 @@ const CalendarSection = (props) => {
             startDay: getFirstOfMonthDay(date),
             numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
             current: true,
+            active: true,
         }
         months.push(month)
 
@@ -73,6 +75,7 @@ const CalendarSection = (props) => {
                 startDay: getFirstOfMonthDay(date),
                 numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
                 current: false,
+                active: false,
             }
             months.push(month)
         }
@@ -80,25 +83,72 @@ const CalendarSection = (props) => {
         return months
     }
 
-    function daysInMonth (month, year) {
-        return new Date(year, month, 0).getDate();
-    }
-
-    const currentStartDay = getFirstOfMonthDay(currentDate);
-    // console.log(currentStartDay)
 
     const calendarMonths = getCalendarMonths();
 
+    const activeMonth = React.useRef(calendarMonths.findIndex((a) => a.active === true));
+    
+    console.log('ActiveMonth', activeMonth.current)
+    const [trackPosition, setTrackPosition] = React.useState(0)
+    const sliderRef = React.useRef();
     // console.log(calendarMonths)
+    const [trackWidth, setTrackWidth] = React.useState(0);
+    React.useEffect(() => {
+        console.log('Client Width', window.innerWidth);//clientWidth)
+        const paddingWidth = Math.floor(window.innerWidth * 0.12);
+        console.log(paddingWidth)
+        const width = window.innerWidth * calendarMonths.length;
+        console.log('width', width)
+// 1212 - 1396
+        setTrackWidth(width);
+        
+    }, [calendarMonths])
+
+    const [sliderViewboxWidth, setSliderViewboxWidth] = React.useState()
+    React.useEffect(() => {
+        if(!sliderRef.current) return;
+
+        let box = sliderRef.current.getBoundingClientRect();
+        console.log(box)
+        setSliderViewboxWidth(box.width);
+    }, [sliderRef])
+
+    React.useEffect(() => {
+        if(!sliderViewboxWidth) return;
+
+        setTrackPosition(sliderViewboxWidth * -activeMonth.current);
+    }, [sliderViewboxWidth])
+    const previousMonth = () => {
+        if(activeMonth.current === 0) return;
+
+        const newActive = activeMonth.current - 1;
+        activeMonth.current = newActive;
+        setTrackPosition(sliderViewboxWidth * -newActive);
+    }
+
+    const nextMonth = () => {
+        if(activeMonth.current === calendarMonths.length - 1) return;
+
+        const newActive = activeMonth.current + 1;
+        activeMonth.current = newActive;
+        setTrackPosition(sliderViewboxWidth * -newActive);
+    }
     return (
         <CalendarComponent>
             <Inner>
                 {props.heading}<h2>{props.heading}</h2>
-                {calendarMonths &&
-                calendarMonths.map((month, key) => {
-                    return <Month {...month} key={key} />
-                })
-                }
+                <button onClick={previousMonth}>Previous</button>
+                <button onClick={nextMonth}>Next</button>
+                <CalendarSlider ref={sliderRef}>
+                    <CalendarTrack itemCount={calendarMonths.length} trackWidth={sliderViewboxWidth * calendarMonths.length} position={trackPosition}>
+                        
+                        {calendarMonths &&
+                        calendarMonths.map((month, key) => {
+                            return <Month {...month} maxWidth={sliderViewboxWidth} key={key} />
+                        })
+                        }
+                    </CalendarTrack>
+                </CalendarSlider>
             </Inner>
         </CalendarComponent>
     )
@@ -145,23 +195,36 @@ const Month = (props) => {
     }
 
     const weeksOfTheMonth = getWeeks();
-    console.log(props, weeksOfTheMonth)
+    
+    // console.log(props, weeksOfTheMonth)
+    const monthName = props.date.toLocaleString('default', { month: 'long' });
+    
     return (
-        <MonthBox>
-            <div>
-
-            </div>
-            {weeksOfTheMonth &&
-                weeksOfTheMonth.map((week, weekKey) => {
-                    return <Week week={week} key={weekKey} />
-                })
-            }
-        </MonthBox>
+        <MonthContainer maxWidth={props.maxWidth}>
+            <span>{props.date.getFullYear()}</span>
+            <h3>{monthName}</h3>
+            <header>
+                <span>Sunday</span>
+                <span>Monday</span>
+                <span>Tuesday</span>
+                <span>Wednesday</span>
+                <span>Thursday</span>
+                <span>Friday</span>
+                <span>Saturday</span>
+            </header>
+            <MonthBox>
+                {weeksOfTheMonth &&
+                    weeksOfTheMonth.map((week, weekKey) => {
+                        return <Week week={week} key={weekKey} />
+                    })
+                }
+            </MonthBox>
+        </MonthContainer>
     )
 }
 
 const Week = (props) => {
-    console.log('Week', props)
+    // console.log('Week', props)
     return (
         <WeekBox>
         {props.week.map((day, key) => {
