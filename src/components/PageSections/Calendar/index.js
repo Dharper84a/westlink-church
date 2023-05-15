@@ -3,24 +3,15 @@ import * as React from 'react';
 
 import { CalendarComponent, Inner, CalendarSlider, CalendarTrack, MonthContainer, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
 import Navigation from './Navigation';
+import deliveryClient from '../../../../lib/datasource/contentful/delivery';
 
 const CalendarSection = (props) => {
     console.log(props)
-    const pastDate = new Date(
-        new Date().getFullYear(),
-        new Date().getMonth() - parseInt(props.pastMonthsToShow), 
-        new Date().getDate()
-    );
-    const futureDate = new Date(
-        new Date().getFullYear(),
-        new Date().getMonth() + parseInt(props.futureMonthsToShow), 
-        new Date().getDate()
-    );
+    
+    const sliderRef = React.useRef();
 
-    const currentDate = new Date();
-
-    // console.log(pastDate, currentDate.getMonth(), futureDate)
-
+    const [trackPosition, setTrackPosition] = React.useState(0)
+    const [sliderViewboxWidth, setSliderViewboxWidth] = React.useState()
 
     const getFirstOfMonthDay = (date) => {
         return new Date(`${date.getFullYear()}-${date.getMonth()+1}-01`).getDay();
@@ -43,6 +34,7 @@ const CalendarSection = (props) => {
                 numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
                 current: false,
                 active: false,
+                events: [],
             }
             months.unshift(month)
         }
@@ -60,6 +52,7 @@ const CalendarSection = (props) => {
             numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
             current: true,
             active: true,
+            events: [],
         }
         months.push(month)
 
@@ -77,6 +70,7 @@ const CalendarSection = (props) => {
                 numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
                 current: false,
                 active: false,
+                events: [],
             }
             months.push(month)
         }
@@ -84,33 +78,13 @@ const CalendarSection = (props) => {
         return months
     }
 
-
     const calendarMonths = getCalendarMonths();
-
     const activeMonth = React.useRef(calendarMonths.findIndex((a) => a.active === true));
-    
-    console.log('ActiveMonth', activeMonth.current)
-    const [trackPosition, setTrackPosition] = React.useState(0)
-    const sliderRef = React.useRef();
-    // console.log(calendarMonths)
-    const [trackWidth, setTrackWidth] = React.useState(0);
-    React.useEffect(() => {
-        console.log('Client Width', window.innerWidth);//clientWidth)
-        const paddingWidth = Math.floor(window.innerWidth * 0.12);
-        console.log(paddingWidth)
-        const width = window.innerWidth * calendarMonths.length;
-        console.log('width', width)
-// 1212 - 1396
-        setTrackWidth(width);
         
-    }, [calendarMonths])
-
-    const [sliderViewboxWidth, setSliderViewboxWidth] = React.useState()
     React.useEffect(() => {
         if(!sliderRef.current) return;
 
         let box = sliderRef.current.getBoundingClientRect();
-        console.log(box)
         setSliderViewboxWidth(box.width);
     }, [sliderRef])
 
@@ -120,31 +94,26 @@ const CalendarSection = (props) => {
         setTrackPosition(sliderViewboxWidth * -activeMonth.current);
     }, [sliderViewboxWidth])
 
-    const previousMonth = () => {
-        if(activeMonth.current === 0) return;
-
-        const newActive = activeMonth.current - 1;
-        activeMonth.current = newActive;
-        setTrackPosition(sliderViewboxWidth * -newActive);
-    }
-
-    const nextMonth = () => {
-        if(activeMonth.current === calendarMonths.length - 1) return;
-
-        const newActive = activeMonth.current + 1;
-        activeMonth.current = newActive;
-        setTrackPosition(sliderViewboxWidth * -newActive);
-    }
-
-    const allowNext = () => {
-        if(activeMonth.current === calendarMonths.length - 1) return false;
-        return true;
-    }
-
-    const allowPrevious = () => {
-        if(activeMonth.current === 1) return false;
-        return true;
-    }
+    React.useEffect(() => {
+        deliveryClient.entries('event').then((res) => {
+            console.log(res);
+            if(Array.isArray(res.items)) {
+                res.items.forEach((event) => {
+                    const eventStart = new Date(event.fields.eventDate);
+                    const eventEnd = new Date(event.fields.endDate);
+                    
+                    calendarMonths.forEach((month) => {
+                        const monthDate = new Date(month.date);
+                        console.log('monthDate', monthDate.getTime())
+                        if(monthDate.getTime() >= eventStart.getTime() && monthDate.getTime() <= eventEnd.getTime()) {
+                            console.log('Add Event to ', monthDate.getMonth(), event.fields.eventName);
+                        }
+                    })
+                    console.log(calendarMonths)
+                })
+            }
+        });
+    }, [props])
 
     const updateSlider = (position, activeIndex) => {
         activeMonth.current = activeIndex;
