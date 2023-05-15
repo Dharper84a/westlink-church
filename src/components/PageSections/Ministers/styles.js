@@ -12,6 +12,10 @@ export const Component = styled.div`
     h3 {
         margin: 16px 0;
     }
+    .main-heading {
+        margin-bottom: 3rem;
+        font-size: ${({theme}) => theme.helpers.fontClamp(32, 48)};
+    }
     figure {
         width: fit-content;
         border-radius: 4px;

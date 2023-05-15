@@ -5,10 +5,11 @@ import deliveryClient from '../../../../lib/datasource/contentful/delivery';
 import RichTextRenderer from '../../Common/RichTextRenderer';
 import { Component, LeadMinister, AssistantMinisters } from './styles';
 import TagPill, { TagPillList } from '../../Common/TagPill';
+import Persons from './Persons';
 
 const Ministers = (props) => {
-    const [leadMinister, setLeadMinister] = React.useState();
-    const [assistantMinisters, setAssistantMinisters] = React.useState();
+    const [groupOnePeople, setGroupOnePeople] = React.useState();
+    const [groupTwoPeople, setGroupTwoPeople] = React.useState();
 
     console.log('Ministers', props)
 
@@ -36,62 +37,24 @@ const Ministers = (props) => {
             
         }
 
-        awaitData(props.leadMinister, setLeadMinister);
-        awaitData(props.assistantMinisters, setAssistantMinisters);
-
+        awaitData(props.groupOnePeople, setGroupOnePeople);
+        awaitData(props.groupTwoPeople, setGroupTwoPeople);
         return () => {
             ignore = true;
         }
-    }, [props.assistantMinisters, props.leadMinister])
+    }, [props.groupOnePeople, props.groupTwoPeople])
 
     return(
         <Component>
-            {props.heading && <h2>{props.heading}</h2>}
-            {leadMinister && 
-                <LeadMinister>
-                    <figure>
-                        <Image
-                            src={`https:${leadMinister.profilePicture.fields.file.url}`}
-                            width={480}
-                            height={360}
-                            alt={leadMinister.profilePicture.description}
-                        />
-                    </figure>
-                    <aside>
-                        <h3>{leadMinister.displayName}</h3>
-                        <TagPillList items={leadMinister.groups} style="light" />
-                     
-                       
-                        <RichTextRenderer richText={leadMinister.shortBio} />
-                    </aside>
-                </LeadMinister>
-            }
-            {assistantMinisters && Array.isArray(assistantMinisters) &&
-                <>
-                <h3>Assistant Ministers</h3>
-                <AssistantMinisters>
-                    
-                    {assistantMinisters.map((item, key) => {
-                        return(
-                            <div key={key}>
-                                <figure>
-                                    <Image
-                                        src={`https:${item.profilePicture.fields.file.url}`}
-                                        width={480}
-                                        height={360}
-                                        alt={item.profilePicture.description}
-                                    />
-                                </figure>
-                                <aside>
-                                    <h4>{item.displayName}</h4>
-                                    <TagPillList items={item.groups} style="light" />
-                                </aside>
-                            </div>
-                        )
-                    })}
-                </AssistantMinisters>
-                </>
-            }
+            {props.heading && <h2 className="main-heading">{props.heading}</h2>}
+
+            {groupOnePeople && props.groupOneHeading && <h2>{props.groupOneHeading}</h2> }
+            {groupOnePeople && <Persons people={groupOnePeople} /> }
+
+
+            {groupTwoPeople && props.groupTwoHeading && <h2>{props.groupTwoHeading}</h2> }
+            {groupTwoPeople && <Persons people={groupTwoPeople} /> }
+
         </Component>
     )
 }
