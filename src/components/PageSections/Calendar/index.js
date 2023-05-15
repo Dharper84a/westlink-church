@@ -2,6 +2,7 @@ import * as React from 'react';
 
 
 import { CalendarComponent, Inner, CalendarSlider, CalendarTrack, MonthContainer, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
+import Navigation from './Navigation';
 
 const CalendarSection = (props) => {
     console.log(props)
@@ -118,6 +119,7 @@ const CalendarSection = (props) => {
 
         setTrackPosition(sliderViewboxWidth * -activeMonth.current);
     }, [sliderViewboxWidth])
+
     const previousMonth = () => {
         if(activeMonth.current === 0) return;
 
@@ -133,12 +135,27 @@ const CalendarSection = (props) => {
         activeMonth.current = newActive;
         setTrackPosition(sliderViewboxWidth * -newActive);
     }
+
+    const allowNext = () => {
+        if(activeMonth.current === calendarMonths.length - 1) return false;
+        return true;
+    }
+
+    const allowPrevious = () => {
+        if(activeMonth.current === 1) return false;
+        return true;
+    }
+
+    const updateSlider = (position, activeIndex) => {
+        activeMonth.current = activeIndex;
+        setTrackPosition(position);
+    }
     return (
         <CalendarComponent>
             <Inner>
                 {props.heading}<h2>{props.heading}</h2>
-                <button onClick={previousMonth}>Previous</button>
-                <button onClick={nextMonth}>Next</button>
+                <Navigation activeMonth={activeMonth.current} numberOfMonths={calendarMonths.length - 1} translationAmount={sliderViewboxWidth} doUpdate={updateSlider}/>
+               
                 <CalendarSlider ref={sliderRef}>
                     <CalendarTrack itemCount={calendarMonths.length} trackWidth={sliderViewboxWidth * calendarMonths.length} position={trackPosition}>
                         
