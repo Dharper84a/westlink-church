@@ -61,3 +61,63 @@ export const DayNumber = styled.div`
     background: ${({theme}) => theme.colors.lightMagicBlue};
     border-radius: 0 0 0 0.25rem;
 `
+export const _Month = styled.div`
+    width: 100%;
+    max-width: ${props => props.maxWidth}px;
+`
+
+export const _MonthHeading = styled.header`
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 1rem 0;
+    span {
+        text-align: center;
+    }
+`
+export const _Week = styled.div`
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+`
+
+export const _Day = styled.div`
+    min-height: 200px;
+    border: 1px solid ${({theme}) => theme.colors.gray};
+    ${props => props.blank &&
+        css`
+        background: #d3d3d3;
+        `
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            span {
+                display: flex;
+                padding: 0.25rem 0.5rem;
+                &:last-of-type {
+                    color: ${({theme}) => theme.colors.white};
+                    background: ${({theme}) => theme.colors.magicBlue};
+                }
+            }
+        }
+        ul {
+            margin: 0;
+            padding: 0.5rem;
+            list-style: none;
+            li {
+                span {
+                    display: inline-block;
+                    margin: 0.1rem 0;
+                    padding: 0.25rem 0.75rem;
+                    color: ${({theme}) => theme.colors.white};
+                    font-size: 16px;
+                    background: ${({theme}) => theme.colors.bluePurple};
+                    border-radius: 0.65rem;
+                }
+            }
+        }
+    }
+`
