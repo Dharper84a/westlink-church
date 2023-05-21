@@ -1,14 +1,35 @@
 import styled, {css} from 'styled-components'
 
 export const _Calendar = styled.div`
+    position: relative;
     ${({theme}) => theme.layout.content};
     margin: 2rem auto;
 `
 
-export const _Month = styled.div`
+export const _MonthContainer = styled.div`
+    overflow: hidden;
+    display: inline-flex;
     width: 100%;
+    /* max-width: 1600px; */
+    margin: 0 auto;
+`
+
+export const _Track = styled.div`
+    display: inline-flex;
+    /* column-gap: 8rem; */
+    width: 100%;
+    transform: translateX(-${props => props.xPosition}px);
+    transition: transform 0.25s ease;
+`
+export const _Month = styled.div`
+    position: relative;
+    top: 0;
+    width: 100%;
+    min-width: 100%;
     max-width: 1600px;
     margin: 3rem auto;
+    /* opacity: ${props => props.isActive ? '1' : '0'}; */
+    transition: opacity 0.25s;
 `
 
 export const _MonthHeading = styled.header`

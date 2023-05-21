@@ -48,7 +48,6 @@ const Month = (props) => {
                                 aDate.setMinutes(0);
                                 bDate.setHours(0);
                                 bDate.setMinutes(0);
-                                console.log(a.eventName,day.date, aDate)
                                 if(day.date.getTime() >= aDate.getTime() && bDate.getTime() >= day.date.getTime()) {
                                     return true;
                                 }
@@ -69,7 +68,6 @@ const Month = (props) => {
 
     const weeksOfTheMonth = getWeeks();
 
-    console.log(weeksOfTheMonth)
     const monthName = props.startOfMonth.toLocaleString('default', { month: 'long' });
 
    
@@ -79,7 +77,7 @@ const Month = (props) => {
     }
 
     return (
-        <_Month>
+        <_Month isActive={props.active}>
             <span>{props.startOfMonth.getFullYear()}</span>
             <h3>{monthName}</h3>
             <_MonthHeading>

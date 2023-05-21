@@ -3,19 +3,22 @@ import * as React from 'react';
 import Month from './Month';
 import Week from './Week';
 
-import { _Calendar, Inner, CalendarSlider, CalendarTrack, MonthContainer, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
+import { _Calendar, _MonthContainer, _Track } from './styles';
 import Navigation from './Navigation';
 import deliveryClient from '../../../../lib/datasource/contentful/delivery';
 
 const CalendarSection = (props) => {
     const [events, setEvents] = React.useState();
     const [months, setMonths] = React.useState();
+    const [trackPosition, setTrackPosition] = React.useState(0);
+    const visibleIndex = React.useRef();
+    const [trackIndex, setTrackIndex] = React.useState();
 
     const getFirstOfMonthDay = (date) => {
         return new Date(`${date.getFullYear()}-${date.getMonth()+1}-01`).getDay();
     }
 
-    const monthFactory = (offset = 0) => {
+    const monthFactory = (offset = 0, position = 0) => {
         const startOfMonth = new Date(
             new Date().getFullYear(),
             new Date().getMonth() + offset, 
@@ -29,6 +32,7 @@ const CalendarSection = (props) => {
         );
 
         const month = {
+            position,
             startOfMonth,
             endOfMonth,
             timestamp: {
@@ -49,15 +53,17 @@ const CalendarSection = (props) => {
 
         // past months
         for(let i = 1; i <= props.pastMonthsToShow; i++) {
-            months.unshift(monthFactory(-i))
+            months.unshift(monthFactory(-i, months.length))
         }
 
-        months.push(monthFactory());
-       
+        // visibleIndex.current = months.length
+        setTrackIndex(months.length);
+        months.push(monthFactory(0, months.length));
+        
 
         // future months
         for(let i = 1; i <= props.futureMonthsToShow; i++) {
-            months.push(monthFactory(i))
+            months.push(monthFactory(i, months.length))
         }
 
         return months
@@ -128,19 +134,6 @@ const CalendarSection = (props) => {
                         })
                     }
                 }
-               
-                
-                
-                
-          
-
-                
-                // console.log('monthDate', monthDate.getTime())
-                // if(monthDate.getTime() >= eventStart.getTime() && monthDate.getTime() <= eventEnd.getTime()) {
-                //     console.log('Add Event to ', monthDate.getMonth(), event.eventName);
-                //     month.events.push(event);
-                // }
-                
             })
         })
 
@@ -169,102 +162,54 @@ const CalendarSection = (props) => {
         }
 
     }, [props])
+
+    const containerRef = React.useRef();
+    
+
+    const updatePosition = (value) => {
+        console.log('Updating Position')
+        if(trackIndex + value === months.length) {
+            // setTrackIndex(0);
+            return;
+        } else if(trackIndex + value < 0) {
+            return;
+        } else {
+            setTrackIndex(trackIndex + value);
+        }
+    }
+
+    React.useEffect(() => {
+        const box = containerRef.current.getBoundingClientRect();
+        console.log(box)
+        console.log('TrackIndex', trackIndex)
+        setTrackPosition(box.width * trackIndex)
+    }, [trackIndex])
+   
+    const nextHandler = () => {
+        if(!containerRef.current) return;
+        updatePosition(1)
+    }
+
+    const previousHandler = () => {
+        if(!containerRef.current) return;
+        updatePosition(-1);
+    }
+
     return (
         <_Calendar>
             {props.heading && <h2>{props.heading}</h2>}
-            {months &&
-            months.map((month, key) => {
-                return <Month {...month} deviceType={deviceType} key={key} />
-            })
-            }
+            <button onClick={previousHandler}>Previous</button><button onClick={nextHandler}>Next</button>
+            <_MonthContainer ref={containerRef}>
+                <_Track xPosition={trackPosition}>
+                {months &&
+                months.map((month, key) => {
+                    return <Month {...month} deviceType={deviceType} key={key} />
+                })
+                }
+                </_Track>
+            </_MonthContainer>
         </_Calendar>
     )
 }
-
-// const Month = (props) => {
-  
-
-//     const getWeeks = () => {
-//         const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-//         const weeks = [];
-//         var dayNumber = 1;
-//         for(var i = 0; i <= 5; i++) {
-//             // weeks
-//             const week = [];
-           
-//             for(var k = 0; k <= 6; k++) {
-//                 // days of week
-//                 const day = {
-//                     status: false,
-//                     number: 0,
-//                     weekday: false,
-//                     dayName: '',
-//                     events: [],
-//                     holidays: [],
-//                 }
-//                 if(i === 0 && k < props.startDay || dayNumber > props.numberOfDays) {
-//                     // before the first day of the month or after last of the month
-//                     week.push(day)
-
-//                 } else {
-//                     day.status = 'open';
-//                     day.number = dayNumber++;
-//                     day.weekday = k === 0 || k === 6 ? false : true;
-//                     day.dayName = dayNames[k];
-
-//                     week.push(day);
-//                 }
-//             }
-//             weeks.push(week);
-//         }
-
-//         return weeks;
-//     }
-
-//     const weeksOfTheMonth = getWeeks();
-    
-//     // console.log(props, weeksOfTheMonth)
-//     const monthName = props.date.toLocaleString('default', { month: 'long' });
-    
-//     return (
-//         <MonthContainer maxWidth={props.maxWidth}>
-//             <span>{props.date.getFullYear()}</span>
-//             <h3>{monthName}</h3>
-//             <header>
-//                 <span>Sunday</span>
-//                 <span>Monday</span>
-//                 <span>Tuesday</span>
-//                 <span>Wednesday</span>
-//                 <span>Thursday</span>
-//                 <span>Friday</span>
-//                 <span>Saturday</span>
-//             </header>
-//             <MonthBox>
-//                 {weeksOfTheMonth &&
-//                     weeksOfTheMonth.map((week, weekKey) => {
-//                         return <Week week={week} key={weekKey} />
-//                     })
-//                 }
-//             </MonthBox>
-//         </MonthContainer>
-//     )
-// }
-
-// const Week = (props) => {
-//     // console.log('Week', props)
-//     return (
-//         <WeekBox>
-//         {props.week.map((day, key) => {
-//             return (
-//                 <DayBox dayStatus={day.status} key={key}>
-//                     {day.status &&
-//                     <DayNumber>{day.number}</DayNumber>
-//                     }
-//                 </DayBox>
-//             )
-//         })}
-//         </WeekBox>
-//     )
-// }
 
 export default CalendarSection;

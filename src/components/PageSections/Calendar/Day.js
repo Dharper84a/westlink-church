@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import {_Day} from './styles'
 const Day = (props) => {
-    console.log('DAY', props)
     const hasEvents = props.events.length > 0 ? true : false;
 
     return (
