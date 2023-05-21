@@ -1,26 +1,40 @@
 
+import Link from 'next/link';
 import {_Day} from './styles'
 const Day = (props) => {
-   
-    
+    console.log('DAY', props)
+    const hasEvents = props.events.length > 0 ? true : false;
+
     return (
         <_Day blank={!props.status}>
             {props.status &&
-            <div>
-                <header>
-                    <span></span>
-                    <span>{props.number}</span>
-                </header>
+            <>
+            <header>
+                <span>{props.number}</span>
+            </header>
+            <footer>
+                {hasEvents && props.deviceType === 'mobile' && 
+                    <button></button>
+                }
+                {hasEvents && props.deviceType === 'desktop' &&
                 <ul>
-                    <li>
-                        <span>Event One</span>
-                    </li>
-                    <li>
-                        <span>Event Two</span>
-                    </li>
+                {props.events.map((event, key) => {
+                    return (
+                        <li key={key}>
+                        <Link href={`/event/${event.slug}`} passHref>
+                            <a title={`More information about ${event.title}`}>
+                                {event.eventName}
+                            </a>
+                        </Link>
+                        </li>
+                    )
+                })}
                 </ul>
-            </div>
+                }
+            </footer>
+            </>
             }
+
         </_Day>
     )
 }

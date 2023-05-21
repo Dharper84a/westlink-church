@@ -127,6 +127,13 @@ const MEDIA_DEVICES = {
     smallMonitor: `(min-width: ${MEDIA_SIZE_REF.smallComputer})`,
     mediumMonitor: `(min-width: ${MEDIA_SIZE_REF.mediumComputer})`,
     largeMonitor: `(min-width: ${MEDIA_SIZE_REF.largeComputer})`,
+    up768: `(min-width: 768px)`,
+    up1024: `(min-width: 1024px)`,
+    up1366: `(min-width: 1366px)`,
+    up1600: `(min-width: 1600px)`,
+    up1920: `(min-width: 1920px)`,
+    up2560: `(min-width: 2560px)`,
+    up3840: `(min-width: 3840px)`,
 }
 
 const TYPOGRAPHY = {

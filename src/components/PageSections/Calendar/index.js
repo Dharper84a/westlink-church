@@ -3,99 +3,65 @@ import * as React from 'react';
 import Month from './Month';
 import Week from './Week';
 
-import { CalendarComponent, Inner, CalendarSlider, CalendarTrack, MonthContainer, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
+import { _Calendar, Inner, CalendarSlider, CalendarTrack, MonthContainer, MonthBox, WeekBox, DayBox, DayNumber } from './styles';
 import Navigation from './Navigation';
 import deliveryClient from '../../../../lib/datasource/contentful/delivery';
 
 const CalendarSection = (props) => {
-    const sliderRef = React.useRef();
-
-    const [trackPosition, setTrackPosition] = React.useState(0)
-    const [sliderViewboxWidth, setSliderViewboxWidth] = React.useState()
+    const [events, setEvents] = React.useState();
+    const [months, setMonths] = React.useState();
 
     const getFirstOfMonthDay = (date) => {
         return new Date(`${date.getFullYear()}-${date.getMonth()+1}-01`).getDay();
     }
 
+    const monthFactory = (offset = 0) => {
+        const startOfMonth = new Date(
+            new Date().getFullYear(),
+            new Date().getMonth() + offset, 
+            1
+        );
+        const numberOfDays = new Date(startOfMonth.getFullYear(), startOfMonth.getMonth()+1, 0).getDate();
+        const endOfMonth = new Date(
+            new Date().getFullYear(),
+            new Date().getMonth() + offset, 
+            numberOfDays
+        );
+
+        const month = {
+            startOfMonth,
+            endOfMonth,
+            timestamp: {
+                start: startOfMonth.getTime(),
+                end: endOfMonth.getTime(),
+            },
+            startDay: getFirstOfMonthDay(startOfMonth),
+            numberOfDays,
+            current: offset === 0 ? true : false,
+            active: offset === 0 ? true : false,
+            events: [],
+        }
+
+        return month;
+    }
     const getCalendarMonths = () => {
         const months = [];
 
         // past months
         for(let i = 1; i <= props.pastMonthsToShow; i++) {
-            const date = new Date(
-                new Date().getFullYear(),
-                new Date().getMonth() - i, 
-                new Date().getDate()
-            );
-
-            const month = {
-                date: date,
-                startDay: getFirstOfMonthDay(date),
-                numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
-                current: false,
-                active: false,
-                events: [],
-            }
-            months.unshift(month)
+            months.unshift(monthFactory(-i))
         }
 
-        // current month
-        const date = new Date(
-            new Date().getFullYear(),
-            new Date().getMonth(), 
-            new Date().getDate()
-        );
-
-        const month = {
-            date: date,
-            startDay: getFirstOfMonthDay(date),
-            numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
-            current: true,
-            active: true,
-            events: [],
-        }
-        months.push(month)
+        months.push(monthFactory());
+       
 
         // future months
         for(let i = 1; i <= props.futureMonthsToShow; i++) {
-            const date = new Date(
-                new Date().getFullYear(),
-                new Date().getMonth() + i, 
-                new Date().getDate()
-            );
-
-            const month = {
-                date: date,
-                startDay: getFirstOfMonthDay(date),
-                numberOfDays: new Date(date.getFullYear(), date.getMonth()+1, 0).getDate(),
-                current: false,
-                active: false,
-                events: [],
-            }
-            months.push(month)
+            months.push(monthFactory(i))
         }
 
         return months
     }
-
-    const calendarMonths = getCalendarMonths();
-    const activeMonth = React.useRef(calendarMonths.findIndex((a) => a.active === true));
-        
-    React.useEffect(() => {
-        if(!sliderRef.current) return;
-
-        let box = sliderRef.current.getBoundingClientRect();
-        setSliderViewboxWidth(box.width);
-    }, [sliderRef])
-
-    React.useEffect(() => {
-        if(!sliderViewboxWidth) return;
-
-        setTrackPosition(sliderViewboxWidth * -activeMonth.current);
-    }, [sliderViewboxWidth])
-
-    const [events, setEvents] = React.useState();
-    const [months, setMonths] = React.useState();
 
     React.useEffect(() => {
 
@@ -109,21 +75,71 @@ const CalendarSection = (props) => {
 
     }, [props])
 
+
+
+
     React.useEffect(() => {
         if(!events) return;
-
+        
         const _months = getCalendarMonths();
+        console.log(_months)
+
+        const weeklyEvents = [];
+        const monthlyEvents = [];
+        const yearlyEvents = [];
+
         _months.forEach((month) => {
-            const monthDate = new Date(month.date);
-            events.forEach((event) => {
-                const eventStart = new Date(event.fields.eventDate);
-                const eventEnd = new Date(event.fields.endDate);
-                
-                console.log('monthDate', monthDate.getTime())
-                if(monthDate.getTime() >= eventStart.getTime() && monthDate.getTime() <= eventEnd.getTime()) {
-                    console.log('Add Event to ', monthDate.getMonth(), event.fields.eventName);
-                    month.events.push(event.fields);
+            const monthEvents = [];
+
+            const monthName = month.startOfMonth.toLocaleString('default', { month: 'long' });
+            console.log(`Checking events for [${monthName}]`)
+            events.forEach((_event) => {
+                const event = _event.fields;
+                console.log(`\t[${event.eventName}]...`)
+                const eventStart = new Date(event.eventDate);
+                const eventEnd = new Date(event.endDate);
+
+                if(event?.repeats && event?.repeats.length > 0) {
+                    if(event.repeats.includes('Weekly')) {
+                        if(eventEnd.getTime() >= month.timestamp.end || eventEnd.getTime() >= month.timestamp.start) {
+                            // the event series ends later than this month or within it
+                            console.log(`\t- Add Weekly Event [${event.eventName}]`)
+                            month.events.push({
+                                series: {
+                                    repeats: 'Weekly',
+                                },
+                                dayOfWeek: eventStart.getDay(),
+                                dayNumber: eventStart.getDate(),
+                                ...event
+                            })
+                        }
+                        
+                    }
+                } else {
+                    // this is a single instance event
+                    if(eventEnd.getTime() <= month.timestamp.end && eventStart.getTime() >= month.timestamp.start) {
+                        // event is scheduled inside current month
+                        console.log(`\t- Add Single Event [${event.eventName}]`)
+                        month.events.push({
+                            series: false,
+                            dayOfWeek: eventStart.getDay(),
+                            dayNumber: eventStart.getDate(),
+                            ...event
+                        })
+                    }
                 }
+               
+                
+                
+                
+          
+
+                
+                // console.log('monthDate', monthDate.getTime())
+                // if(monthDate.getTime() >= eventStart.getTime() && monthDate.getTime() <= eventEnd.getTime()) {
+                //     console.log('Add Event to ', monthDate.getMonth(), event.eventName);
+                //     month.events.push(event);
+                // }
                 
             })
         })
@@ -132,28 +148,36 @@ const CalendarSection = (props) => {
        
     }, [events])
 
-    const updateSlider = (position, activeIndex) => {
-        activeMonth.current = activeIndex;
-        setTrackPosition(position);
+    const [deviceType, setDeviceType] = React.useState('mobile');
+    const deviceSizeHandler = (e) => {
+        if(!window) return;
+
+        if(window.innerWidth <= 768) {
+            setDeviceType('mobile');
+        } else {
+            setDeviceType('desktop');
+        }
     }
+    React.useEffect(() => {
+        if(!window) return;
+
+        window.addEventListener('resize', deviceSizeHandler)
+        deviceSizeHandler()
+
+        return () => {
+            window.removeEventListener('resize', deviceSizeHandler);
+        }
+
+    }, [props])
     return (
-        <CalendarComponent>
-            <Inner>
-                {props.heading}<h2>{props.heading}</h2>
-                <Navigation activeMonth={activeMonth.current} numberOfMonths={calendarMonths.length - 1} translationAmount={sliderViewboxWidth} doUpdate={updateSlider}/>
-               
-                <CalendarSlider ref={sliderRef}>
-                    <CalendarTrack itemCount={calendarMonths.length} trackWidth={sliderViewboxWidth * calendarMonths.length} position={trackPosition}>
-                        
-                        {months &&
-                        months.map((month, key) => {
-                            return <Month {...month} maxWidth={sliderViewboxWidth} key={key} />
-                        })
-                        }
-                    </CalendarTrack>
-                </CalendarSlider>
-            </Inner>
-        </CalendarComponent>
+        <_Calendar>
+            {props.heading && <h2>{props.heading}</h2>}
+            {months &&
+            months.map((month, key) => {
+                return <Month {...month} deviceType={deviceType} key={key} />
+            })
+            }
+        </_Calendar>
     )
 }
 

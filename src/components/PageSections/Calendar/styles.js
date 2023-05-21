@@ -1,69 +1,14 @@
 import styled, {css} from 'styled-components'
 
-export const CalendarComponent = styled.div``
-
-export const Inner = styled.div`
-/* ${({theme}) => theme.layout.content}; */
+export const _Calendar = styled.div`
+    ${({theme}) => theme.layout.content};
+    margin: 2rem auto;
 `
 
-export const CalendarSlider = styled.div`
-   overflow: hidden;
-   /* ${({theme}) => theme.layout.content}; */
-   margin: 0 6%;
-`
-
-export const CalendarTrack = styled.div`
-    display: flex;
-    width: ${props => props.trackWidth}px;
-    transform: translateX(${props => props.position}px);
-    transition: transform 0.75s ease;
-`
-
-export const MonthContainer = styled.section`
-    width: 100%;
-    max-width: ${props => props.maxWidth}px;
-    header {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        margin: 1rem 0;
-        span {
-            text-align: center;
-        }
-    }
-`
-export const MonthBox = styled.div`
-    margin: 1rem 0 3rem;
-    border: 1px solid #d0d0d0;
-    /* border-radius: 0.75rem; */
-`
-export const WeekBox = styled.div`
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-`
-
-export const DayBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    min-height: 200px;
-    border: 1px solid ${({theme}) => theme.colors.gray};
-    ${props => props.dayStatus === false &&
-        css`
-        background: #d3d3d3;
-        `
-    }
-`
-
-export const DayNumber = styled.div`
-    align-self: flex-end;
-    padding: 0.25rem 1rem;
-    color: ${({theme}) => theme.colors.white};
-    font-weight: 400;
-    background: ${({theme}) => theme.colors.lightMagicBlue};
-    border-radius: 0 0 0 0.25rem;
-`
 export const _Month = styled.div`
     width: 100%;
-    max-width: ${props => props.maxWidth}px;
+    max-width: 1600px;
+    margin: 3rem auto;
 `
 
 export const _MonthHeading = styled.header`
@@ -72,6 +17,8 @@ export const _MonthHeading = styled.header`
     margin: 1rem 0;
     span {
         text-align: center;
+        font-size: ${({theme}) => theme.helpers.fontClamp(14, 20)};
+        font-weight: 600;
     }
 `
 export const _Week = styled.div`
@@ -80,44 +27,105 @@ export const _Week = styled.div`
 `
 
 export const _Day = styled.div`
-    min-height: 200px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 1;
     border: 1px solid ${({theme}) => theme.colors.gray};
     ${props => props.blank &&
         css`
         background: #d3d3d3;
         `
     }
-    div {
+
+    header {
         display: flex;
-        flex-direction: column;
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            span {
-                display: flex;
-                padding: 0.25rem 0.5rem;
-                &:last-of-type {
-                    color: ${({theme}) => theme.colors.white};
-                    background: ${({theme}) => theme.colors.magicBlue};
-                }
-            }
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        span {
+            color: ${({theme}) => theme.colors.darkGray};
+            font-size: ${({theme}) => theme.helpers.fontClamp(14, 28)};
         }
-        ul {
-            margin: 0;
-            padding: 0.5rem;
-            list-style: none;
-            li {
-                span {
-                    display: inline-block;
-                    margin: 0.1rem 0;
-                    padding: 0.25rem 0.75rem;
-                    color: ${({theme}) => theme.colors.white};
-                    font-size: 16px;
+    }
+    footer {
+        display: flex;
+        height: 100%;
+        button {
+            width: 100%;
+            color: ${({theme}) => theme.colors.white};
+            font-size: ${({theme}) => theme.helpers.fontClamp(12, 16)};
+            text-transform: uppercase;
+            background: ${({theme}) => theme.colors.bluePurple};
+            border: none;
+        }
+    }
+    @media ${({theme}) => theme.device.up768} {
+        grid-template-rows: 26px 1fr;
+        footer {
+            ul {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                li {
+                    
                     background: ${({theme}) => theme.colors.bluePurple};
-                    border-radius: 0.65rem;
+                    transition: all 0.25s;
+                    a {
+                        position: relative;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        padding: 0.15rem 0.25rem;
+                        color: ${({theme}) => theme.colors.white};
+                        font-size: ${({theme}) => theme.helpers.fontClamp(14, 20, 768, 1920)};
+                        ${({theme}) => theme.helpers.lineClamp(1)};
+                        
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                    &:hover {
+                        background: ${({theme}) => theme.colors.lightMagicBlue};
+                    }
                 }
             }
+            
+        }
+    }
+    @media ${({theme}) => theme.device.up1024} {
+        grid-template-rows: 36px 1fr;
+    }
+    @media ${({theme}) => theme.device.up1366} {
+        grid-template-rows: 48px 1fr;
+        footer {
+            ul {
+                li {
+                    
+                    a {
+                        padding: 0.25rem 0.5rem;
+                    }
+                }
+            }
+            
+        }
+    }
+    @media ${({theme}) => theme.device.up1600} {
+        grid-template-rows: 48px 1fr;
+        footer {
+            ul {
+                li {
+                    
+                    a {
+                        padding: 0.25rem 1rem;
+                        ${({theme}) => theme.helpers.lineClamp(2)};
+                    }
+                }
+            }
+            
         }
     }
 `
