@@ -11,8 +11,6 @@ const Ministers = (props) => {
     const [groupOnePeople, setGroupOnePeople] = React.useState();
     const [groupTwoPeople, setGroupTwoPeople] = React.useState();
 
-    console.log('Ministers', props)
-
     React.useEffect(() => {
         let ignore = false;
         const awaitData = async (field, state) => {

@@ -9,10 +9,11 @@ import { _Calendar, _Navigation, _MonthContainer, _Track } from './styles';
 const CalendarSection = (props) => {
     const [events, setEvents] = React.useState();
     const [months, setMonths] = React.useState();
-    const [trackPosition, setTrackPosition] = React.useState(0);
-    const visibleIndex = React.useRef();
     const [trackIndex, setTrackIndex] = React.useState();
+    const [trackPosition, setTrackPosition] = React.useState(0);
 
+    const containerRef = React.useRef();
+    
     const getFirstOfMonthDay = (date) => {
         return new Date(`${date.getFullYear()}-${date.getMonth()+1}-01`).getDay();
     }
@@ -69,15 +70,11 @@ const CalendarSection = (props) => {
     }
 
     React.useEffect(() => {
-
         deliveryClient.entries('event').then((res) => {
-            console.log(res);
             if(Array.isArray(res.items)) {
                 setEvents(res.items);
             }
         });
-
-
     }, [props])
 
 
@@ -87,20 +84,10 @@ const CalendarSection = (props) => {
         if(!events) return;
         
         const _months = getCalendarMonths();
-        console.log(_months)
-
-        const weeklyEvents = [];
-        const monthlyEvents = [];
-        const yearlyEvents = [];
-
+    
         _months.forEach((month) => {
-            const monthEvents = [];
-
-            const monthName = month.startOfMonth.toLocaleString('default', { month: 'long' });
-            console.log(`Checking events for [${monthName}]`)
             events.forEach((_event) => {
                 const event = _event.fields;
-                console.log(`\t[${event.eventName}]...`)
                 const eventStart = new Date(event.eventDate);
                 const eventEnd = new Date(event.endDate);
 
@@ -108,7 +95,6 @@ const CalendarSection = (props) => {
                     if(event.repeats.includes('Weekly')) {
                         if(eventEnd.getTime() >= month.timestamp.end || eventEnd.getTime() >= month.timestamp.start) {
                             // the event series ends later than this month or within it
-                            console.log(`\t- Add Weekly Event [${event.eventName}]`)
                             month.events.push({
                                 series: {
                                     repeats: 'Weekly',
@@ -124,7 +110,6 @@ const CalendarSection = (props) => {
                     // this is a single instance event
                     if(eventEnd.getTime() <= month.timestamp.end && eventStart.getTime() >= month.timestamp.start) {
                         // event is scheduled inside current month
-                        console.log(`\t- Add Single Event [${event.eventName}]`)
                         month.events.push({
                             series: false,
                             dayOfWeek: eventStart.getDay(),
@@ -162,13 +147,11 @@ const CalendarSection = (props) => {
 
     }, [props])
 
-    const containerRef = React.useRef();
+    
     
 
     const updatePosition = (value) => {
-        console.log('Updating Position')
         if(trackIndex + value === months.length) {
-            // setTrackIndex(0);
             return;
         } else if(trackIndex + value < 0) {
             return;
@@ -179,8 +162,6 @@ const CalendarSection = (props) => {
 
     React.useEffect(() => {
         const box = containerRef.current.getBoundingClientRect();
-        console.log(box)
-        console.log('TrackIndex', trackIndex)
         setTrackPosition(box.width * trackIndex)
     }, [trackIndex])
    

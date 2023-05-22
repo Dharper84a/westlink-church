@@ -3,8 +3,6 @@ import Week from "./Week"
 
 import { _Month, _MonthHeading } from "./styles"
 const Month = (props) => {
-    console.log('MONTH', props)
-
     const getWeeks = () => {
         const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const weeks = [];

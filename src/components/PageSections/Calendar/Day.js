@@ -9,7 +9,6 @@ const Day = (props) => {
     const [modalOpen, setModalOpen] = useState(false);
     const hasEvents = props.events.length > 0 ? true : false;
     const showEventsModal = () => {
-        console.log('showing events model')
         setModalOpen(!modalOpen);
     }
 
@@ -32,7 +31,7 @@ const Day = (props) => {
                             {props.events.map((event, key) => {
                                 return (
                                     <li key={key}>
-                                        <Link href={`/${event.slug}`} passHref>
+                                        <Link href={`/event/${event.slug}`} passHref>
                                             {event.eventName}
                                         </Link>
                                     </li>
