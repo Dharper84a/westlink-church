@@ -1,11 +1,10 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import deliveryClient from '../../../../lib/datasource/contentful/delivery';
 
 import Month from './Month';
-import Week from './Week';
-
-import { _Calendar, _MonthContainer, _Track } from './styles';
-import Navigation from './Navigation';
-import deliveryClient from '../../../../lib/datasource/contentful/delivery';
+import { _Calendar, _Navigation, _MonthContainer, _Track } from './styles';
 
 const CalendarSection = (props) => {
     const [events, setEvents] = React.useState();
@@ -198,7 +197,15 @@ const CalendarSection = (props) => {
     return (
         <_Calendar>
             {props.heading && <h2>{props.heading}</h2>}
-            <button onClick={previousHandler}>Previous</button><button onClick={nextHandler}>Next</button>
+            <_Navigation>
+                <button onClick={previousHandler} className="button">
+                    <FontAwesomeIcon icon={faArrowLeft} />{deviceType === 'desktop' && <span>Previous</span>}
+                </button>
+                <button onClick={nextHandler} className="button">
+                    {deviceType === 'desktop' && <span>Next</span>}<FontAwesomeIcon icon={faArrowRight} />
+                </button>    
+            </_Navigation>
+            
             <_MonthContainer ref={containerRef}>
                 <_Track xPosition={trackPosition}>
                 {months &&

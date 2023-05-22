@@ -1,39 +1,64 @@
-
 import Link from 'next/link';
-import {_Day} from './styles'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDay } from '@fortawesome/free-solid-svg-icons';
+import {_Day, _DayNumber} from './styles'
+import { useState } from 'react';
+import Modal from './Modal';
+import { Portal } from '../../Layout';
 const Day = (props) => {
+    const [modalOpen, setModalOpen] = useState(false);
     const hasEvents = props.events.length > 0 ? true : false;
+    const showEventsModal = () => {
+        console.log('showing events model')
+        setModalOpen(!modalOpen);
+    }
 
+    const renderDay = () => {
+        if(!props.status) return <></>;
+
+        if(hasEvents) {
+            if(props.deviceType === 'mobile') {
+                return (
+                    <button onClick={showEventsModal}>
+                        <_DayNumber>{props.number}</_DayNumber>
+                        <FontAwesomeIcon icon={faCalendarDay} />
+                    </button>
+                )
+            } else if(props.deviceType === 'desktop') {
+                return (
+                    <div>
+                        <_DayNumber>{props.number}</_DayNumber>
+                        <ul>
+                            {props.events.map((event, key) => {
+                                return (
+                                    <li key={key}>
+                                        <Link href={`/${event.slug}`} passHref>
+                                            {event.eventName}
+                                        </Link>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                )
+            } else {
+                return <></>
+            }
+        } else {
+            // no events
+            return <_DayNumber>{props.number}</_DayNumber>
+        }
+        
+    
+    }
     return (
         <_Day blank={!props.status}>
-            {props.status &&
-            <>
-            <header>
-                <span>{props.number}</span>
-            </header>
-            <footer>
-                {hasEvents && props.deviceType === 'mobile' && 
-                    <button></button>
-                }
-                {hasEvents && props.deviceType === 'desktop' &&
-                <ul>
-                {props.events.map((event, key) => {
-                    return (
-                        <li key={key}>
-                        <Link href={`/event/${event.slug}`} passHref>
-                            <a title={`More information about ${event.title}`}>
-                                {event.eventName}
-                            </a>
-                        </Link>
-                        </li>
-                    )
-                })}
-                </ul>
-                }
-            </footer>
-            </>
+            {renderDay()}
+            {modalOpen && 
+            <Portal type="modal">
+                <Modal close={showEventsModal} events={props.events} date={props.date} />
+            </Portal>
             }
-
         </_Day>
     )
 }

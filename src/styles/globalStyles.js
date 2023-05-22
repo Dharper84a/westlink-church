@@ -174,6 +174,25 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .button {
+        width: 100%;
+        margin: 8px 0;
+        padding: 12px;
+        cursor: pointer;
+        color: ${({theme}) => theme.colors.offWhite};
+        font-weight: 400;
+        background: ${({theme}) => theme.colors.lightMagicBlue};
+        background: ${({theme}) => theme.colors.gradients.blues};
+        font-size: ${({theme}) => theme.helpers.fontClamp(20,22)};
+        border: none;// solid 3px ${({theme}) => theme.colors.lightMagicBlue};
+        border-radius: 4px;
+        box-shadow: rgba(17, 17, 26, 0) 0px 4px 16px, rgba(17, 17, 26, 0) 0px 8px 32px;
+        transition: all 0.2s;
+        &:hover {
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+            transition: all 0.2s;
+        }
+    }
 `
 
 export const fxPulse = keyframes`

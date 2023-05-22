@@ -53,6 +53,8 @@ const COLOR_APP = {
 
     gradients: {
         blues: 'linear-gradient(45deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
+        purples: 'linear-gradient(45deg, #9400D3 0%, #5D3FD3 100%)',
+        overlayBackdropColored: 'linear-gradient(130deg, rgba(0,119,192,0.9) 0%, rgba(93,63,211,0.9) 100%)',
         bluesFlipped: 'linear-gradient(315deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
         bluesUpDown: 'linear-gradient(180deg, rgba(0,119,192,1) 0%, rgba(0,151,243,1) 100%)',
         greensUpDown: 'linear-gradient(to bottom, #76b852, #8dc26f)',
