@@ -22,6 +22,7 @@ import PreviousSermon from './PreviousSermon';
 import MaterialDownload from './MaterialDownload';
 import PersonList from './PersonList';
 import CountdownSection from './Countdown';
+import CalendarSection from './Calendar';
 
 const PageSections = ({sections}) => {
     
@@ -62,6 +63,8 @@ const PageSections = ({sections}) => {
                 return <PersonList {...section.fields} key={key} />
             case 'pageSectionCountdown':
                 return <CountdownSection {...section.fields} key={key} />
+            case 'pageSectionCalendar':
+                return <CalendarSection {...section.fields} key={key} />
             default: return <div key={key}>SECTION NOT FOUND {section.sys.contentType.sys.id}</div>
         }
     }
