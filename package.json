@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "amazon-cognito-identity-js": "^6.2.0",
+    "aws-sdk": "^2.1384.0",
     "contentful": "^9.1.32",
     "jshint": "^2.13.5",
     "next": "12.2.2",
