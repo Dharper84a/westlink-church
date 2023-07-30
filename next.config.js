@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    env: {
+        "GTM_ID": "GTM-PTWBQTM",
+        "GA4_ID": "G-YVBLEY7PJX"
+    },
     reactStrictMode: false,
     compiler: {
         styledComponents: true
