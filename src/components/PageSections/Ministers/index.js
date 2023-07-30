@@ -14,6 +14,7 @@ const Ministers = (props) => {
     React.useEffect(() => {
         let ignore = false;
         const awaitData = async (field, state) => {
+            if(!field) return;
             if(Array.isArray(field)) {
                 const p_data = field.map(async(item) => {
                     const res = await deliveryClient.entryById(item.sys.id);
