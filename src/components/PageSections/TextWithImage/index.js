@@ -21,11 +21,10 @@ const TextWithImage = (props) => {
                 {image &&
                 <Image
                     src={`https:${image.file.url}`}
-                    layout="fill"
+                    fill={true}
                     alt={image.description || ''}
                     priority
                     quality={75}
-                    objectFit="cover"
                     sizes="(max-width: 768px) 80vw,
                     (max-width: 1200px) 50vw,
                     33vw"

@@ -22,10 +22,8 @@ const PreviousSermon = (props) => {
                 </div>
                 {streamListLink &&
                 <aside>
-                    <Link href={streamListLink}>
-                        <a title="View more of Westlink Church of Christ past sermons" target="_blank" rel="noopener noreferrer">
-                            View More Sermons
-                        </a>
+                    <Link href={streamListLink} title="View more of Westlink Church of Christ past sermons" target="_blank" rel="noopener noreferrer">
+                    View More Sermons
                     </Link>
                 </aside>
                 }

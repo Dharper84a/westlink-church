@@ -39,14 +39,12 @@ const HeroFullWidth = (props) => {
             <figure>
                 <Image
                     src={`https:${image.file.url}`}
-                    layout="fill"
-                    width={image.file.details.image.width}
-                    height={image.file.details.image.height}
+                    fill={true}
+                    // width={image.file.details.image.width}
+                    // height={image.file.details.image.height}
                     alt={image.description || ''}
-                    objectFit="cover"
-                    objectPosition="top"
                     sizes="100vw"
-                    priority
+                    priority={true}
                 />
                 {overlayText &&
                 <h1>{overlayText}</h1>

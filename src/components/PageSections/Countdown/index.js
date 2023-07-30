@@ -39,10 +39,8 @@ const CountdownSection = (props) => {
                 <RichTextRenderer richText={props.content} />
                 }
                 <footer>
-                    <Link href="https://www.youtube.com/channel/UCwvIPoZGrLxCVAzmO77DZOg/live" passHref>
-                        <a title="Watch Westlinks Christmas Play live stream">
-                            Watch The Play Live
-                        </a>
+                    <Link href="https://www.youtube.com/channel/UCwvIPoZGrLxCVAzmO77DZOg/live" title="Watch Westlinks Christmas Play live stream">
+                    Watch The Play Live
                     </Link>
                 </footer>
             </header>

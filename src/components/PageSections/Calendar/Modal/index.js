@@ -25,15 +25,14 @@ const Modal = (props) => {
                     {props.events.map((event, key) => {
                         return (
                             <li key={key}>
-                                <Link href={`/event/${event.slug}`} passHref>
+                                <Link href={`/event/${event.slug}`}>
                                     <span>
                                         <div>
                                         {event?.mainImage &&
                                         <Image
                                             src={`https://${event.mainImage.fields.file.url}`}
                                             alt={event.mainImage.fields.description || ''}
-                                            layout='fill'
-                                            objectFit='cover'
+                                            fill={true}
                                             sizes='32px'
                                         />
                                         }

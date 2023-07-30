@@ -35,6 +35,9 @@ export const ComponentBox = styled.div`
         span, img {
             border-radius: 4px;
         }
+        img {
+            object-fit: cover;
+        }
     }
     aside {
         width: 100%;

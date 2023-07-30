@@ -42,6 +42,9 @@ export const EventComponent = styled.section`
             position: relative;
             width: 100%;
             height: 300px;
+            img {
+                object-fit: cover;
+            }
         }
     }
     @media ${({theme}) => theme.device.largePhones} {

@@ -13,8 +13,7 @@ const MediumCard = (props) => {
                 <Image
                     src={`https:${image.file.url}`}
                     alt={image.displayName || ''}
-                    layout="fill"
-                    objectFit="cover"
+                    fill={true}
                 />
             </figure>
            ):(

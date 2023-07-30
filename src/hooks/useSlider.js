@@ -17,7 +17,7 @@ const initialState = {
 const validatePosition = (nodes, requestedXOffset) => {
     if(requestedXOffset > 0) return false;
 
-    const totalWidth = 0;
+    var totalWidth = 0;
     // -2 is to account for last card, so we do not go past it.
     for(var i = 0; i <= nodes.length - 2; i++) {
         totalWidth += nodes[i].offsetWidth;

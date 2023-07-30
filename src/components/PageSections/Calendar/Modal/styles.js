@@ -78,5 +78,8 @@ export const _Dialog = styled.div`
                 }
             }
         }
+        img {
+            object-fit: cover;
+        }
     }
 `

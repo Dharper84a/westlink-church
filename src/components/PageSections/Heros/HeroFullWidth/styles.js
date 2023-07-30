@@ -53,7 +53,10 @@ export const HeroFullWidthContainer = styled.div`
             font-size: ${({theme}) => theme.helpers.fontClampBox(34, 72, 350, 1920)};
             animation: ${fxSimpleFadeIn} 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
         }
-        
+        img {
+            object-fit: cover;
+            object-position: top;
+        }
     }
 
     

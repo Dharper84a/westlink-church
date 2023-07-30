@@ -20,8 +20,7 @@ const CardStaff = (props) => {
                         <Image
                             src={`https://${image.file.url}`}
                             alt={image.description || ''}
-                            layout="fill"
-                            objectFit="cover"
+                            fill={true}
                         />
                         </>
                     ) : (

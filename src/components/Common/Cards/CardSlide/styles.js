@@ -30,6 +30,9 @@ export const CardComponent = styled.div`
         span {
             border-radius: 4px;
         }
+        img {
+            object-fit: cover;
+        }
     }
     h3, p {
         padding: 0;

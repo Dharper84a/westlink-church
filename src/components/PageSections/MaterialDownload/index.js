@@ -21,10 +21,8 @@ const MaterialDownload = (props) => {
                 {props.material.map((material, key) => {
                     return (
                         <li key={key}>
-                            <Link href={`https:${material.fields.file.url}`}>
-                                <a target="_blank" rel="noopener noreferrer">
-                                    {material.fields.title}
-                                </a>
+                            <Link href={`https:${material.fields.file.url}`} target="_blank" rel="noopener noreferrer">
+                            {material.fields.title}
                             </Link>
                         </li>
                     )

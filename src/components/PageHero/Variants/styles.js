@@ -70,6 +70,12 @@ export const CarouselHero = styled.div`
     height: 50vh;
     max-height: 100%;
     background: gray;
+    figure {
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
     @media ${({theme}) => theme.device.ipads} {
         height: 60vh;
         h1 {
@@ -129,7 +135,7 @@ export const LargeImageHero = styled.div`
     animation: ${fxOnLoaded} 0.15s ease both;
     `}
     section {
-        position: relative;
+        position: absolute;
         z-index: ${({theme}) => theme.layers.content};
         width: 100%;
         padding: ${({theme}) => theme.layout.pagePadding.css};
@@ -141,7 +147,7 @@ export const LargeImageHero = styled.div`
         
     }
     figure {
-        position: absolute;
+        position: relative;
         top: 0;
         left: 0;
         width: 100%;
@@ -158,6 +164,10 @@ export const LargeImageHero = styled.div`
             height: 100%;
             mix-blend-mode: multiply;
             background: ${({theme}) => theme.colors.gradients.largeHeroContentOverlayMobile};
+        }
+        img {
+            object-fit: cover;
+            object-position: center;
         }
     }
     @media ${({theme}) => theme.device.tablets} {

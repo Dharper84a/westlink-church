@@ -153,10 +153,9 @@ const CarouselVariant = (props) => {
                                     <Image
                                         src={`https:${slide.image.fields.file.url}`}
                                         alt={slide.image.fields.description || ''}
-                                        layout="fill"
-                                        objectFit="cover"
-                                        objectPosition="center"
                                         priority={true}
+                                        width={480}
+                                        height={270}
                                     />
                                 </figure>
                             </TrackItem>

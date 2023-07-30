@@ -28,6 +28,9 @@ export const IDCard = styled.div`
         & > * {
             border-radius: 0.25rem;
         }
+        img {
+            object-fit: cover;
+        }
     }
     div {
         display: flex;

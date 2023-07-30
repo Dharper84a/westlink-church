@@ -17,10 +17,8 @@ const LargeImageVariant = (props) => {
                     src={`http:${props.image.fields.file.url}`}
                     alt={props.image.fields.description || ''}
                     quality={50}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
                     priority={true}
+                    fill={true}
                     onLoadingComplete={onLoadingCompleteHandler}
                 />
                 

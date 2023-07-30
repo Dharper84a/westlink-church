@@ -79,33 +79,29 @@ const Event = (props) => {
                 {hasLocation && (
                     <p>
                         <Link
-                            href={`https://maps.google.com/?q=${props.fields.location.lat},${props.fields.location.lon}`}>
-                            <a
-                                title="View a map of where this event is taking place"
-                                target="_blank"
-                                rel="noreferrer nopener">
-                                View location of event on Google Maps
-                            </a>
+                            href={`https://maps.google.com/?q=${props.fields.location.lat},${props.fields.location.lon}`}
+                            title="View a map of where this event is taking place"
+                            target="_blank"
+                            rel="noreferrer nopener">
+                            View location of event on Google Maps
                         </Link>
                     </p>
                 )}
             </header>
             <aside>
                 {image && (
-                <figure>
-                    
+                    <figure>
                         <Image
                             src={`https:${image.file.url}`}
-                            layout="fill"
+                            fill={true}
                             alt={image.description || ''}
                             priority
                             quality={75}
-                            objectFit="cover"
                             sizes="(max-width: 768px) 80vw,
                         40vw"
                         />
-                </figure>
-                 )}
+                    </figure>
+                )}
             </aside>
         </EventComponent>
     );

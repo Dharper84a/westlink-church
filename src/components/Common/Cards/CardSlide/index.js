@@ -74,8 +74,7 @@ const CardSlide = (props) => {
                         <Image
                             src={`https:${data.image.file.url}`}
                             alt={data.image.description || ''}
-                            layout="fill"
-                            objectFit="cover"
+                            fill={true}
                         />
                     }
                 </figure>
@@ -84,8 +83,8 @@ const CardSlide = (props) => {
             </div>
             {data.link &&
             <footer>
-                <Link href={data.link.href}>
-                    <a title={data.link.title}>{data.link.title}</a>
+                <Link href={data.link.href} title={data.link.title}>
+                    {data.link.title}
                 </Link>
             </footer>
             }

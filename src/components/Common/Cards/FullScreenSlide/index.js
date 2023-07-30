@@ -9,9 +9,8 @@ const FullScreenSlideCard = (props) => {
                 src={`https:${props.fields.file.url}`}
                 blurDataURL='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
                 placeholder='blur'
-                layout="fill"
+                fill={true}
                 sizes="(min-width: 1400px) 50vw, 100vw"
-                objectFit='cover'
                 alt={props.fields.description || ''}
             />
         </Partial>
