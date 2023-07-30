@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'standalone',
     env: {
         "GTM_ID": "GTM-PTWBQTM",
         "GA4_ID": "G-YVBLEY7PJX"
