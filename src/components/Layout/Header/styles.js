@@ -6,6 +6,47 @@ import {
     fxPulse
 } from '../../../styles/globalStyles';
 
+
+export const _SiteHeader = styled.header`
+    position: sticky;
+    z-index: ${({theme}) => theme.layers.content + 50};
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 96px;
+    background: ${({theme}) => theme.colors.white};
+    box-shadow: ${({theme}) => theme.shadows.standard};
+    @media ${({theme}) => theme.device.up1024} {
+        height: 128px;
+    }
+`
+
+export const _Inner = styled.div`
+    ${({theme}) => theme.layout.containerFull};
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem ${({theme}) => theme.layout.screenEdge};
+    figcaption {
+        display: none;
+    }
+    @media ${({theme}) => theme.device.up1024} {
+        figcaption {
+            display: block;
+        }
+    }
+`
+
+export const _MobileMenuButton = styled.button`
+    width: 48px;
+    height: 48px;
+    color: ${({theme}) => theme.colors.white};
+    font-size: 22px;
+    background-color: ${({theme}) => theme.colors.magicBlue};
+    border: none;
+    border-radius: 4px;
+`
+
 export const SiteIdentity = styled.div`
     display: none;
     @media ${({ theme }) => theme.device.tablets} {

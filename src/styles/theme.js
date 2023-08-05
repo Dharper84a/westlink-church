@@ -88,7 +88,10 @@ const LAYOUT_REF = {
         bottom: 0,
         left: '6%',
         css: '0 6% 0 6%',
-    }
+    },
+    screenEdge: '7.5%',
+    screenEdgeLg: '10%',
+    screenEdgeXl: '12.5%',
 };
 const LAYOUT_CONTAINERS = {
     container: {
@@ -103,6 +106,11 @@ const LAYOUT_CONTAINERS = {
         height: '100%',
         margin: '0 auto',
         padding: LAYOUT_REF.pagePadding.css
+    },
+    "containerFull" : {
+        width: '100%',
+        maxWidth: '2560px',
+        margin: '0 auto',
     }
     
 };
@@ -176,8 +184,10 @@ const lineClamp = (lines) => {
 }
 
 const SHADOWS = {
+    "standard": '0.5rem 0.5rem 1rem rgba(35, 37, 38, 0.2)',
     image: '0.5rem 0.5rem 1rem rgba(35, 37, 38, 0.2)',
 }
+
 export const theme = {
     colors: COLORS,
     shadows: SHADOWS,

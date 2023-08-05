@@ -60,9 +60,7 @@ export default class MyDocument extends Document {
                                 visibility: 'hidden'
                             }}></iframe>
                     </noscript>
-
-                    <div id="modal"></div>
-                    <div id="drawer"></div>
+                    <div id="portal"></div>
                     <Main />
                     <NextScript />
                 </body>
