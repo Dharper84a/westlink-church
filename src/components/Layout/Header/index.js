@@ -19,6 +19,7 @@ import {
 } from './styles';
 import { Portal } from '../Portal';
 import MobileMenu from './MobileMenu';
+import DesktopMenu from './DesktopMenu';
 
 const Header = (props) => {
     const { ref, inView, entry } = useInView({
@@ -31,12 +32,12 @@ const Header = (props) => {
     const closingDuration = 150;
 
     const toggleMenu = () => {
-        setMenuState(menuState === 'open' ? 'close' : 'open')
+        setMenuState(menuState === 'open' ? 'close' : 'open');
     };
 
     React.useEffect(() => {
         let ignore = false;
-        console.log('menuState', menuState)
+        console.log('menuState', menuState);
         if (menuState === 'close') {
             setTimeout(() => {
                 if (!ignore) {
@@ -53,25 +54,27 @@ const Header = (props) => {
             <_SiteHeader>
                 <_Inner>
                     <figure>
-                        <Image src="/images/Icon-Logo-48x48.png" alt="" width={48} height={48} />
-                        <figcaption>
-                            <Link href="/" title="Go to Westlink Church of Christ homepage">
-                                Westlink Church of Christ
-                            </Link>
-                        </figcaption>
+                        <Link href="/" title="Go to Westlink Church of Christ homepage">
+                            <Image
+                                src="/images/Icon-Logo-48x48.png"
+                                alt=""
+                                width={48}
+                                height={48}
+                            />
+                            <figcaption>Westlink Church of Christ</figcaption>
+                        </Link>
                     </figure>
-                    <_MobileMenuButton onClick={toggleMenu}>
+                    <DesktopMenu />
+                    <_MobileMenuButton onClick={toggleMenu} aria-label="show site navigation">
                         <FontAwesomeIcon icon={faBars} />
                     </_MobileMenuButton>
                 </_Inner>
             </_SiteHeader>
-            {menuState !== 'closed' &&
-            <Portal state={menuState} portalCloseHandler={toggleMenu}>
-                <MobileMenu state={menuState} closeHandler={toggleMenu}>
-                    jjj
-                </MobileMenu>
-            </Portal>
-            }
+            {menuState !== 'closed' && (
+                <Portal state={menuState} portalCloseHandler={toggleMenu}>
+                    <MobileMenu state={menuState} closeHandler={toggleMenu} />
+                </Portal>
+            )}
         </>
     );
 };

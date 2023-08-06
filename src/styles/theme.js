@@ -35,6 +35,12 @@ const COLOR_REF = {
     rubyRed: "#E0115F",
     tomato: "#FF6347",
     purple: '#9400D3',
+
+    // HSL
+    veryLightBlue: "hsla(203,100%,85%,1)",
+    lightBlue: "hsla(203,100%,48%,1)",
+    grayBlue: "hsla(207,44%,49%,1)",
+    
 };
 
 const COLOR_APP = {

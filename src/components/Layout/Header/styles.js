@@ -18,7 +18,7 @@ export const _SiteHeader = styled.header`
     background: ${({theme}) => theme.colors.white};
     box-shadow: ${({theme}) => theme.shadows.standard};
     @media ${({theme}) => theme.device.up1024} {
-        height: 128px;
+        /* height: 128px; */
     }
 `
 
@@ -31,8 +31,22 @@ export const _Inner = styled.div`
         display: none;
     }
     @media ${({theme}) => theme.device.up1024} {
-        figcaption {
-            display: block;
+        display: grid;
+        grid-template-columns: 275px 1fr;
+        gap: 4rem;
+        figure {
+            a {
+                display: flex;
+                align-items: center;
+                color: ${({theme}) => theme.colors.charcoal};
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+            figcaption {
+                display: block;
+                margin-left: 1rem;
+            }
         }
     }
 `
@@ -45,6 +59,9 @@ export const _MobileMenuButton = styled.button`
     background-color: ${({theme}) => theme.colors.magicBlue};
     border: none;
     border-radius: 4px;
+    @media ${({theme}) => theme.device.up1024} {
+        display: none;
+    }
 `
 
 export const SiteIdentity = styled.div`
