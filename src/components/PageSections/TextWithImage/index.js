@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 import RichTextRenderer from '../../Common/RichTextRenderer';
 
-import { ComponentBox } from './styles';
+import { ComponentBox, _TextWithImage } from './styles';
 const TextWithImage = (props) => {
     const {ref, inView, entry} = useInView({
         threshold: 0.60,
@@ -16,28 +16,47 @@ const TextWithImage = (props) => {
     const animationClass = imageOnLeft ? 'slide-in-left' : 'slide-in-right';
     // console.log(imageOnLeft);
     return(
-        <ComponentBox imageOnLeft={imageOnLeft} bgColor={imageOnLeft ? 'magicBlue' : 'offWhite'} textColor={imageOnLeft ? 'offWhite' : 'matteBlack'}>
-            <figure ref={ref}>
+        <_TextWithImage imageOnLeft={imageOnLeft}>
+            <figure>
                 {image &&
                 <Image
                     src={`https:${image.file.url}`}
-                    fill={true}
+                    width={640}
+                    height={360}
                     alt={image.description || ''}
-                    priority
-                    quality={75}
-                    sizes="(max-width: 768px) 80vw,
-                    (max-width: 1200px) 50vw,
-                    33vw"
+                    sizes="(max-width: 768px) 100vw,
+                    (max-width: 1366px) 40vw,
+                    50vw"
                 />
                 }
             </figure>
             <aside>
                 <h2>{props.fields.heading}</h2>
-                {richText &&
-                <RichTextRenderer richText={richText} />
-                }
+                {richText && <RichTextRenderer richText={richText} />}
             </aside>
-        </ComponentBox>
+        </_TextWithImage>
+        // <ComponentBox imageOnLeft={imageOnLeft} bgColor={imageOnLeft ? 'magicBlue' : 'offWhite'} textColor={imageOnLeft ? 'offWhite' : 'matteBlack'}>
+        //     <figure ref={ref}>
+        //         {image &&
+        //         <Image
+        //             src={`https:${image.file.url}`}
+        //             fill={true}
+        //             alt={image.description || ''}
+        //             priority
+        //             quality={75}
+        //             sizes="(max-width: 768px) 80vw,
+        //             (max-width: 1366px) 50vw,
+        //             33vw"
+        //         />
+        //         }
+        //     </figure>
+        //     <aside>
+        //         <h2>{props.fields.heading}</h2>
+        //         {richText &&
+        //         <RichTextRenderer richText={richText} />
+        //         }
+        //     </aside>
+        // </ComponentBox>
     )
 }
 

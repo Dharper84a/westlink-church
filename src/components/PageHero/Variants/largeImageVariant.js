@@ -14,15 +14,12 @@ const LargeImageVariant = (props) => {
             </section>
             <figure>
                 <Image
-                    src={`http:${props.image.fields.file.url}`}
+                    src={`https:${props.image.fields.file.url}`}
                     alt={props.image.fields.description || ''}
-                    quality={50}
                     priority={true}
                     fill={true}
                     onLoadingComplete={onLoadingCompleteHandler}
                 />
-                
-                
             </figure>
         </LargeImageHero>
     )

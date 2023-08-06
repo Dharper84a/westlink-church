@@ -1,21 +1,83 @@
 import styled, {css} from "styled-components";
 
 const cssImageLeft = css`
-    grid-template-columns: 0.4fr 0.6fr;
-    figure {
-        order: 1;
+    
+    background-color: ${({theme}) => theme.colors.mediumBlue};
+    h2, p, a {
+        color: ${({theme}) => theme.colors.white};
     }
-    aside {
-        order: 2;
+    a {
+        text-decoration: underline;
+        text-decoration-color: ${({theme}) => theme.colors.veryLightBlue};
+        text-underline-offset: 0.5rem;
+        text-decoration-thickness: 0.15rem;
+        &:hover {            
+            text-underline-offset: 0.65rem;
+            text-decoration-color: ${({theme}) => theme.colors.bluePurple};
+        }
     }
+    @media ${({theme}) => theme.device.up1024} {
+        grid-template-columns: 0.4fr 0.6fr;
+        figure {
+            order: 1;
+        }
+        aside {
+            order: 2;
+        }
+    }
+    @media ${({theme}) => theme.device.up1600} {
+        grid-template-columns: 0.5fr 0.5fr;
+    }
+
 `
 const cssImageRight = css`
-    grid-template-columns: 0.6fr 0.4fr;
+    
+    @media ${({theme}) => theme.device.up1024} {
+        grid-template-columns: 0.6fr 0.4fr;
+        figure {
+            order: 2;
+        }
+        aside {
+            order: 1;
+        }
+    }
+    @media ${({theme}) => theme.device.up1600} {
+        grid-template-columns: 0.5fr 0.5fr;
+    }
+`
+export const _TextWithImage = styled.div`
+    ${({theme}) => theme.layout.containerFull};
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 2rem 0;
+    img {
+        width: fit-content;
+        max-width: 100%;
+        object-fit: contain;
+        
+    }
     figure {
-        order: 2;
+        order: 1;
+        display: flex;
+        justify-self: center;
+        align-self: center;
+        height: max-content;
     }
     aside {
-        order: 1;
+        order: 0;
+        margin: 2rem ${({theme}) => theme.layout.screenEdge};
+    }
+    ${props => props.imageOnLeft === true ? cssImageLeft : cssImageRight}
+    @media ${({theme}) => theme.device.up1024} {
+        gap: 6rem;
+        padding: 3rem ${({theme}) => theme.layout.screenEdge};
+        figure, img {
+            border-radius: 0.5rem;
+        }
+        
+        aside {
+            margin: 0;
+        }
     }
 `
 

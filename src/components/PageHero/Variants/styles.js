@@ -129,20 +129,23 @@ export const LargeImageHero = styled.div`
     position: relative;
     display: flex;
     align-items: flex-end;
-    height: 65vh;
-    max-height: 800px;
+    height: calc(100vh - 96px);
     ${props => props.imageLoaded && css`
     animation: ${fxOnLoaded} 0.15s ease both;
     `}
     section {
         position: absolute;
         z-index: ${({theme}) => theme.layers.content};
+        top: 0;
         width: 100%;
-        padding: ${({theme}) => theme.layout.pagePadding.css};
-        padding-bottom: 4rem;
+        height: 100%;
+        padding: 10rem ${({theme}) => theme.layout.screenEdge} 2rem;
+        background: rgba(0,0,0,0.17);
+        backdrop-filter: blur(0.125rem) brightness(70%);
         h1, p {
             max-width: 768px;
             color: ${({theme}) => theme.colors.text.light};
+            /* text-shadow: 2px 2px 6px hsla(0, 0%, 0%, 0.5), 4px 4px 16px hsla(0, 0%, 0%, 1); */
         }
         
     }
@@ -151,45 +154,27 @@ export const LargeImageHero = styled.div`
         top: 0;
         left: 0;
         width: 100%;
-        height: 65vh;
-        max-height: 800px;
-        background: ${({theme}) => theme.colors.magicBlue};
-        &::after {
-            content: ' ';
-            position: absolute;
-            z-index: ${({theme}) => theme.layers.base + 1};
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            mix-blend-mode: multiply;
-            background: ${({theme}) => theme.colors.gradients.largeHeroContentOverlayMobile};
-        }
+        height: 100%;
+        background-color: ${({theme}) => theme.colors.dark};
         img {
             object-fit: cover;
             object-position: center;
         }
     }
-    @media ${({theme}) => theme.device.tablets} {
+    @media ${({theme}) => theme.device.up1024} {
+        height: 400px;
         section {
-            padding-bottom: 2rem;
-        }
-        figure {
-            &::before {
-                content: ' ';
-                position: absolute;
-                z-index: ${({theme}) => theme.layers.base + 1};
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                mix-blend-mode: multiply;
-                background: ${({theme}) => theme.colors.gradients.darkOverlayUD};
-            }
-            &::after {
-                background: ${({theme}) => theme.colors.gradients.largeHeroContentOverlayTablet};
+            padding: 0 ${({theme}) => theme.layout.screenEdge};
+            h1, p {
+                position: relative;
+                top: 30%;
+                transform: translateY(-50%);
             }
         }
     }
+    @media ${({theme}) => theme.device.up1600} {
+        height: 500px;
+    }
+    
 `
 /** END - LARGE HERO */

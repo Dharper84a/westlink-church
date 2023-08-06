@@ -39,6 +39,7 @@ const COLOR_REF = {
     // HSL
     veryLightBlue: "hsla(203,100%,85%,1)",
     lightBlue: "hsla(203,100%,48%,1)",
+    mediumBlue: "hsla(203,100%,38%,1)",
     grayBlue: "hsla(207,44%,49%,1)",
     
 };
