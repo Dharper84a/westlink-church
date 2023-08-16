@@ -1,6 +1,6 @@
 {
   "name": "westlink-church",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,10 +17,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "contentful": "^9.1.32",
-    "jshint": "^2.13.5",
-    "next": "13.4.12",
+    "next": "^13.4.12",
     "next-seo": "^5.6.0",
-    "node-fetch": "2.6.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.4.0",
