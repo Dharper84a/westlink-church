@@ -1,6 +1,7 @@
 import fontClamp from "./helpers/fontClamp"
 
 const colors = {
+    darkText: '#232B2B',
     white: "#FFFFFF",
     black: "#000000",
     gray: "#ABABAB",
@@ -8,7 +9,7 @@ const colors = {
     lightPink: '#E6DADA',
     aquaGray: '#274046',
     offWhite: '#dfe9f3',
-    
+    aqua: '#49B5B5',
 }
 
 const gradients = {
@@ -30,6 +31,7 @@ const devices = {
 }
 
 const layout = {
+    screenEdge: '6%',
     container: {
         large: {
             width: '90%',

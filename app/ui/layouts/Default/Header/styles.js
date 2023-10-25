@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const _Header = styled.header`
+    grid-area: header;
     position: fixed;
     width: 100%;
     padding: 2rem 0;

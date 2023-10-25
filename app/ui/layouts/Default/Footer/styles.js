@@ -12,6 +12,7 @@ const fxMovingGradient = keyframes`
 	}
 `
 export const _Footer = styled.footer`
+    grid-area: footer;
     position: relative;
     padding: 2rem 0;
     background: ${({theme}) => theme.color.darkGray};

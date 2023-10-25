@@ -9,7 +9,8 @@ import Footer from "./Footer";
 
 import FullWidthHero from '../../components/FullWidthHero';
 
-import { _DefaultLayout } from './styles';
+import { _DefaultLayout, _Inner } from './styles';
+import EventCard from '../../components/EventCard';
 
 const DefaultLayout = (props) => {
 
@@ -19,7 +20,10 @@ const DefaultLayout = (props) => {
             <_DefaultLayout>
                 <Header />
                 <main>
-                    <FullWidthHero />
+                    <_Inner>
+                        <EventCard />
+                    </_Inner>
+                    
                     {props.children}
                 </main>
                 <Footer />
