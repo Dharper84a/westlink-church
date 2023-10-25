@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const _Header = styled.header`
     grid-area: header;
     position: fixed;
+    z-index: ${({theme}) => theme.layer.content + 10};
     width: 100%;
     padding: 2rem 0;
     background: ${({theme}) => theme.color.white};

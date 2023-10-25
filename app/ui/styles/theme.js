@@ -51,11 +51,18 @@ const layout = {
     }
 }
 
+const layers = {
+    base: 1,
+    content: 10,
+    overlay: 50,
+}
+
 export const theme = {
     color: colors,
     gradient: gradients,
     shadow: shadows,
     device: devices,
     layout,
+    layer: layers,
     fontClamp
 }
