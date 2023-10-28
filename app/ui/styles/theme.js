@@ -53,8 +53,8 @@ const layout = {
 
 const layers = {
     base: 1,
-    content: 10,
-    overlay: 50,
+    content: 100,
+    overlay: 200,
 }
 
 export const theme = {

@@ -2,14 +2,15 @@ import { createGlobalStyle } from 'styled-components';
  
 const GlobalStyle = createGlobalStyle`
     html, body {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
     body {
-        font-family: Open-Sans, Helvetica, Sans-Serif;
         color: ${({theme}) => theme.color.darkText};
         font-size: 16px;
     }
+
     figure {
         display: flex;
         margin: 0;
@@ -23,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
         max-width: 100%;
     }
     h1 {
+        font-size: ${({theme}) => theme.fontClamp(32, 46)};
         line-height: 1.25;
     }
     h3 {
@@ -37,17 +39,27 @@ const GlobalStyle = createGlobalStyle`
 
     /** LINKS AND BUTTONS CLASSES */
     .button {
-        padding: 0.5rem 1rem;
-        color: ${({theme}) => theme.color.white};
-        font-size: ${({theme}) => theme.fontClamp(18, 20)};
-        background-color: ${({theme}) => theme.color.aqua};
-        border: 2px solid ${({theme}) => theme.color.white};
-        border-radius: 0.5rem;
-        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.12);
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        padding: 0.35rem 0.75rem;
+        font-family: 'Open Sans', sans-serif;
         text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: all 0.16s;
+        &--white {
+            color: ${({theme}) => theme.color.darkText};
+            background-color: ${({theme}) => theme.color.white};
+            &:hover {
+                background-color: ${({theme}) => theme.color.offWhite};
+            }
+        }
+        &--icon-right {
+            svg {
+                margin-left: 0.5rem;
+            }
         }
     }
 `;

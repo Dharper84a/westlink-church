@@ -7,10 +7,9 @@ import GlobalStyle from '../../styles/GlobalStyles';
 import Header from "./Header";
 import Footer from "./Footer";
 
-import FullWidthHero from '../../components/FullWidthHero';
+import ImageHero from '../../components/ImageHero';
 
-import { _DefaultLayout, _Inner } from './styles';
-import EventCard from '../../components/EventCard';
+import { _DefaultLayout } from './styles';
 
 const DefaultLayout = (props) => {
 
@@ -20,13 +19,11 @@ const DefaultLayout = (props) => {
             <_DefaultLayout>
                 <Header />
                 <main>
-                    <_Inner>
-                        <EventCard />
-                    </_Inner>
+                    <ImageHero />
                     
                     {props.children}
                 </main>
-                <Footer />
+                {/* <Footer /> */}
             </_DefaultLayout>
         </ThemeProvider>
     )
