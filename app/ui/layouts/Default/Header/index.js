@@ -4,12 +4,18 @@ import Link from "next/link";
 import {lato} from "../../../../fonts";
 import { _Header, _Inner } from "./styles";
 import useWindowDimensions from "../../../../lib/hooks/useWindowDimensions";
+
+import { useState } from "react";
+import { useSiteContext } from "../../../../lib/context";
+
 const Header = (props) => {
+    const siteState = useSiteContext();
+    const [toggle, setToggle] = useState(false);
     const {width, height} = useWindowDimensions();
 
     return (
         <_Header>
-            <_Inner>
+            <_Inner variant={siteState.headerVariant}>
                 <span className={lato.className}>Westlink Church</span>
                 <menu>
                     <li>
@@ -24,7 +30,7 @@ const Header = (props) => {
                         </button>
                         }
                         {width >= 768 &&
-                        <button className="button button--white button--icon-right" aria-label="open menu window">
+                        <button className="button button--white button--icon-right" aria-label="open menu window" onClick={() => { setToggle(!toggle) }}>
                             Menu <FontAwesomeIcon icon={faBars} />
                         </button>
                         }

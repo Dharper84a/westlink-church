@@ -11,20 +11,31 @@ import ImageHero from '../../components/ImageHero';
 
 import { _DefaultLayout } from './styles';
 
-const DefaultLayout = (props) => {
+import useIntersectionObserver from '../../../lib/hooks/useIntersectionObserver';
+import { SiteProvider } from '../../../lib/context';
+import HeroSlider from '../../components/HeroSlider';
 
+
+const DefaultLayout = (props) => {
+    const mainObserverRef = useIntersectionObserver({ threshold: 0.5 }, (entries) => {
+        entries.forEach((entry) => {
+            // if(!entry?.isIntersecting) {
+            //     console.log('Scrolled 50% of page')
+            // }
+        })
+    })
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <_DefaultLayout>
-                <Header />
-                <main>
-                    <ImageHero />
-                    
-                    {props.children}
-                </main>
-                {/* <Footer /> */}
-            </_DefaultLayout>
+            <SiteProvider>
+                <_DefaultLayout>
+                    <main ref={mainObserverRef}>
+                        <HeroSlider />
+                        {props.children}
+                    </main>
+                    {/* <Footer /> */}
+                </_DefaultLayout>
+            </SiteProvider>
         </ThemeProvider>
     )
 }

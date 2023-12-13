@@ -2,6 +2,7 @@
   "name": "westlink-church",
   "version": "2.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
