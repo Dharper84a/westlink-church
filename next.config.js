@@ -10,7 +10,7 @@ const nextConfig = {
         styledComponents: true
     },
     images: {
-        domains: ['images.ctfassets.net', 'source.unsplash.com']
+        domains: ['images.ctfassets.net', 'source.unsplash.com', 'diqstapf6hjxd.cloudfront.net', 'i.redd.it', 'wharferj.files.wordpress.com', 'images7.alphacoders.com']
     },
     i18n: {
         locales: ['en-US'],
