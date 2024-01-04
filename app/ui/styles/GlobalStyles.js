@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
     body {
+        font-family: var(--font-monserrat);
         color: ${({theme}) => theme.color.darkText};
         font-size: 16px;
     }
@@ -22,19 +23,38 @@ const GlobalStyle = createGlobalStyle`
     }
     img {
         max-width: 100%;
+        height: fit-content;
+        /* object-fit: contain; */
     }
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0.5rem 0 0.75rem;
+        font-family: var(--font-poppins);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
     h1 {
-        font-size: ${({theme}) => theme.fontClamp(32, 46)};
-        line-height: 1.25;
+        font-size: ${({theme}) => theme.fontClamp(40, 52)};
+    }
+    h2 {
+        font-size: ${({theme}) => theme.fontClamp(34, 40)};
     }
     h3 {
-        margin: 0.5rem 0 0.75rem;
-        font-size: ${({theme}) => theme.fontClamp(28, 38)};
+        font-size: ${({theme}) => theme.fontClamp(26, 37)};
+    }
+    h4 {
+        font-size: ${({theme}) => theme.fontClamp(22, 34)};
+    }
+    h5 {
+        font-size: ${({theme}) => theme.fontClamp(20, 30)};
+    }
+    h6 {
+        font-size: ${({theme}) => theme.fontClamp(18, 26)};
     }
     p {
         font-size: ${({theme}) => theme.fontClamp(16, 20)};
-        font-weight: 300;
-        line-height: 1.45;
+        font-weight: 400;
+        line-height: 1.5;
     }
 
     /** LINKS AND BUTTONS CLASSES */

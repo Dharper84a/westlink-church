@@ -30,7 +30,6 @@ const DefaultLayout = (props) => {
             <SiteProvider>
                 <_DefaultLayout>
                     <main ref={mainObserverRef}>
-                        <HeroSlider />
                         {props.children}
                     </main>
                     {/* <Footer /> */}

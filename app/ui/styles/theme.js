@@ -10,6 +10,8 @@ const colors = {
     aquaGray: '#274046',
     offWhite: '#dfe9f3',
     aqua: '#49B5B5',
+    blue: 'hsl(203, 100%, 35%)',
+    darkBlue: 'hsl(203, 100%, 20%)',
 }
 
 const gradients = {
