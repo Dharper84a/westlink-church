@@ -4,34 +4,66 @@ import ContactForm from './ui/components/ContactForm';
 import RichText from './ui/components/RichText';
 import PageHeader from './ui/components/PageHeader';
 import CopyImage from './ui/components/CopyImage';
-const P_COPY_1 = <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem sit amet interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio a tellus finibus tincidunt. Proin consectetur aliquet eleifend. Aenean et urnalectus. Phasellus luctus arcu vitae metus pretium posuere. Fusce nulla mi,euismod sed libero nec, faucibus maximus leo.</p>
+import PersonAndBio from './ui/components/PersonBio';
+import Badge from './ui/components/Badge';
+import EventsList from './ui/components/EventsList';
 
-const P_COPY_2 = <p>Integer leo velit, lobortis ut diam eget, porttitor consequat velit. Nullam vitae porttitor dui. Donec a leo aliquet, porttitor mauris sed, consequat libero. Nam dignissim urna ac risus mattis, ut pretium lacus tincidunt. Crascursus sed nisl eu mollis. Aenean vel nunc nisl. Donec pulvinar maximus velit, id faucibus metus pretium sit amet. Vestibulum felis odio, rutrum eu consectetur quis, sollicitudin sit amet erat.</p>
+const COPY_FANCY = (
+    <>
+    <h2>Fancy Copy Heading</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem sit amet
+        interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio a tellus finibus
+        tincidunt. Proin consectetur aliquet eleifend. Aenean et urnalectus. Phasellus luctus arcu
+        vitae metus pretium posuere. Fusce nulla mi,euismod sed libero nec, faucibus maximus leo.
+    </p>
+    </>
+)
+const P_COPY_1 = (
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem sit amet
+        interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio a tellus finibus
+        tincidunt. Proin consectetur aliquet eleifend. Aenean et urnalectus. Phasellus luctus arcu
+        vitae metus pretium posuere. Fusce nulla mi,euismod sed libero nec, faucibus maximus leo.
+    </p>
+);
 
-const P_COPY_ELEMENTS = <>
-<h2>Heading Two</h2>
-<h3>Heading Three</h3>
-<h4>Heading Four</h4>
-<h5>Heading Five</h5>
-<h6>Heading Six</h6>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem sit
-    amet interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio a tellus
-    finibus tincidunt. Proin consectetur aliquet eleifend. Aenean et urna lectus.
-    Phasellus luctus arcu vitae metus pretium posuere. Fusce nulla mi, euismod sed
-    libero nec, faucibus maximus leo. <a href="#">In paragraph link</a>
-</p>
-<ul>
-    <li>List Item</li>
-    <li>List Item</li>
-    <li>List Item</li>
-</ul>
-<ol>
-    <li>List Item</li>
-    <li>List Item</li>
-    <li>List Item</li>
-</ol>
-</>;
+const P_COPY_2 = (
+    <p>
+        Integer leo velit, lobortis ut diam eget, porttitor consequat velit. Nullam vitae porttitor
+        dui. Donec a leo aliquet, porttitor mauris sed, consequat libero. Nam dignissim urna ac
+        risus mattis, ut pretium lacus tincidunt. Crascursus sed nisl eu mollis. Aenean vel nunc
+        nisl. Donec pulvinar maximus velit, id faucibus metus pretium sit amet. Vestibulum felis
+        odio, rutrum eu consectetur quis, sollicitudin sit amet erat.
+    </p>
+);
+
+const P_COPY_ELEMENTS = (
+    <>
+        <h2>Heading Two</h2>
+        <h3>Heading Three</h3>
+        <h4>Heading Four</h4>
+        <h5>Heading Five</h5>
+        <h6>Heading Six</h6>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem sit amet
+            interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio a tellus finibus
+            tincidunt. Proin consectetur aliquet eleifend. Aenean et urna lectus. Phasellus luctus
+            arcu vitae metus pretium posuere. Fusce nulla mi, euismod sed libero nec, faucibus
+            maximus leo. <a href="#">In paragraph link</a>
+        </p>
+        <ul>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+        </ul>
+        <ol>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+        </ol>
+    </>
+);
 const Page = () => {
     return (
         <DefaultLayout>
@@ -44,9 +76,36 @@ const Page = () => {
                 brief="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi aenean."
                 image={true}
             />
-            <CopyImage copy={P_COPY_1} variant={["left", "light"]} />
-            <CopyImage copy={P_COPY_2} image={true} variant={["left", "dark"]} />
-            
+            <CopyImage copy={P_COPY_1} variant={['left', 'light']} />
+            <CopyImage copy={P_COPY_2} image={true} variant={['left', 'dark']} />
+            <Badge
+                name="John Doe"
+                image={true}
+                pills={["Media Manager", "Technology Specialist", "Member"]}
+            />
+            <PersonAndBio
+                heading="Lead Minister"
+                name="Gary Richardson"
+                copy={P_COPY_1}
+                pills={["Minister", "Children Ministery", "Organizer", "Member"]}
+                image={true}
+                variant={["dark", "right"]}
+            />
+            <PersonAndBio
+                heading="Generic Member"
+                name="Donald Harper"
+                copy={P_COPY_2}
+                pills={["Media Manager", "Technology Specialist", "Member"]}
+                image={true}
+                variant={["light", "left"]}
+                schema={{
+                    type: "Person",
+                    properties: {
+                        name: "Donald Harper"
+                    }
+                }}
+            />
+            <EventsList copy={COPY_FANCY} />
             <section className="events-list--fancy">
                 <h2>Upcoming Events</h2>
                 <p>
@@ -97,114 +156,6 @@ const Page = () => {
                         />
                     </li>
                 </ul>
-            </section>
-            <section className="copy-and-image--left--light">
-                <Image src="https://placekitten.com/720/720" alt="" width={720} height={720} />
-                <h2>Copy and Image Left</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem
-                    sit amet interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio
-                    a tellus finibus tincidunt. Proin consectetur aliquet eleifend. Aenean et urna
-                    lectus. Phasellus luctus arcu vitae metus pretium posuere. Fusce nulla mi,
-                    euismod sed libero nec, faucibus maximus leo.
-                </p>
-
-                <p>
-                    Integer leo velit, lobortis ut diam eget, porttitor consequat velit. Nullam
-                    vitae porttitor dui. Donec a leo aliquet, porttitor mauris sed, consequat
-                    libero. Nam dignissim urna ac risus mattis, ut pretium lacus tincidunt. Cras
-                    cursus sed nisl eu mollis. Aenean vel nunc nisl. Donec pulvinar maximus velit,
-                    id faucibus metus pretium sit amet. Vestibulum felis odio, rutrum eu consectetur
-                    quis, sollicitudin sit amet erat.
-                </p>
-            </section>
-            <section className="copy-and-image--right--dark">
-                <h2>Copy and Image Left</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem
-                    sit amet interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio
-                    a tellus finibus tincidunt. Proin consectetur aliquet eleifend. Aenean et urna
-                    lectus. Phasellus luctus arcu vitae metus pretium posuere. Fusce nulla mi,
-                    euismod sed libero nec, faucibus maximus leo.
-                </p>
-
-                <p>
-                    Integer leo velit, lobortis ut diam eget, porttitor consequat velit. Nullam
-                    vitae porttitor dui. Donec a leo aliquet, porttitor mauris sed, consequat
-                    libero. Nam dignissim urna ac risus mattis, ut pretium lacus tincidunt. Cras
-                    cursus sed nisl eu mollis. Aenean vel nunc nisl. Donec pulvinar maximus velit,
-                    id faucibus metus pretium sit amet. Vestibulum felis odio, rutrum eu consectetur
-                    quis, sollicitudin sit amet erat.
-                </p>
-                <Image src="https://placekitten.com/720/720" alt="" width={720} height={720} />
-            </section>
-            <section className="person-and-bio--left--light">
-                <h2>Person and Bio</h2>
-                <Image src="https://placekitten.com/720/720" alt="" width={720} height={720} />
-                <article>
-                    <h3>Full Name</h3>
-                    <ul className="pills">
-                        <li>
-                            <span>Pill One</span>
-                        </li>
-                        <li>
-                            <span>Pill Two</span>
-                        </li>
-                        <li>
-                            <span>Pill Three</span>
-                        </li>
-                    </ul>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum
-                        lorem sit amet interdum fermentum. Vivamus et pellentesque eros.
-                        Pellentesque ac odio a tellus finibus tincidunt. Proin consectetur aliquet
-                        eleifend. Aenean et urna lectus. Phasellus luctus arcu vitae metus pretium
-                        posuere. Fusce nulla mi, euismod sed libero nec, faucibus maximus leo.
-                    </p>
-
-                    <p>
-                        Integer leo velit, lobortis ut diam eget, porttitor consequat velit. Nullam
-                        vitae porttitor dui. Donec a leo aliquet, porttitor mauris sed, consequat
-                        libero. Nam dignissim urna ac risus mattis, ut pretium lacus tincidunt. Cras
-                        cursus sed nisl eu mollis. Aenean vel nunc nisl. Donec pulvinar maximus
-                        velit, id faucibus metus pretium sit amet. Vestibulum felis odio, rutrum eu
-                        consectetur quis, sollicitudin sit amet erat.
-                    </p>
-                </article>
-            </section>
-            <section className="person-and-bio--right--dark">
-                <h2>Person and Bio</h2>
-                <Image src="https://placekitten.com/720/720" alt="" width={720} height={720} />
-                <article>
-                    <h3>Full Name</h3>
-                    <ul className="pills">
-                        <li>
-                            <span>Pill One</span>
-                        </li>
-                        <li>
-                            <span>Pill Two</span>
-                        </li>
-                        <li>
-                            <span>Pill Three</span>
-                        </li>
-                    </ul>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum
-                        lorem sit amet interdum fermentum. Vivamus et pellentesque eros.
-                        Pellentesque ac odio a tellus finibus tincidunt. Proin consectetur aliquet
-                        eleifend. Aenean et urna lectus. Phasellus luctus arcu vitae metus pretium
-                        posuere. Fusce nulla mi, euismod sed libero nec, faucibus maximus leo.
-                    </p>
-
-                    <p>
-                        Integer leo velit, lobortis ut diam eget, porttitor consequat velit. Nullam
-                        vitae porttitor dui. Donec a leo aliquet, porttitor mauris sed, consequat
-                        libero. Nam dignissim urna ac risus mattis, ut pretium lacus tincidunt. Cras
-                        cursus sed nisl eu mollis. Aenean vel nunc nisl. Donec pulvinar maximus
-                        velit, id faucibus metus pretium sit amet. Vestibulum felis odio, rutrum eu
-                        consectetur quis, sollicitudin sit amet erat.
-                    </p>
-                </article>
             </section>
             <section className="contact">
                 <RichText />

@@ -19,3 +19,13 @@ export const organization = {
     "logo": "https://www.westlink.church/_next/image?url=%2Fimages%2FIcon-Logo-White-256x256.png&w=48&q=75",
     "image": "https://www.westlink.church/_next/image?url=http%3A%2F%2Fimages.ctfassets.net%2Fpgcwy1w4oyl3%2F3jqrIHZpuLLokBlXG4SEse%2Fb543e3e6d8910ea17eba9bb0c3705bdb%2Fwestlink-building-front-hero.jpg&w=3840&q=50"
 }
+
+export const schemaBuilder = (type, properties) => {
+    if(!type || !properties) return;
+
+    return {
+        "@context": "https://schema.org",
+        "@type": type,
+        ...properties
+    }
+}

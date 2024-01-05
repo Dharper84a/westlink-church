@@ -8,7 +8,7 @@ const colors = {
     darkGray: '#222120',
     lightPink: '#E6DADA',
     aquaGray: '#274046',
-    offWhite: '#dfe9f3',
+    offWhite: 'hsl(45, 29%, 97%)',
     aqua: '#49B5B5',
     blue: 'hsl(203, 100%, 35%)',
     darkBlue: 'hsl(203, 100%, 20%)',

@@ -15,18 +15,7 @@ const darkVariant = css`
     }
 `
 
-const leftVariant = css``
-const rightVariant = css``
 export const _Container = styled.section`
     ${props => props.colorStyle == 'dark' ? darkVariant : lightVariant};
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin: 0;
     padding: 2rem ${({ theme }) => theme.layout.screenEdge};
-    img {
-        width: 90%;
-        margin: 0 auto;
-        border-radius: 0.35rem;
-    }
 `
