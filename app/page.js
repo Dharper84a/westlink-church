@@ -7,6 +7,8 @@ import CopyImage from './ui/components/CopyImage';
 import PersonAndBio from './ui/components/PersonBio';
 import Badge from './ui/components/Badge';
 import EventsList from './ui/components/EventsList';
+import Copy from './ui/components/Copy';
+import MediaAndCopy from './ui/components/MediaAndCopy';
 
 const COPY_FANCY = (
     <>
@@ -19,13 +21,20 @@ const COPY_FANCY = (
     </p>
     </>
 )
-const P_COPY_1 = (
+const P_COPY_1 = (<>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum lorem sit amet
         interdum fermentum. Vivamus et pellentesque eros. Pellentesque ac odio a tellus finibus
         tincidunt. Proin consectetur aliquet eleifend. Aenean et urnalectus. Phasellus luctus arcu
         vitae metus pretium posuere. Fusce nulla mi,euismod sed libero nec, faucibus maximus leo.
     </p>
+    <p>
+    Integer leo velit, lobortis ut diam eget, porttitor consequat velit. Nullam vitae porttitor
+    dui. Donec a leo aliquet, porttitor mauris sed, consequat libero. Nam dignissim urna ac
+    risus mattis, ut pretium lacus tincidunt. Crascursus sed nisl eu mollis. Aenean vel nunc
+    nisl. Donec pulvinar maximus velit, id faucibus metus pretium sit amet. Vestibulum felis
+    odio, rutrum eu consectetur quis, sollicitudin sit amet erat.
+</p></>
 );
 
 const P_COPY_2 = (
@@ -37,6 +46,8 @@ const P_COPY_2 = (
         odio, rutrum eu consectetur quis, sollicitudin sit amet erat.
     </p>
 );
+
+const H1 = (<h1>Westlink Church of Christ</h1>)
 
 const P_COPY_ELEMENTS = (
     <>
@@ -64,20 +75,28 @@ const P_COPY_ELEMENTS = (
         </ol>
     </>
 );
+
+const STYLE = {
+    default: 'default',
+    solid_color: 'solid_color',
+    color_gradient: 'color_gradient',
+    fluid_color_gradient: 'fluid_color_gradient'
+}
 const Page = () => {
     return (
         <DefaultLayout>
             <PageHeader
-                heading="Westlink Church of Christ"
-                brief="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi aenean."
+               copy="Westlink Church of Christ"
+               styleOption={STYLE.color_gradient}
             />
             <PageHeader
-                heading="Westlink Church of Christ"
-                brief="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi aenean."
+                copy="Westlink Church of Christ"
                 image={true}
+                styleOption={STYLE.default}
             />
-            <CopyImage copy={P_COPY_1} variant={['left', 'light']} />
-            <CopyImage copy={P_COPY_2} image={true} variant={['left', 'dark']} />
+            <MediaAndCopy copy={P_COPY_1} media={true} variant="media_right" styleOption={STYLE.color_gradient} />
+            <MediaAndCopy copy={P_COPY_2} media={true} variant="media_left" styleOption={STYLE.color_gradient} />
+          
             <Badge
                 name="John Doe"
                 image={true}

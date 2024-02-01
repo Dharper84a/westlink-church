@@ -2,6 +2,7 @@ import fontClamp from "./helpers/fontClamp"
 
 const colors = {
     darkText: '#232B2B',
+    lightText: 'hsl(45, 29%, 97%)',
     white: "#FFFFFF",
     black: "#000000",
     gray: "#ABABAB",
@@ -16,12 +17,32 @@ const colors = {
 
 const gradients = {
     lightPinkToAquaGray: 'linear-gradient(to top, #274046, #E6DADA);',
-    glassWater: 'linear-gradient(to top, #dfe9f3 0%, white 100%);'
-
+    glassWater: 'linear-gradient(to top, #dfe9f3 0%, white 100%);',
+    blue: 'linear-gradient(90deg, hsl(203, 100%, 18%), hsl(203, 100%, 35%));',
+    imageOverlay: 'linear-gradient(180deg, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.75));'
 }
 
 const shadows = {
     standard: '0.5rem 0.5rem 1rem rgba(35, 37, 38, 0.2)',
+}
+
+const styleOptions = {
+    'default': {
+        color: colors.darkText,
+        background: colors.white,
+    },
+    'solid_color': {
+        color: colors.lightText,
+        background: colors.blue,
+    },
+    'color_gradient': {
+        color: colors.lightText,
+        background: gradients.blue,
+    },
+    'fluid_color_gradient': {
+        color: colors.lightText,
+        background: colors.darkBlue,
+    }
 }
 const devices = {
     up450: 'only screen and (min-width: 450px)',
@@ -66,5 +87,6 @@ export const theme = {
     device: devices,
     layout,
     layer: layers,
+    styleOptions,
     fontClamp
 }

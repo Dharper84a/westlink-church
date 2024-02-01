@@ -54,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
     p {
         font-size: ${({theme}) => theme.fontClamp(16, 20)};
         font-weight: 400;
-        line-height: 1.5;
+        line-height: 1.55;
     }
 
     /** LINKS AND BUTTONS CLASSES */
