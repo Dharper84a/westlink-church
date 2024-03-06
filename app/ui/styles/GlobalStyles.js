@@ -1,13 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
  
 const GlobalStyle = createGlobalStyle`
-    html, body {
+    * {
         box-sizing: border-box;
+    }
+    html, body {
         margin: 0;
         padding: 0;
     }
     body {
-        font-family: var(--font-monserrat);
+        font-family: var(--font-monserrat), sans-serif;
         color: ${({theme}) => theme.color.darkText};
         font-size: 16px;
     }
@@ -24,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     img {
         max-width: 100%;
         height: fit-content;
-        /* object-fit: contain; */
+        object-fit: contain;
     }
     h1, h2, h3, h4, h5, h6 {
         margin: 0.5rem 0 0.75rem;
@@ -80,6 +82,25 @@ const GlobalStyle = createGlobalStyle`
             svg {
                 margin-left: 0.5rem;
             }
+        }
+    }
+
+    .text-color-light {
+        color: ${({theme}) => theme.color.lightText};
+    }
+    .text-color-dark {
+        color: ${({theme}) => theme.color.darkText};
+    }
+    .hide-mobile {
+        display: none;
+    }
+
+    @media ${({theme}) => theme.device.up1024} {
+        .hide-mobile {
+            display: initial;
+        }
+        .hide-desktop {
+            display: none;
         }
     }
 `;

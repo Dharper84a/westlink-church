@@ -51,6 +51,7 @@ const devices = {
     up1366: 'only screen and (min-width: 1366px)',
     up1600: 'only screen and (min-width: 1600px)',
     up1920: 'only screen and (min-width: 1920px)',
+    up2560: 'only screen and (min-width: 2560px)',
 }
 
 const layout = {

@@ -10,6 +10,7 @@ const nextConfig = {
         styledComponents: true
     },
     images: {
+        deviceSizes: [350, 450, 768, 1024, 1366, 1600, 1920, 2560],
         domains: ['images.ctfassets.net', 'source.unsplash.com', 'diqstapf6hjxd.cloudfront.net', 'i.redd.it', 'wharferj.files.wordpress.com', 'images7.alphacoders.com', 'placekitten.com']
     },
     i18n: {
