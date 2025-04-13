@@ -1,0 +1,14 @@
+@use '../../bootstrap.scss' as *;
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem $screenEdge;
+    box-shadow: 0 0.25rem 0.625rem rgba(0,0,0,0.16);
+    a {
+        &:first-of-type {
+            display: flex;
+        }
+    }
+}
