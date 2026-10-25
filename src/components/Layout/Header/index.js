@@ -66,7 +66,7 @@ const Header = (props) => {
                         ref={ref}
                     >
                         
-                        Westlink Church of Christ
+                        Gathering of Grace
                     </a>
                 </Link>
             </SiteIdentity>
