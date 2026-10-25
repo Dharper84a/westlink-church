@@ -11,7 +11,7 @@ const Footer = (props) => {
             <Inner>
                 <nav aria-label='Site footer menu'>
                     <Link href="/donate">
-                        <a aria-label="Ways to donate">
+                        <a>
                             Donate
                         </a>
                     </Link>
@@ -22,7 +22,7 @@ const Footer = (props) => {
                         Wichita, KS 67212 <br/>
                     </div>
                     <div>
-                        <a href="tel:13167221111" aria-label="Call">316.722.1111</a><br/>
+                        <a href="tel:13167221111">316.722.1111</a><br/>
                         <Link href="/contact">
                             <a title="View other options of contacting Gathering of Grace">
                                 Contact
@@ -33,20 +33,17 @@ const Footer = (props) => {
                 <div className="legal-copy">
                     <p>
                         <Link href="/terms-of-use">
-                            <a aria-label="Terms of Use">
+                            <a>
                                 Terms of Use
                             </a>
                         </Link>
                         <Link href="/privacy-policy">
-                            <a aria-label="Privacy Policy">
+                            <a>
                                 Privacy Policy
                             </a>
                         </Link><br/>
                         &copy; Copyright {new Date().getFullYear()} Gathering of Grace
                     </p>
-                    {/* <p>
-                        Created with <FontAwesomeIcon icon={faHeart} /> by Donald Harper
-                    </p> */}
                 </div>
             </Inner>
         </FooterContainer>
